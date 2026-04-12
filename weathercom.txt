@@ -1,0 +1,172 @@
+http://api.wunderground.com/api/6fb5732bbca00ff8/geolookup/conditions/forecast/q/China/Shenzhen.json
+http://api.wunderground.com/api/6fb5732bbca00ff8/geolookup/conditions/forecast/q/Egypt/Cairo.json
+http://api.wunderground.com/api/6fb5732bbca00ff8/geolookup/conditions/forecast/q/Sweden/Stockholm.json
+
+
+    weather_city_full character varying(100),
+    weather_country_icon character varying(50),
+    weather_today_text character varying(15),
+    weather_today_condition character varying(30),
+    weather_today_icon character varying(20),
+    weather_today_icon_url character varying(100),
+    weather_today_temp_f_min character varying(10),
+    weather_today_temp_f_max character varying(10),
+    weather_today_temp_c_min character varying(10),
+    weather_today_temp_c_max character varying(10),
+    weather_day1_text character varying(15),
+    weather_day1_condition character varying(30),
+    weather_day1_icon character varying(20),
+    weather_day1_icon_url character varying(100),
+    weather_day1_temp_f_min character varying(10),
+    weather_day1_temp_f_max character varying(10),
+    weather_day1_temp_c_min character varying(10),
+    weather_day1_temp_c_max character varying(10),
+    weather_day2_text character varying(15),
+    weather_day2_condition character varying(30),
+    weather_day2_icon character varying(20),
+    weather_day2_icon_url character varying(100),
+    weather_day2_temp_f_min character varying(10),
+    weather_day2_temp_f_max character varying(10),
+    weather_day2_temp_c_min character varying(10),
+    weather_day2_temp_c_max character varying(10),
+    weather_day3_text character varying(15),
+    weather_day3_condition character varying(30),
+    weather_day3_icon character varying(20),
+    weather_day3_icon_url character varying(100),
+    weather_day3_temp_f_min character varying(10),
+    weather_day3_temp_f_max character varying(10),
+    weather_day3_temp_c_min character varying(10),
+    weather_day3_temp_c_max character varying(10)
+
+
+
+
+
+
+<br />
+<b>Notice</b>:  Undefined index: extra_login_security in <b>/var/www/phpPgAdmin/classes/Misc.php</b> on line <b>464</b><br />
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+SET search_path = public, pg_catalog;
+
+ALTER TABLE ONLY public.weather DROP CONSTRAINT weather_pkey;
+ALTER TABLE public.weather ALTER COLUMN weather_id DROP DEFAULT;
+DROP SEQUENCE public.weather_weather_id_seq;
+DROP TABLE public.weather;
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: weather; Type: TABLE; Schema: public; Owner: tonjaw; Tablespace: 
+--
+
+CREATE TABLE weather (
+    weather_id integer NOT NULL,
+    weather_city character varying(50),
+    weather_url text,
+    weather_enabled integer DEFAULT 0,
+    weather_city_full character varying(100),
+    weather_country_icon character varying(50),
+    weather_today_text character varying(15),
+    weather_today_condition character varying(30),
+    weather_today_icon character varying(20),
+    weather_today_icon_url character varying(100),
+    weather_today_temp_f_min character varying(10),
+    weather_today_temp_f_max character varying(10),
+    weather_today_temp_c_min character varying(10),
+    weather_today_temp_c_max character varying(10),
+    weather_day1_text character varying(15),
+    weather_day1_condition character varying(30),
+    weather_day1_icon character varying(20),
+    weather_day1_icon_url character varying(100),
+    weather_day1_temp_f_min character varying(10),
+    weather_day1_temp_f_max character varying(10),
+    weather_day1_temp_c_min character varying(10),
+    weather_day1_temp_c_max character varying(10),
+    weather_day2_text character varying(15),
+    weather_day2_condition character varying(30),
+    weather_day2_icon character varying(20),
+    weather_day2_icon_url character varying(100),
+    weather_day2_temp_f_min character varying(10),
+    weather_day2_temp_f_max character varying(10),
+    weather_day2_temp_c_min character varying(10),
+    weather_day2_temp_c_max character varying(10),
+    weather_day3_text character varying(15),
+    weather_day3_condition character varying(30),
+    weather_day3_icon character varying(20),
+    weather_day3_icon_url character varying(100),
+    weather_day3_temp_f_min character varying(10),
+    weather_day3_temp_f_max character varying(10),
+    weather_day3_temp_c_min character varying(10),
+    weather_day3_temp_c_max character varying(10)
+);
+
+
+ALTER TABLE public.weather OWNER TO tonjaw;
+
+--
+-- Name: weather_seq; Type: SEQUENCE; Schema: public; Owner: tonjaw
+--
+
+CREATE SEQUENCE weather_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.weather_seq OWNER TO tonjaw;
+
+--
+-- Name: weather_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: tonjaw
+--
+
+ALTER SEQUENCE weather_seq OWNED BY weather.weather_id;
+
+
+--
+-- Name: weather_id; Type: DEFAULT; Schema: public; Owner: tonjaw
+--
+
+ALTER TABLE ONLY weather ALTER COLUMN weather_id SET DEFAULT nextval('weather_seq'::regclass);
+
+
+--
+-- Name: weather_pkey; Type: CONSTRAINT; Schema: public; Owner: tonjaw; Tablespace: 
+--
+
+ALTER TABLE ONLY weather
+    ADD CONSTRAINT weather_pkey PRIMARY KEY (weather_id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

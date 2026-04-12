@@ -1,0 +1,34 @@
+<PINS_APIResponse>
+    <Status ErrorCode="0" TimeStamp="2015-02-25T13:43:49">
+	<Message>OK</Message>
+    </Status>
+    <Bill>
+	<Header>
+	    <Text>Room Service</Text>
+	    <Text>BF/1901/4127/24-SEP-2013/0</Text>
+	</Header>
+	<Detail>
+	    <Item>
+		<Text>B Fast Special</Text>	
+		<Qty>2</Qty>
+		<Price>41322.31</Price>
+		<Amount>82644.63</Amount>
+	    </Item>
+	</Detail>
+	<Subtotal>
+	  <Line>
+	    <Text>Subtotal</Text>
+	    <Amount>82644.63</Amount>
+	  </Line>
+	  <Line>
+	      <Text>Tax</Text>
+	      <Amount>17355.37</Amount>
+	  </Line>
+	  <Line>
+	      <Text>Total</Text>
+	      <Amount>100000</Amount>
+	  </Line>
+	</Subtotal>
+	<Footer/>
+    </Bill>
+</PINS_APIResponse>

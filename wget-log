@@ -1,0 +1,100 @@
+--2018-08-23 11:28:25--  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Retrying.
+
+--2018-08-23 11:43:26--  (try: 2)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Retrying.
+
+--2018-08-23 11:58:28--  (try: 3)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Retrying.
+
+--2018-08-23 12:13:31--  (try: 4)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Retrying.
+
+--2018-08-23 12:28:35--  (try: 5)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Retrying.
+
+--2018-08-23 12:43:40--  (try: 6)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Retrying.
+
+--2018-08-23 12:58:46--  (try: 7)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Retrying.
+
+--2018-08-23 13:13:53--  (try: 8)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Retrying.
+
+--2018-08-23 13:29:01--  (try: 9)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Retrying.
+
+--2018-08-23 13:44:11--  (try:10)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Retrying.
+
+--2018-08-23 13:59:21--  (try:11)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Retrying.
+
+--2018-08-23 14:14:31--  (try:12)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Retrying.
+
+--2018-08-23 14:29:41--  (try:13)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Retrying.
+
+--2018-08-23 14:44:51--  (try:14)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Retrying.
+
+--2018-08-23 15:00:01--  (try:15)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Retrying.
+
+--2018-08-23 15:15:11--  (try:16)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Retrying.
+
+--2018-08-23 15:30:21--  (try:17)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Retrying.
+
+--2018-08-23 15:45:31--  (try:18)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Retrying.
+
+--2018-08-23 16:00:41--  (try:19)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Retrying.
+
+--2018-08-23 16:15:51--  (try:20)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Giving up.
+

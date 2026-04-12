@@ -1,0 +1,71 @@
+<?php if (!defined('IN_TONJAW')) exit; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="<?php echo (isset($this->_rootref['S_CONTENT_DIRECTION'])) ? $this->_rootref['S_CONTENT_DIRECTION'] : ''; ?>" lang="<?php echo (isset($this->_rootref['S_USER_LANG'])) ? $this->_rootref['S_USER_LANG'] : ''; ?>" xml:lang="<?php echo (isset($this->_rootref['S_USER_LANG'])) ? $this->_rootref['S_USER_LANG'] : ''; ?>">
+<head>
+    <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/pop.css" rel="stylesheet" type="text/css" />
+    <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/jquery-1.10.1.min.js"></script>
+    <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/jquery.fancybox.js"></script>
+    <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/senlei19.js" type="text/javascript"></script>
+    <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/keycode.js" type="text/javascript" language="javascript"></script>
+    <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/order.js" type="text/javascript"></script>
+    <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/senlei19.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/basket.css" type="text/css"/>
+    
+    <style type="text/css">
+  body{ background: #000 no-repeat center top; 
+  background-color: #ccc;
+  Height : 350px;
+  width     : 800px;
+  } 
+
+  #overlay-panel {
+		padding: 25px;
+  }
+  a { color:#999; text-decoration:none; }
+  label { display: block; }
+  form { margin: 25px; text-align:left }
+  form input[type=text] { padding:5px; position:relative;top:0px;border:solid 1px #CCC;}
+  form input[type=submit] { padding:5px; position:relative;top:10px;border:solid 1px #CCC;}
+  form input[type=button] { padding:5px; position:relative;top:10px;border:solid 1px #CCC;}
+  form textarea { padding:5px; width:90%; border:solid 1px #CCC; height:100px;}
+  h1 { font-size: 24px; font-family: Arial; font-weight: bold; margin: 10px; }
+  .box { width:350px; }
+
+  footer { font-size:12px; }
+  form a, footer a { color:#40738d; }
+</style>
+</head>
+<body>
+<!--
+<div class="divNotification"><center>
+	<h1><?php echo ((isset($this->_rootref['L_MESSAGE'])) ? $this->_rootref['L_MESSAGE'] : ((isset($user->lang['MESSAGE'])) ? $user->lang['MESSAGE'] : '{ MESSAGE }')); ?></h1>
+	<span class="spanNotification"><?php echo (isset($this->_rootref['S_MESSAGE'])) ? $this->_rootref['S_MESSAGE'] : ''; ?>
+
+	<p>
+	<input class="button green big close" type="submit" name="clearbasket" id="btnSubmit" value="OK" onclick="parent.$.fancybox.close();" ></p></span>
+    </center></div>
+</div>
+-->
+<h1><?php echo ((isset($this->_rootref['L_MESSAGE'])) ? $this->_rootref['L_MESSAGE'] : ((isset($user->lang['MESSAGE'])) ? $user->lang['MESSAGE'] : '{ MESSAGE }')); ?></h1>
+<div style="width:65%">
+<br/>
+<form action="<?php echo (isset($this->_rootref['U_ACTION'])) ? $this->_rootref['U_ACTION'] : ''; ?>" method="post" id="formOrder" >
+<table style="font-size: 14px; padding: 10px;" width="100%">
+    <tr>
+		<td colspan="2" align="center"><?php echo ((isset($this->_rootref['L_MESSAGE'])) ? $this->_rootref['L_MESSAGE'] : ((isset($user->lang['MESSAGE'])) ? $user->lang['MESSAGE'] : '{ MESSAGE }')); ?></td>
+    </tr>
+    <tr>
+		<td colspan="2" align="center"><span class="spanNotification"><?php echo (isset($this->_rootref['S_MESSAGE'])) ? $this->_rootref['S_MESSAGE'] : ''; ?></span></td>
+    </tr>
+		<td colspan="2"><br/><p><input class="button green2 close" type="submit" name="clearbasket" id="btnSubmit" value="OK" onclick="parent.$.fancybox.close();" >
+	</p></td>
+    </tr>
+</table>
+</form>
+</div>
+
+
+
+
+
+</body>
+</html>

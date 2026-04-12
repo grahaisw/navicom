@@ -1,0 +1,19 @@
+<Entries xmlns="http://ws.wso2.org/dataservice">
+   <Entry>
+      <RoomNo>819</RoomNo>
+      <RoomStatusId>1</RoomStatusId>
+      <RoomStatus>Occupied</RoomStatus>
+      <GuestName>M. Dodi Iman, Mr                                  </GuestName>
+      <FolioNo>145818</FolioNo>
+      <GroupId>528</GroupId>
+      <GroupName>GROUP BTN                                         </GroupName>
+      <Title/>
+      <CompanyName>Bank Tabungan Negara (BTN)  Jakarta</CompanyName>
+      <NoPOS>1</NoPOS>
+      <RoomMessage>apa ka'bar</RoomMessage>
+      <Groupmessage>ditunggu di lo'bby</Groupmessage>
+      <HotspotUsr>1503</HotspotUsr>
+      <HotspotPwd>80212959</HotspotPwd>
+      <DefLanguage>INA</DefLanguage>
+   </Entry>
+</Entries>

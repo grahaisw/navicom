@@ -1,0 +1,139 @@
+<FIDS_Response>
+	<URL_Request>http://10.10.0.1:8080/fids/request/upg.xml</URL_Request>
+	<Status ErrorCode="0" TimeStamp="1414029602">
+		<Message>OK</Message>
+	</Status>
+	<Airport>
+		<Name>Sultan Hasanuddin International Airport</Name>
+		<Code>UPG</Code>
+		<City>Makassar</City>
+		<State>South Sulawesi</State>
+		<Country>Indonesia</Country>
+		<Phone>+62 361 800000</Phone>
+	</Airport>
+	<Arrival DataCount="5">
+		<Record>
+			<FlightID>GA712</FlightID>
+			<AirlineCode>GA</AirlineCode>
+			<Airline>Garuda Indonesia</Airline>
+			<Origin>Jakarta CGK</Origin>
+			<Time>00:10</Time>
+			<Terminal>2</Terminal>
+			<Gate>2</Gate>
+			<Remark>Landed</Remark>
+		</Record>
+		<Record>
+			<FlightID>JT300</FlightID>
+			<AirlineCode>JT</AirlineCode>
+			<Airline>Lion Air</Airline>
+			<Origin>Surabaya</Origin>
+			<Time>00:17</Time>
+			<Terminal>2</Terminal>
+			<Gate>E3</Gate>
+			<Remark>Delayed</Remark>
+		</Record>
+		<Record>
+			<FlightID>GA433</FlightID>
+			<AirlineCode>GA</AirlineCode>
+			<Airline>Garuda Indonesia</Airline>
+			<Origin>Jakarta CGK</Origin>
+			<Time>00:20</Time>
+			<Terminal>2</Terminal>
+			<Gate>8</Gate>
+			<Remark>Landed</Remark>
+		</Record>
+		<Record>
+			<FlightID>QZ8911</FlightID>
+			<AirlineCode>QZ</AirlineCode>
+			<Airline>Air Asia</Airline>
+			<Origin>Bandung</Origin>
+			<Time>00:25</Time>
+			<Terminal>1</Terminal>
+			<Gate>5</Gate>
+			<Remark>Landed</Remark>
+		</Record>
+		<Record>
+			<FlightID>SJ231</FlightID>
+			<AirlineCode>SJ</AirlineCode>
+			<Airline>Sriwijaya Air</Airline>
+			<Origin>Jakarta CGK</Origin>
+			<Time>00:27</Time>
+			<Terminal>2</Terminal>
+			<Gate>1</Gate>
+			<Remark>Delayed</Remark>
+		</Record>
+	</Arrival>
+
+	<Departure DataCount="7">
+		<Record>
+			<FlightID>GA713</FlightID>
+			<AirlineCode>GA</AirlineCode>
+			<Airline>Garuda Indonesia</Airline>
+			<Destination>Jakarta CGK</Destination>
+			<Time>00:40</Time>
+			<Terminal>2</Terminal>
+			<Gate>E3</Gate>
+			<Remark>Departed</Remark>
+		</Record>
+		<Record>
+			<FlightID>JT300</FlightID>
+			<AirlineCode>JT</AirlineCode>
+			<Airline>Lion Air</Airline>
+			<Destination>Surabaya</Destination>
+			<Time>00:17</Time>
+			<Terminal>2</Terminal>
+			<Gate>E3</Gate>
+			<Remark>Delayed</Remark>
+		</Record>
+		<Record>
+			<FlightID>QZ922</FlightID>
+			<AirlineCode>QZ</AirlineCode>
+			<Airline>Air Asia</Airline>
+			<Destination>Singapore</Destination>
+			<Time>00:30</Time>
+			<Terminal>2</Terminal>
+			<Gate>7</Gate>
+			<Remark>Departed</Remark>
+		</Record>
+		<Record>
+			<FlightID>SJ442</FlightID>
+			<AirlineCode>SJ</AirlineCode>
+			<Airline>Sriwijaya Air</Airline>
+			<Destination>Jakarta CGK</Destination>
+			<Time>00:45</Time>
+			<Terminal>2</Terminal>
+			<Gate>5</Gate>
+			<Remark>Departed</Remark>
+		</Record>
+		<Record>
+			<FlightID>QZ467</FlightID>
+			<AirlineCode>QZ</AirlineCode>
+			<Airline>Air Asia</Airline>
+			<Destination>Bangkok</Destination>
+			<Time>00:50</Time>
+			<Terminal>2</Terminal>
+			<Gate>E3</Gate>
+			<Remark>Boarding</Remark>
+		</Record>
+		<Record>
+			<FlightID>GA217</FlightID>
+			<AirlineCode>GA</AirlineCode>
+			<Airline>Garuda Indonesia</Airline>
+			<Destination>Medan</Destination>
+			<Time>01:03</Time>
+			<Terminal>1</Terminal>
+			<Gate>1</Gate>
+			<Remark>Boarding</Remark>
+		</Record>
+		<Record>
+			<FlightID>JT3212</FlightID>
+			<AirlineCode>JT</AirlineCode>
+			<Airline>Lion Air</Airline>
+			<Destination>Banjarmasin</Destination>
+			<Time>01:15</Time>
+			<Terminal>2</Terminal>
+			<Gate>2</Gate>
+			<Remark>Delayed</Remark>
+		</Record>
+	</Departure>   
+</FIDS_Response>

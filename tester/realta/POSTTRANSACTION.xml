@@ -1,0 +1,27 @@
+<HMS_APIRequest>
+  <Status ErrorCode="0" TimeStamp="1413910800">
+    <Code>POSTTRANSACTION</Code>
+    <ReservationID>2</ReservationID>
+    <Room>1010</Room>
+  </Status>
+  <Data Count="3">
+    <Record id="1">
+      <ProductID>2</ProductID>
+      <ProductName>Nasi Goreng Ikan Asin</ProductName>
+      <Qty>1</Qty>
+      <Remark>Pedas</Remark> 
+    </Record>
+    <Record id="2">
+      <ProductID>3</ProductID>
+      <ProductName>Nasi Ayam Jamur</ProductName>
+      <Qty>1</Qty>
+      <Remark /> 
+    </Record>
+    <Record id="3">
+      <ProductID>23</ProductID>
+      <ProductName>Es Lemon Tea</ProductName>
+      <Qty>2</Qty>
+      <Remark>Es batu sedikit aja</Remark>
+    </Record>
+  </Data>
+</HMS_APIRequest>

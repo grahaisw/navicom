@@ -1,0 +1,69 @@
+<HMS_APIResponse>
+  <Status ErrorCode="0" TimeStamp="1413910800">
+    <Message>OK</Message> 
+  </Status>
+  <Data Count="3">
+    <Record id="1">
+      <Room>1010</Room> 
+      <RoomStatus>CLEAN</RoomStatus> 
+      <ConnectRoom />
+      <ReservationID>2</ReservationID>
+      <ArrivalDate>2015025</ArrivalDate>
+      <FirstName>Madeleine</FirstName>
+      <LastName>Kuntari</LastName>
+      <FullName>Madeleine Kuntari</FullName> 
+      <Salutation>Ms</Salutation> 
+      <Language>ID</Language> 
+      <Group>N</Group>
+      <GroupName />
+      <AllowPost>Y</AllowPost>
+      <AllowViewBill>Y</AllowViewBill>
+      <VIP>N</VIP>
+      <HoneyMoon>N</HoneyMoon>
+      <RoomShare>N</RoomShare>
+      <Remark />
+    </Record>
+    <Record id="2">
+      <Room>1020</Room> 
+      <RoomStatus>CLEAN</RoomStatus> 
+      <ConnectRoom />
+      <ReservationID>4</ReservationID>
+      <ArrivalDate>2015025</ArrivalDate>
+      <FirstName>Michael</FirstName>
+      <LastName>Corleone</LastName>
+      <FullName>Michael Corleone</FullName> 
+      <Salutation>Mr</Salutation> 
+      <Language>EN</Language> 
+      <Group>N</Group>
+      <GroupName />
+      <AllowPost>Y</AllowPost>
+      <AllowViewBill>Y</AllowViewBill>
+      <VIP>N</VIP>
+      <HoneyMoon>N</HoneyMoon>
+      <RoomShare>N</RoomShare>
+      <Remark /> 
+    </Record>
+    <Record id="3">
+      <Room>1007</Room> 
+      <RoomStatus>CLEAN</RoomStatus> 
+      <ConnectRoom />
+      <ReservationID>96138</ReservationID>
+      <ArrivalDate>2015025</ArrivalDate>
+      <FirstName>Raden Harya</FirstName>
+      <LastName>Setyaki</LastName>
+      <FullName>Raden Harya Setyaki</FullName> 
+      <Salutation>Mr</Salutation> 
+      <Language>EN</Language> 
+      <Group>N</Group>
+      <GroupName />
+      <AllowPost>Y</AllowPost>
+      <AllowViewBill>Y</AllowViewBill>
+      <VIP>N</VIP>
+      <HoneyMoon>N</HoneyMoon>
+      <RoomShare>N</RoomShare>
+      <Remark /> 
+    </Record>
+    
+    
+  </Data>
+</HMS_APIResponse>

@@ -1,0 +1,145 @@
+connectivity.php:31:$guests_name = get_guests_data($session->mac); //echo 'mac: ' . $guests_name; exit;
+admin/service.php:31:$session->session_begin($file[0]);
+admin/service.php:135:    'USERNAME'			=> $session->username,
+admin/runningtext.php:31:$session->session_begin($file[0]);
+admin/runningtext.php:133:    'USERNAME'			=> $session->username,
+admin/directorydetail.php:33:$session->session_begin($parent);
+admin/directorydetail.php:211:    'USERNAME'			=> $session->username,
+admin/tv_group.php:24:$session->session_begin($file[0]);
+admin/tv_group.php:113:    'USERNAME'			=> $session->username,
+admin/log.php:24:$session->session_begin($file[0]);
+admin/log.php:107:    'USERNAME'			=> $session->username,
+admin/movie_groupdetail.php:31:$session->session_begin($parent);
+admin/movie_groupdetail.php:210:    'USERNAME'			=> $session->username,
+admin/page.php:24:$session->session_begin($file[0]);
+admin/page.php:117:    'USERNAME'			=> $session->username,
+admin/weather.php:24:$session->session_begin($file[0]);
+admin/weather.php:128:    'USERNAME'			=> $session->username,
+admin/style_schedule.php:24:$session->session_begin($file[0]);
+admin/style_schedule.php:126:    'USERNAME'			=> $session->username,
+admin/servicegroupdetail.php:31:$session->session_begin($parent);
+admin/servicegroupdetail.php:222:    'USERNAME'			=> $session->username,
+admin/nodedetail.php:32:$session->session_begin($parent);
+admin/nodedetail.php:144:    'USERNAME'			=> $session->username,
+admin/logdetail.php:34://$session->session_begin($file[0]);
+admin/_tvdetail.php:33:$session->session_begin($parent);
+admin/_tvdetail.php:170:    'USERNAME'			=> $session->username,
+admin/lang.php:24:$session->session_begin($file[0]);
+admin/lang.php:134:    'USERNAME'			=> $session->username,
+admin/weatherdetail.php:33:$session->session_begin($parent);
+admin/weatherdetail.php:207:    'USERNAME'			=> $session->username,
+admin/room.php:24:$session->session_begin($file[0]);
+admin/room.php:118:    'USERNAME'			=> $session->username,
+admin/style.php:24:$session->session_begin($file[0]);
+admin/style.php:126:    'USERNAME'			=> $session->username,
+admin/node.php:24:$session->session_begin($file[0]);
+admin/node.php:134:    'USERNAME'			=> $session->username,
+admin/roomdetail.php:31:$session->session_begin($parent);
+admin/roomdetail.php:173:    'USERNAME'			=> $session->username,
+admin/guestdetail.php:32:$session->session_begin($parent);
+admin/guestdetail.php:193:    'USERNAME'			=> $session->username,
+admin/fe_menu.php:24:$session->session_begin($file[0]);
+admin/fe_menu.php:120:    'USERNAME'			=> $session->username,
+admin/fe_menudetail.php:33:$session->session_begin($parent);
+admin/fe_menudetail.php:228:    'USERNAME'			=> $session->username,
+admin/group.php:24:$session->session_begin($file[0]);
+admin/group.php:133:    'USERNAME'			=> $session->username,
+admin/servicegroup.php:24:$session->session_begin($file[0]);
+admin/servicegroup.php:122:    'USERNAME'			=> $session->username,
+admin/module_cat.php:24:$session->session_begin($file[0]);
+admin/module_cat.php:88:    'USERNAME'			=> $session->username,
+admin/index.php:28:$session->session_begin($file[0]);
+admin/index.php:112:    'USERNAME'			=> $session->username,
+admin/pms.php:24:$session->session_begin($file[0]);
+admin/pms.php:64:    'USERNAME'			=> $session->username,
+admin/priviledge.php:24:$session->session_begin($file[0]);
+admin/priviledge.php:156://echo 'your user id: ' . $session->userid; exit;
+admin/priviledge.php:249:	    'USERNAME'			=> $session->username,
+admin/priviledge.php:379:	    'USERNAME'			=> $session->username,
+admin/priviledge.php:432:	    'USERNAME'			=> $session->username,
+admin/pagedetail.php:33:$session->session_begin($parent);
+admin/pagedetail.php:209:    'USERNAME'			=> $session->username,
+admin/moviedetail.php:33:$session->session_begin($parent);
+admin/moviedetail.php:308:    'USERNAME'			=> $session->username,
+admin/directory.php:31:$session->session_begin($file[0]);
+admin/directory.php:130:    'USERNAME'			=> $session->username,
+admin/runningtextdetail.php:33:$session->session_begin($parent);
+admin/runningtextdetail.php:319:    'USERNAME'			=> $session->username,
+admin/movie_group.php:24:$session->session_begin($file[0]);
+admin/movie_group.php:113:    'USERNAME'			=> $session->username,
+admin/tvdetail.php:33:$session->session_begin($parent);
+admin/tvdetail.php:170:    'USERNAME'			=> $session->username,
+admin/zone.php:24:$session->session_begin($file[0]);
+admin/zone.php:133:    'USERNAME'			=> $session->username,
+admin/module.php:24:$session->session_begin($file[0]);
+admin/module.php:135:    'USERNAME'			=> $session->username,
+admin/tv.php:31:$session->session_begin($file[0]);
+admin/tv.php:133:    'USERNAME'			=> $session->username,
+admin/module_sub.php:24:$session->session_begin($file[0]);
+admin/module_sub.php:101:    'USERNAME'			=> $session->username,
+admin/servicedetail.php:33:$session->session_begin($parent);
+admin/servicedetail.php:259:    'USERNAME'			=> $session->username,
+admin/guest.php:24:$session->session_begin($file[0]);
+admin/guest.php:77:    'USERNAME'			=> $session->username,
+admin/user.php:24:$session->session_begin($file[0]);
+admin/user.php:136:    'USERNAME'			=> $session->username,
+admin/tv_groupdetail.php:33:$session->session_begin($parent);
+admin/tv_groupdetail.php:212:    'USERNAME'			=> $session->username,
+admin/filemanager.php:24:$session->session_begin($file[0]);
+admin/movie.php:31:$session->session_begin($file[0]);
+admin/movie.php:135:    'USERNAME'			=> $session->username,
+admin/zonedetail.php:37:$session->session_begin($parent);
+admin/zonedetail.php:133:    'USERNAME'			=> $session->username,
+fe_common.php:91:$session->session_begin($file[0]);
+fe_common.php:94://$browser = trim(substr($session->browser, 0, 149));
+viewbill.php:33:$guests_name = get_guests_data($session->mac); //echo 'mac: ' . $guests_name; exit;
+includes/functions.php:1276:	if ($session->session_id == '' && $session_id === false && !$params_is_array && !$anchor)
+includes/functions.php:1290:		$session_id = $session->session_id;
+includes/functions.php:1530:		'log_user'		=> (string) $session->username,
+includes/functions.php:1531:		'log_module'		=> (string) $session->module,
+includes/functions.php:1532:		'log_mac'		=> (string) $session->mac,
+includes/functions.php:1533:		'log_browser'		=> (string) trim(substr($session->browser, 0, 149)),
+includes/functions.php:1868:    if ( in_array($session->mac, $navicoms) )
+includes/functions.php:1870:	$session->mac_exist = 1;
+includes/functions.php:1874:    if ($session->mac_exist && empty($room_key))
+includes/functions.php:1877:	$header = trim(substr($session->browser, 0, 149));
+includes/functions.php:1879:	if(trim($header) !== $config['stb_http_header'] && !in_array($session->mac, $navicoms))
+includes/functions.php:1887:	    ROOMS_TABLE . " r, " . NODES_TABLE . " n WHERE n.node_mac='" . $session->mac . "'";
+includes/functions.php:1893:    if (!$session->mac_exist && empty($room_key))
+includes/functions.php:1918:     if ( in_array($session->mac, $navicoms) )
+includes/functions.php:1928:echo '</br>kKKKKKEEEEEEYYYYYYY: ' . $session->ip;
+includes/functions.php:1929:echo '</br>Client/STB mac: ' . $session->mac;
+includes/functions.php:1930:echo '</br>Client/STB browser: ' . trim(substr($session->browser, 0, 149));
+includes/functions.php:1931:echo '</br>Client/STB feature: ' . $session->module;
+includes/functions.php:2011:    $guests_name = get_guests_data($session->mac); //echo 'mac: ' . $guests_name; exit;
+includes/functions_module.php:90:		AND p.permission_user_id = " . $db->sql_escape($session->userid) . "
+includes/functions_module.php:98:		AND user_id = " . $db->sql_escape($session->userid) . "  
+includes/functions_module.php:185:		AND user_id = " . $db->sql_escape($session->userid) . "  
+includes-new/functions.php:1276:	if ($session->session_id == '' && $session_id === false && !$params_is_array && !$anchor)
+includes-new/functions.php:1290:		$session_id = $session->session_id;
+includes-new/functions.php:1530:		'log_user'		=> (string) $session->username,
+includes-new/functions.php:1531:		'log_module'		=> (string) $session->module,
+includes-new/functions.php:1532:		'log_mac'		=> (string) $session->mac,
+includes-new/functions.php:1533:		'log_browser'		=> (string) trim(substr($session->browser, 0, 149)),
+includes-new/functions.php:1786:    if ( in_array($session->mac, $navicoms) )
+includes-new/functions.php:1788:	$session->mac_exist = 1;
+includes-new/functions.php:1792:    if ($session->mac_exist)
+includes-new/functions.php:1795:	$header = trim(substr($session->browser, 0, 149));
+includes-new/functions.php:1797:	if(trim($header) !== $config['stb_http_header'] && !in_array($session->mac, $navicoms))
+includes-new/functions.php:1805:	    ROOMS_TABLE . " r, " . NODES_TABLE . " n WHERE n.node_mac='" . $session->mac . "'";
+includes-new/functions.php:1811:    if (!$session->mac_exist && empty($room_key))
+includes-new/functions.php:1817:    if (!$session->mac_exist && !empty($room_key))
+includes-new/functions.php:1833:     if ( in_array($session->mac, $navicoms) )
+includes-new/functions.php:1843:echo '</br>kKKKKKEEEEEEYYYYYYY: ' . $session->ip;
+includes-new/functions.php:1844:echo '</br>Client/STB mac: ' . $session->mac;
+includes-new/functions.php:1845:echo '</br>Client/STB browser: ' . trim(substr($session->browser, 0, 149));
+includes-new/functions.php:1846:echo '</br>Client/STB feature: ' . $session->module;
+includes-new/functions_module.php:90:		AND p.permission_user_id = " . $db->sql_escape($session->userid) . "
+includes-new/functions_module.php:98:		AND user_id = " . $db->sql_escape($session->userid) . "  
+includes-new/functions_module.php:185:		AND user_id = " . $db->sql_escape($session->userid) . "  
+main.php:47:$session->session_begin($file[0], NEED_LOGIN);
+main.php:52:echo '</br>Client/STB ip: ' . $session->ip;
+main.php:53:echo '</br>Client/STB mac: ' . $session->mac;
+main.php:54:echo '</br>Client/STB browser: ' . trim(substr($session->browser, 0, 149));
+main.php:55:echo '</br>Client/STB feature: ' . $session->module;
+inbox.php:33:$guests_name = get_guests_data($session->mac); //echo 'mac: ' . $guests_name; exit;

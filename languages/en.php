@@ -1,0 +1,160 @@
+<?php
+/**
+*
+* language/en.php
+*
+* Roberto Tonjaw. Feb 2014
+*/
+
+/**
+*/
+if (!defined('IN_TONJAW'))
+{
+	die('Hacking Attempt');
+}
+
+//Testing
+$lang['en'] = 'English';
+$lang['id'] = 'Bahasa';
+$lang['fr'] = 'Français';
+$lang['de'] = 'Deutsch';
+$lang['ru'] = 'Pусский';
+$lang['sa'] = ' عربي';
+$lang['jp'] = '日本の';
+$lang['cn'] = '中国的';
+$lang['kr'] = '한국의';
+$lang['es'] = 'Español';
+$lang['nl'] = 'Nederlands';
+$lang['it'] = 'Italiano';
+$lang['in'] = 'भारतीय';
+
+$lang['date'] = 'Date';
+$lang['datetime'] = 'Date and Time';
+$lang['month'] = 'Month';
+$lang['year'] = 'Year';
+$lang['time'] = 'Time';
+$lang['today'] = 'Today';
+$lang['monday'] = 'Monday';
+$lang['tuesday'] = 'Tuesday';
+$lang['wednesday'] = 'Wednesday';
+$lang['thursday'] = 'Thursday';
+$lang['friday'] = 'Friday';
+$lang['saturday'] = 'Saturday';
+$lang['sunday'] = 'Sunday';
+
+$lang['price'] = 'Price';
+$lang['price_per_item'] = 'Price per Item';
+$lang['total_price'] = 'Total Price';
+$lang['price_note'] = 'Price is nett, Service &amp; Tax included';
+$lang['subtotal'] = 'Subtotal';
+$lang['total'] = 'Total';
+$lang['buy'] = 'Buy';
+$lang['add_to_basket'] = 'Add to Basket';
+$lang['view_basket'] = 'View Basket';
+$lang['cancel'] = 'Cancel';
+$lang['watch'] = 'Watch';
+$lang['detail'] = 'Detail';
+$lang['item'] = 'Item';
+$lang['no'] = 'No';
+$lang['qty'] = 'Qty';
+$lang['amount'] = 'Amount';
+$lang['total_amount'] = 'Total Amount';
+$lang['call_to_order'] = 'Call Ext.5 to Order';
+$lang['click_to_order'] = 'Click to Order';
+$lang['click_for_booking'] = 'Click for Booking';
+$lang['buy_to_watch'] = 'Buy to Watch';
+$lang['click_to_watch'] = 'Click to Watch';
+$lang['select_language'] = 'Select Language';
+$lang['view_bill'] = 'View Bill';
+$lang['connectivity'] = 'Сonnectivity';
+$lang['room_status_update'] = 'Room Status Update';
+$lang['message_inbox'] = 'Message Inbox';
+$lang['roomservice'] = 'Room Service';
+$lang['weather'] = 'Weather';
+$lang['directory'] = 'Directory';
+$lang['hotel_promo'] = 'Hotel Promo';
+$lang['tv_channel'] = 'TV Channels';
+$lang['vod'] = 'Movie on Demand';
+$lang['smarthome_gateway'] = 'Smarthome Gateway';
+$lang['room'] = 'Room';
+$lang['guest_name'] = 'Guest Name';
+$lang['temp_running_text'] = 'Welcome to Hotel Indonesia Kempinski - Jakarta';
+$lang['from'] = 'From';
+$lang['status'] = 'Status';
+$lang['submit'] = 'Submit';
+$lang['password'] = 'Password';
+$lang['quantity'] = 'Quantity';
+$lang['confirm'] = 'Confirm';
+$lang['confirmation'] = 'Confirmation';
+$lang['special_request'] = 'Special Request';
+$lang['message_sent'] = 'Message Sent...';
+$lang['subject_and_message_empty'] = 'Message Subject and Content cannot be empty!';
+$lang['send_message'] = 'Send Message';
+$lang['subject'] = 'Subject';
+$lang['message'] = 'Message';
+$lang['press_ok_to_proceed'] = 'Press <b>OK</b> to go to IPTV Menu';
+$lang['wrong_password'] = 'Please enter a valid room number';
+$lang['enter_password'] = 'Please enter your room number';
+$lang['view_my_orders'] = 'View My Orders';
+$lang['note'] = 'Remark';
+$lang['user_id'] = 'User ID';
+$lang['hotspot_info'] = 'Hotspot ID';
+$lang['hotspot_user'] = 'Username';
+$lang['hotspot_pwd'] = 'Password';
+
+$lang['to'] = 'To';
+$lang['hotel'] = 'Hotel';
+$lang['room_no'] = 'Room No';
+
+$lang['basketchart']= 'Basket Chart';
+$lang['clear_form'] = 'Clear Form';
+$lang['delete_item'] = 'Delete Item';
+$lang['basket_item'] = 'Basket Item';
+$lang['message_success_basket'] = 'Your order has been sent to the system, to change your order please dial ext 5. Thank you.';
+$lang['continue_shop'] = 'More Request';
+$lang['item_selected'] = 'Selected Item';
+$lang['pick'] = 'Pick';
+$lang['teraphist'] = 'Teraphist';
+$lang['transportation'] = 'Transportation';
+$lang['how_many_person'] = 'How many person';
+$lang['you_got_message'] = 'Press Blue button to open new message';
+
+$lang['genre'] = 'Genre';
+$lang['synopsis'] = 'Synopsis';
+$lang['casts'] = 'Casts';
+$lang['director'] = 'Director';
+
+$lang['flight_schedule'] = 'Flight Schedule';
+$lang['arrival'] = 'Arrival';
+$lang['departure'] = 'Departure';
+$lang['origin'] = 'Origin';
+$lang['destination'] = 'Destination';
+$lang['airline'] = 'Airline';
+$lang['flight'] = 'Flight';
+$lang['schedule'] = 'Schedule';
+$lang['terminal'] = 'Terminal';
+$lang['gate'] = 'Gate';
+$lang['remark'] = 'Remark';
+$lang['select_airport'] = 'Select Airport';
+
+$lang['last_update'] = 'Last Update';
+$lang['source'] = 'Source';
+
+$lang['more_than'] = 'More than'; 
+
+$lang['press'] = 'Press';
+$lang['to_go_to'] = 'button on remote to go to';
+$lang['press_blue_button'] = 'Press blue button for view cart';
+$lang['tour_confirm_message'] = 'Thank you for the confirmation.<br/> We need to check the availability of the transportation you choosed. <br/>We will contact you soon.';
+$lang['spa_confirm_message'] = 'Thank you for the confirmation. <br/>We need to check the availability of the teraphist you choosed. <br/>We will contact you soon.';
+$lang['viewbill_waiting_message'] = 'You don\'t have any transaction right now. <br/>Please come back here again later...';
+$lang['roomservice_process_confirmation'] = 'Thank you for your order. Your order has been processed.';
+$lang['guest_greetings'] = 'Our Valued Guests';
+
+//Error message
+$lang['Error_unavailable_style'] = 'Style does not exist!';
+$lang['Error_nomac_nokey'] = 'Your mac is not registered and you do not have a valid key to access me.';
+$lang['Error_invalid_client'] = "You mac is registered but your machine is not Navicom's product.";
+$lang['Error_invalid_room_key'] = 'Invalid Room Key.';
+
+?>

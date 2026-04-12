@@ -1,0 +1,46 @@
+<callback>
+<body>
+    <status>200</status>
+    <message>The request has succeeded</message>
+</body>
+<content>
+    <outlet id="101">
+	<data count="2">
+	  <record>
+	    <id>1</id>
+	    <resNr>27525</resNr>
+	    <resLnNr>1</resLnNr>
+	    <code>100</code>
+	    <qty>2</qty>
+	    <price>34000</price>
+	    <note/>
+	    <datetime>2013-06-21 10:38:36</datetime>
+	  </record>
+	  <record>
+	    <id></id>
+	    <resNr>27525</resNr>
+	    <resLnNr>1</resLnNr>
+	    <code>102</code>
+	    <qty>1</qty>
+	    <price>80000</price>
+	    <note>Well Done</note>
+	    <datetime>2013-06-21 10:38:36</datetime>
+	  </record>
+	</data>
+    </outlet>
+    <outlet id="3A01">
+	<data count="1">
+	  <record>
+	    <id>2</id>
+	    <resNr>43321</resNr>
+	    <resLnNr>2</resLnNr>
+	    <code>S001</code>
+	    <qty>2</qty>
+	    <price>90000</price>
+	    <note>XL size</note>
+	    <datetime>2013-06-21 08:55:36</datetime>
+	  </record>
+	</data>
+    </outlet>
+</content>
+</callback>

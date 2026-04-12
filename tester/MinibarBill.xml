@@ -1,0 +1,16 @@
+<PINS_APIRequest>
+	<Request>
+	<Client>
+		<UserID>TEST</UserID>
+		<Key>RTWMQHBE3TXUHYRDGHQVPAB</Key>
+	</Client>
+	<API>
+		<Name>MinibarBill</Name>
+	</API>
+	</Request>
+	<DATA>
+		<PARAMS>
+			<Number>5</Number>
+		</PARAMS>
+	</DATA>
+</PINS_APIRequest>

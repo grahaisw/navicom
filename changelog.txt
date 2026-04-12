@@ -1,0 +1,90 @@
+7/11/2017 (Makasar)
+
+Update Description:
+1. Integration with Apps
+
+== Changelog == 
+
+constants.php
+fids.php
+apps.php
+fis.php
+grab_fids.php
+config.php
+footer.tpl
+admin/flight_statusdetail.php
+
+
+== Database ==
+
+Create table 'airport_passengers'
+
+
+
+31/10/2017 (Makasar)
+
+Update Description:
+1. Add Display Period Option in Module Master Flight Status
+
+== Changelog == 
+
+admin/flight_statusdetail.php
+admin_flight_statusform.tpl
+functions_admin.php
+adm_lang.php
+footer.tpl
+ajax.php
+grab_fids.php
+
+
+== Database ==
+
+Alter table 'airport_flight_status'
+
+
+9/10/2017 (Makasar)
+
+Update Description:
+1. Master Flight Status
+
+== Changelog == 
+
+functions_admin (line 5262-5339)
+constants.php
+adm_lang.php
+common.php
+footer.tpl
+ajax.php
+config.php
+admin/pms.php
+admin/guestdetail.php
+grab_fids.php
+functions.php (generate_menus)
+inbox.php
+roomservice_category.tpl ---- belum
+roomservice_category.css
+roomservice.tpl
+roomservice.css
+basket1.php
+basket.tpl
+
+
+== Additional ==
+
+admin/flight_status.php
+admin/flight_statusdetail.php
+admin_flight_status.tpl
+admin_flight_statusform.tpl
+cron_delete_runningtext_fids.php
+fids.php
+fis.php
+device.php
+
+
+== Database ==
+
+Add table 'airport_flight_status' 
+Alter table 'airports'
+Alter table 'airport_fids'
+Add table 'runningtext_fids_groupings'
+

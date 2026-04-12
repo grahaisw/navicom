@@ -1,0 +1,16 @@
+<PINS_APIRequest>
+	<Request>
+	<Client>
+		<UserID>TEST</UserID>
+		<Key>RTWMQHBE3TXUHYRDGHQVPAB</Key>
+	</Client>
+	<API>
+		<Name>MessageGetAll</Name>
+	</API>
+	</Request>
+	<DATA>
+		<PARAMS>
+			<ReservationID>7</ReservationID>
+		</PARAMS>
+	</DATA>
+</PINS_APIRequest>

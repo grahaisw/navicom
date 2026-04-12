@@ -1,0 +1,17 @@
+<HMS_APIResponse>
+    <Status ErrorCode="0" TimeStamp=" 1413910800 ">
+	<Message>OK</Message>
+    </Status>
+    <Data Count="1">
+	<Record>
+	    <MenuID>1021</MenuID>
+	    <MenuName>Water Melon Juice</MenuName>
+	    <Description>Jus Semangka dari POS</Description>
+	    <Signature>N</Signature>
+	    <Price>60000</Price>
+	    <Unit>Glass</Unit>
+	    <CategoryID>3</CategoryID>
+	    <CategoryName>Beverages</CategoryName>
+	</Record>
+    </Data>
+</HMS_APIResponse>

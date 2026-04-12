@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<PINS_APIResponse>
+<Status ErrorCode='0' TimeStamp='2015-03-26T12:37:03'>
+<Message>OK</Message>
+</Status>
+<Data Count='1'>
+<Record id="1">
+<Room>0204</Room>
+<RoomType>SPDT</RoomType>
+<ReservationStatus>OCCUPIED</ReservationStatus>
+<RoomStatus>CLEAN</RoomStatus>
+<ReservationID>96189</ReservationID>
+<Pax>2</Pax>
+<Child>0</Child>
+<MasterFolio>Y</MasterFolio>
+<FirstName>Mike</FirstName>
+<LastName>Eruzione</LastName>
+<Salutation>Mr</Salutation>
+<Language>IDR</Language>
+<ArrivalDate>2015-03-26T00:00:00</ArrivalDate>
+<DepartureDate>2015-06-05T00:00:00</DepartureDate>
+<ExtraBed>0</ExtraBed>
+<MessageCount>0</MessageCount>
+<AllowedPosting>N</AllowedPosting>
+<DNDHanger>N</DNDHanger>
+<SickGuest>N</SickGuest>
+<DisableGuest>N</DisableGuest>
+<DoubleLock>N</DoubleLock>
+<RefuseCleaning>N</RefuseCleaning>
+<PhoneBlock>BAR</PhoneBlock>
+<SleepOut>N</SleepOut>
+<Incognito>N</Incognito>
+<PayTV>IDR</PayTV>
+<InternetAccess>IDR</InternetAccess>
+<GroupNumber>96177</GroupNumber>
+<VIP>N</VIP>
+<PrivilegeMember>N</PrivilegeMember>
+<Complain>N</Complain>
+<HoneyMoon>N</HoneyMoon>
+<Phone />
+<Email />
+<Address />
+</Record>
+</Data>
+</PINS_APIResponse>

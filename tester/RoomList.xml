@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<PINS_APIResponse>
+<Status ErrorCode='0' TimeStamp='2015-03-26T12:34:54'>
+<Message>OK</Message>
+</Status>
+<Data Count='246'>
+<Record id="1">
+<Room>0701</Room>
+<RoomStatus>CLEAN</RoomStatus>
+<ReservationID>96189</ReservationID>
+<Pax>2</Pax>
+<Child>0</Child>
+<FirstName>Tamuji Subur</FirstName>
+<LastName />
+<Salutation>Mr</Salutation>
+<Language>IDR</Language>
+<ArrivalDate>2013-06-03T00:00:00</ArrivalDate>
+<DepartureDate>2013-06-05T00:00:00</DepartureDate>
+<PhoneBlock>BAR</PhoneBlock>
+<PayTV>IDR</PayTV>
+<InternetAccess>IDR</InternetAccess>
+<VIP>N</VIP>
+</Record>
+</Data>
+</PINS_APIResponse>

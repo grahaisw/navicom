@@ -1,0 +1,1333 @@
+<?php
+/**
+*
+* pms/fos.php
+*
+* Agnes Emanuella. June 2015
+*/
+
+/**
+* 
+*/
+if (!defined('IN_TONJAW'))
+{
+	die('Hacking Attempt');
+}
+
+include_once($tonjaw_root_path . $config['pms_path'] . 'pmsal.' . $phpEx);
+
+$pms_event['event'] 		= 'Event';
+$pms_event['check_in'] 		= 'CHECKIN';
+$pms_event['check_out']		= 'CHECKOUT';
+$pms_event['room_change'] 	= 'ROOMCHANGE';
+$pms_event['guest_change']	= 'GUESTCHANGE';
+$pms_event['message']		= 'MSG';
+$pms_event['daily_occupancy'] 	= 'DAYOCCUPANCY';
+$pms_event['daily_occupancy_detail'] 	= 'DAYOCCUPANCYDETAIL';
+$pms_event['month_occupancy'] 	= 'MONTHOCCUPANCY';
+
+$pms_request['hotel_info']	= 'HELLO';
+$pms_request['guest_bill']	= 'GUESTBILL';
+$pms_request['room_list']	= 'ROOMLIST';
+$pms_request['menu_item'] 	= 'MENUITEM';
+$pms_request['send_message']	= 'SENDMESSAGE';
+$pms_request['post_transaction']	= 'POSTTRASACTION';
+
+$pms_error_code['0']	= 'OK';
+$pms_error_code['100']	= 'Invalid Integer Value';
+$pms_error_code['120']	= 'Invalid Decimal Value';
+$pms_error_code['130']	= 'Invalid Date Time Format (YYYY-MM-DDThh:mm:ss)';
+$pms_error_code['200']	= 'API does not exists';
+$pms_error_code['210']	= 'Missing Parameter';
+$pms_error_code['220']	= 'Please Contak Realta Rhapsody, No Primary Key Defined';
+$pms_error_code['230']	= 'Access Denied, No Primary Key Field';
+$pms_error_code['300']	= 'Database Error';
+$pms_error_code['310']	= 'Access Denies, duplicate record';
+$pms_error_code['320']	= 'Invalid Parameter(s)';
+$pms_error_code['400']	= 'Login Failed, please check User Name, Password or API Key/License';
+$pms_error_code['410']	= 'Invalid API Key/License';
+$pms_error_code['700']	= 'Invalid XML Format';
+$pms_error_code['900']	= 'Unknown Error';
+
+$pms_config['pms_name'] = 'Front Office System';
+$pms_config['pms_version'] = 'n/a';
+$pms_config['pms_vendor'] = 'Kompas Gramedia';
+$pms_config['pms_website'] = '';
+
+$pms_config['room_status'][0] = 'OCCUPIED CLEAN';
+$pms_config['room_status'][1] = 'OCCUPIED DIRTY';
+$pms_config['room_status'][2] = 'VACANT CLEAN';
+$pms_config['room_status'][3] = 'VACANT DIRTY';
+$pms_config['room_status'][4] = 'VACANT READY';
+
+
+/**
+* FOS Abstraction Layer
+* Developed on Navicom IPTV
+* @package pmsal
+*/
+class pmsal_fos extends pmsal
+{
+    var $guest_data = array();
+    var $info_data = array();
+    var $bill_data = array();
+    var $message_data = array();
+    var $room_data = array();
+    var $menu_data = array();
+
+	function checkin($xml,&$code='')
+    {
+	global $db;
+	
+	//$guest_info = $this->get_guest_info(trim($xml->Entry->RoomNo));
+	$xml_guest = $this->get_guest_info(trim($xml->Entry->RoomNo));
+	
+	$this->guest_data['room'] = trim($xml->Entry->RoomNo);
+	//$this->guest_data['connect_room'] = request_var('ConnectRoom', '');
+	//$this->guest_data['arrival_date'] = $this->maketime(request_var('ArrivalDate', ''));
+	$this->guest_data['resv_id'] = trim($xml->Entry->FolioNo);
+	//$this->guest_data['first_name'] = request_var('FirstName', '');
+	//$this->guest_data['last_name'] = request_var('LastName', '');
+	$this->guest_data['fullname'] = trim($xml->Entry->GuestName);
+	$this->guest_data['salutation'] = $xml_guest->Guest[0]->Title;
+	//$this->guest_data['language'] = strtolower(request_var('Language', ''));
+	$this->guest_data['group'] = trim($xml->Entry->GroupId);
+	$this->guest_data['group_name'] = trim($xml->Entry->GroupName);
+	//$this->guest_data['allow_post'] = strtoupper(request_var('AllowPost', 'N'));
+	//$this->guest_data['allow_viewbill'] = strtoupper(request_var('AllowViewBill', 'N'));
+	//$this->guest_data['vip'] = strtoupper(request_var('VIP', 'N'));
+	//$this->guest_data['honeymoon'] = strtoupper(request_var('HoneyMoon', 'N'));
+	$this->guest_data['room_share'] = (int) (count($xml_guest->Guest) > 1) ? 1 : 0;
+	//$this->guest_data['remark'] = request_var('Remark', '');
+	
+	if(empty($this->guest_data['room']) || empty($this->guest_data['resv_id']))
+	{
+	    $code = 220;
+	    
+	    return false;
+	}
+	
+	$sql_ary = array(
+	    'guest_reservation_id'	=> (int) $this->guest_data['resv_id'],
+	    'guest_arrival_date'	=> time(),
+	    'guest_firstname'		=> (string) $this->guest_data['first_name'],
+	    'guest_lastname'		=> (string) $this->guest_data['last_name'],
+	    'guest_fullname'		=> (string) $this->guest_data['fullname'],
+	    'guest_salutation'		=> (string) $this->guest_data['salutation'],
+	    'guest_group'		=> (int) $this->guest_data['group'],
+	    'guest_groupname'		=> (string) $this->guest_data['group_name'],
+	    'guest_language'		=> (string) $this->guest_data['language'],
+	    'guest_allow_post'		=> (int) $this->guest_data['allow_post'],
+	    'guest_allow_viewbill'	=> (int) $this->guest_data['allow_viewbill'],
+	    'guest_vip'			=> (int) $this->guest_data['vip'],
+	    'guest_honeymoon'		=> (int) $this->guest_data['honeymoon'],
+	    'guest_room_share'		=> (int) $this->guest_data['room_share'],
+	    'room_name'			=> (string) $this->guest_data['room'],
+	    'guest_connect_room'	=> (string) $this->guest_data['connect_room'],
+	);
+	
+	$sql = 'INSERT INTO ' . GUESTS_TABLE . ' ' . $db->sql_build_array('INSERT', $sql_ary);
+	
+	//echo $sql; exit;
+	$db->sql_query($sql);
+	
+	//Set room key
+	$this->generate_room_key($this->guest_data['resv_id'], $this->guest_data['room']);
+
+	$code = 0;
+	return true;
+    }
+    
+    function checkout($xml,&$code='')
+    {
+	global $db;
+	
+	$this->guest_data['room'] = trim($xml->Entry->RoomNo);
+	
+	$sql = "SELECT guest_reservation_id FROM ".GUESTS_TABLE." WHERE room_name = '".$this->guest_data['room']."'";
+	$result = $db->sql_query($sql);
+	$reservation_id = $db->sql_fetchfield('guest_reservation_id');
+	//echo $sql; exit;
+	$this->guest_data['resv_id'] = $reservation_id;
+	
+	if(empty($this->guest_data['room']) || empty($this->guest_data['resv_id']))
+	{
+	    $code = 220;
+	    
+	    return false;
+	}
+	
+	// remove the record from guest table
+	$sql = 'DELETE FROM ' . GUESTS_TABLE . " 
+	    WHERE guest_reservation_id=" . $this->guest_data['resv_id'];
+	$db->sql_query($sql);
+	
+	// remove guest's message
+	$sql = 'DELETE FROM ' . GUEST_MESSAGES_TABLE . " 
+	    WHERE guest_reservation_id=" . $this->guest_data['resv_id'];
+	$db->sql_query($sql);
+	
+	// remove guest's bill
+	$sql = 'DELETE FROM ' . GUEST_BILLS_TABLE . " 
+	    WHERE guest_reservation_id=" . $this->guest_data['resv_id'];
+	$db->sql_query($sql);
+	
+	// remove guest's roomservice
+	$sql = 'DELETE FROM ' . GUEST_SERVICES_TABLE . " 
+	    WHERE guest_reservation_id=" . $this->guest_data['resv_id'];
+	$db->sql_query($sql);
+	
+	//Reset room key
+	$sql = 'SELECT guest_reservation_id FROM ' . GUESTS_TABLE . "
+	    WHERE room_name='" . $this->guest_data['room'] . "'";
+	    
+	$result = $db->sql_query($sql);
+	$resv_id = $db->sql_fetchfield('guest_reservation_id');
+	$db->sql_freeresult($result);
+	
+	if( !empty($resv_id) )
+	{
+	    //set the guest share status
+	    $sql = 'UPDATE ' . GUESTS_TABLE . " SET guest_room_share=0 
+		WHERE room_name='" . $this->guest_data['room'] . "'";
+	    $db->sql_query($sql);
+	    
+	    $this->generate_room_key($resv_id, $this->guest_data['room']);
+	}
+	else
+	{
+	    $sql = 'UPDATE ' . ROOMS_TABLE . " SET room_key='' 
+		WHERE room_name='" . $this->guest_data['room'] . "'";
+	    $db->sql_query($sql);
+	}
+	
+	$code = 0;
+	return true;
+    }
+	
+	function get_guest_info($room_name) {
+		global $pms_config;
+		
+		$guest_info = array();
+		
+		// GET GUEST INFO FROM FOS
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $pms_config['url_request']."GetRoomGuestInfo?RoomNo=".$room_name);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_NOSIGNAL, 1);
+		curl_setopt($ch,CURLOPT_TIMEOUT,1);
+		$response = curl_exec($ch); 
+
+		if(curl_errno($ch))
+		{
+			//print curl_error($ch);
+			return false;
+		}
+		else
+		{
+			$xml = new SimpleXmlElement($response);	
+		
+			curl_close($ch);
+		}
+		
+		return $xml;
+	}
+
+    function room_change(&$code='')
+    {
+	global $db;
+    
+	$this->guest_data['move_from'] = request_var('MoveFrom', '');
+	$this->guest_data['resv_id'] = request_var('ReservationID', '');
+	$this->guest_data['room'] = request_var('Room', '');
+	
+	if(empty($this->guest_data['room']) || empty($this->guest_data['resv_id']) )
+	{
+	    $code = 220;
+	    
+	    return false;
+	}
+	
+	if( empty($this->guest_data['move_from']) )
+	{
+	    $sql = 'SELECT room_name FROM ' . GUESTS_TABLE . ' WHERE guest_reservation_id=' . $this->guest_data['resv_id'];
+	    
+	    $result = $db->sql_query($sql);
+	    $this->guest_data['move_from'] = (string) $db->sql_fetchfield('room_name');
+	    $db->sql_freeresult($result);
+	}
+	
+	
+	// check room sharing
+	$sql = 'SELECT COUNT(guest_reservation_id) AS total_guests
+		FROM ' . GUESTS_TABLE . " WHERE room_name='" . $this->guest_data['move_from'] . "'";
+
+	$result = $db->sql_query($sql);
+	$guest_count = (int) $db->sql_fetchfield('total_guests');
+	$db->sql_freeresult($result);
+	
+	// change the room
+	$sql = 'UPDATE ' . GUESTS_TABLE . " SET room_name='" . $this->guest_data['room'] . "', guest_room_share=0 
+	    WHERE guest_reservation_id=" . $this->guest_data['resv_id'];
+	    
+	    //echo $sql ; exit;
+	$db->sql_query($sql);	
+	
+	// set the old friend's room share status to false
+	if( $guest_count > 1 )
+	{
+	    $sql = 'UPDATE ' . GUESTS_TABLE . " SET guest_room_share=0 
+		WHERE room_name='" . $this->guest_data['move_from'] . "'";
+	    $db->sql_query($sql);
+	    
+	    //Reset room key
+	    $sql = 'SELECT guest_reservation_id FROM ' . GUESTS_TABLE . "
+		WHERE room_name='" . $this->guest_data['move_from'] . "'";
+	    
+	    $result = $db->sql_query($sql);
+	    $resv_id = $db->sql_fetchfield('guest_reservation_id');
+	    $db->sql_freeresult($result);
+	
+	    $this->generate_room_key($resv_id, $this->guest_data['move_from']);
+	
+	}
+	else
+	{
+	    $sql = 'UPDATE ' . ROOMS_TABLE . " SET room_key='' 
+		WHERE room_name='" . $this->guest_data['room'] . "'";
+	    $db->sql_query($sql);
+	}
+
+	$sql = 'SELECT COUNT(guest_reservation_id) AS total_guests
+		FROM ' . GUESTS_TABLE . " WHERE room_name='" . $this->guest_data['room'] . "'";
+
+	$result = $db->sql_query($sql);
+	$guest_count = (int) $db->sql_fetchfield('total_guests');
+	$db->sql_freeresult($result);
+
+	// set the new friend's room share status to true
+	if( $guest_count > 1 )
+	{
+	    $sql = 'UPDATE ' . GUESTS_TABLE . " SET guest_room_share=1 
+		WHERE room_name='" . $this->guest_data['room'] . "'";
+	    $db->sql_query($sql);
+	    
+	}
+	
+	//Set room key
+	$this->generate_room_key($this->guest_data['resv_id'], $this->guest_data['room']);
+		
+	$code = 0;
+	return true;
+    }
+    
+    function guest_change(&$code='')
+    {
+	global $db;
+
+	$this->guest_data['room'] = request_var('Room', '');
+	$this->guest_data['connect_room'] = request_var('ConnectRoom', '');
+	$this->guest_data['arrival_date'] = $this->maketime(request_var('ArrivalDate', ''));
+	$this->guest_data['resv_id'] = request_var('ReservationID', '');
+	$this->guest_data['first_name'] = request_var('FirstName', '');
+	$this->guest_data['last_name'] = request_var('LastName', '');
+	$this->guest_data['fullname'] = request_var('FullName', '');
+	$this->guest_data['salutation'] = request_var('Salutation', '');
+	$this->guest_data['language'] = strtolower(request_var('Language', ''));
+	$this->guest_data['group'] = strtoupper(request_var('Group', 'N'));
+	$this->guest_data['group_name'] = request_var('GroupName', '');
+	$this->guest_data['allow_post'] = strtoupper(request_var('AllowPost', 'N'));
+	$this->guest_data['allow_viewbill'] = strtoupper(request_var('AllowViewBill', 'N'));
+	$this->guest_data['vip'] = strtoupper(request_var('VIP', 'N'));
+	$this->guest_data['honeymoon'] = strtoupper(request_var('HoneyMoon', 'N'));
+	$this->guest_data['room_share'] = strtoupper(request_var('RoomShare', 'N'));
+	$this->guest_data['remark'] = request_var('Remark', '');
+
+	if(empty($this->guest_data['room']) || empty($this->guest_data['resv_id']))
+	{
+	    $code = 220;
+	    
+	    return false;
+	}
+	
+	//Get the old room
+	$sql = 'SELECT room_name FROM ' . GUESTS_TABLE . " 
+	    WHERE guest_reservation_id=" . $this->guest_data['resv_id'];
+	$result = $db->sql_query($sql);
+	$old_room = $db->sql_fetchfield('room_name');
+	$db->sql_freeresult($result);
+	
+	// check room sharing
+	$sql = 'SELECT COUNT(guest_reservation_id) AS total_guests
+		FROM ' . GUESTS_TABLE . " WHERE room_name='" . $old_room . "'";
+
+	$result = $db->sql_query($sql);
+	$guest_count = (int) $db->sql_fetchfield('total_guests');
+	$db->sql_freeresult($result);
+	
+	//echo '<p>*pms_checkin stamp*</p>';
+	//print_r( $this->guest_data ); exit;
+	//echo $this->guest_data['arrival_date']; exit;
+	//echo 'data: ' . $this->guest_data['arrival_date']; exit;
+ 	//echo 'now: ' . time(); exit;
+ 	
+	$sql_ary = array(
+	    'guest_reservation_id'	=> (int) $this->guest_data['resv_id'],
+	    'guest_arrival_date'	=> (int) $this->guest_data['arrival_date'],
+	    'guest_firstname'		=> (string) $this->guest_data['first_name'],
+	    'guest_lastname'		=> (string) $this->guest_data['last_name'],
+	    'guest_fullname'		=> (string) $this->guest_data['fullname'],
+	    'guest_salutation'		=> (string) $this->guest_data['salutation'],
+	    'guest_group'		=> (int) $this->guest_data['group'],
+	    'guest_groupname'		=> (string) $this->guest_data['group_name'],
+	    'guest_language'		=> (string) $this->guest_data['language'],
+	    'guest_allow_post'		=> (int) $this->guest_data['allow_post'],
+	    'guest_allow_viewbill'	=> (int) $this->guest_data['allow_viewbill'],
+	    'guest_vip'			=> (int) $this->guest_data['vip'],
+	    'guest_honeymoon'		=> (int) $this->guest_data['honeymoon'],
+	    'guest_room_share'		=> (int) $this->guest_data['room_share'],
+	    'room_name'			=> (string) $this->guest_data['room'],
+	);
+	
+	$sql = 'UPDATE ' . GUESTS_TABLE . ' SET ' . $db->sql_build_array('UPDATE', $sql_ary) . " 
+	    WHERE guest_reservation_id=" . $this->guest_data['resv_id'];
+	$db->sql_query($sql);
+	
+	// set the old friend's room share status to false
+	if( $guest_count > 1 )
+	{
+	    $sql = 'UPDATE ' . GUESTS_TABLE . " SET guest_room_share=0 
+		WHERE room_name='" . $old_room . "'";
+	    $db->sql_query($sql);
+	    
+	    //Reset room key
+	    $sql = 'SELECT guest_reservation_id FROM ' . GUESTS_TABLE . "
+		WHERE room_name='" . $old_room . "'";
+	    
+	    $result = $db->sql_query($sql);
+	    $resv_id = $db->sql_fetchfield('guest_reservation_id');
+	    $db->sql_freeresult($result);
+	
+	    $this->generate_room_key($resv_id, $old_room);
+	
+	}
+	else
+	{
+	    $sql = 'UPDATE ' . ROOMS_TABLE . " SET room_key='' 
+		WHERE room_name='" . $old_room . "'";
+	    $db->sql_query($sql);
+	}
+	
+	$sql = 'SELECT COUNT(guest_reservation_id) AS total_guests
+		FROM ' . GUESTS_TABLE . " WHERE room_name='" . $this->guest_data['room'] . "'";
+
+	$result = $db->sql_query($sql);
+	$guest_count = (int) $db->sql_fetchfield('total_guests');
+	$db->sql_freeresult($result);
+
+	// set the new friend's room share status to true
+	if( $guest_count > 1 )
+	{
+	    $sql = 'UPDATE ' . GUESTS_TABLE . " SET guest_room_share=1 
+		WHERE room_name='" . $this->guest_data['room'] . "'";
+	    $db->sql_query($sql);
+	    
+	}
+	
+	//Set room key
+	$this->generate_room_key($this->guest_data['resv_id'], $this->guest_data['room']);
+	
+	$code = 0;
+	return true;
+    }
+    
+    function check_message(&$code='')
+    {
+	global $db;
+	
+	$this->guest_data['room'] = request_var('Room', '');
+	$this->guest_data['message_from'] = request_var('MessageFrom', '');
+	$this->guest_data['message_text'] = request_var('Message', '');
+    
+	if(empty($this->guest_data['room']) || empty($this->guest_data['message_text']))
+	{
+	    $code = 220;
+	    
+	    return false;
+	}
+	
+	$sql = 'UPDATE ' . GUESTS_TABLE . " SET guest_message=1 
+	    WHERE room_name='" . $this->guest_data['room'] . "'";
+	$db->sql_query($sql);
+	
+	
+	$sql_ary = array(
+	    'guest_message_from'	=> (string) $this->guest_data['message_from'],
+	    'guest_message_text'	=> (string) $this->guest_data['message_text'],
+	    'room_name'			=> (string) $this->guest_data['room'],
+	    'guest_message_date'	=> time(),
+	);
+	
+	$sql = 'INSERT INTO ' . GUEST_MESSAGES_TABLE . ' ' . $db->sql_build_array('INSERT', $sql_ary);
+	
+	//echo $sql; exit;
+	$db->sql_query($sql);
+	
+	$code = 0;
+	
+	return true;
+    }
+
+    function daily_occupancy(&$code='')
+    {
+	global $db;
+	
+	$this->guest_data['total_room'] = request_var('TotalRoom', '');
+	$this->guest_data['non_paying_room'] = request_var('NonPayingRoom', '');
+	$this->guest_data['date'] = $this->maketime(request_var('Date', ''));
+	$this->guest_data['night_audit_time'] = $this->maketime(request_var('Time', ''));
+    
+	if(empty($this->guest_data['date']) || empty($this->guest_data['total_room']))
+	{
+	    $code = 220;
+	    
+	    return false;
+	}
+	
+	$sql_ary = array(
+	    'occupancy_daily_date'	=> (string) $this->guest_data['date'],
+	    'occupancy_daily_totalroom'	=> (int) $this->guest_data['total_room'],
+	    'occupancy_daily_nonpaying'	=> (int) $this->guest_data['non_paying_room'],
+	    'occupancy_daily_time'	=> (int) $this->guest_data['night_audit_time'],
+	);
+	
+	$sql = 'INSERT INTO ' . OCCUPANCY_TABLE . ' ' . $db->sql_build_array('INSERT', $sql_ary);
+	
+	//echo $sql; exit;
+	$db->sql_query($sql);
+	
+	$code = 0;
+	
+	return true;
+	
+    }
+    
+    function daily_occupancy_detail(&$code='')
+    {
+	global $db;
+	
+	$this->guest_data['room'] = request_var('Room', '');
+	$this->guest_data['guestname'] = request_var('GuestName', '');
+	$this->guest_data['non_paying_room'] = request_var('NonPayingRoom', '');
+	$this->guest_data['night_audit_time'] = $this->maketime(request_var('Time', ''));
+	$this->guest_data['date'] = $this->maketime(request_var('Date', ''));
+	
+	$this->guest_data['non_paying_room'] = $this->guest_data['non_paying_room'] === 'Y' ? 1 : 0;
+    
+	if(empty($this->guest_data['date']) || empty($this->guest_data['room']))
+	{
+	    $code = 220;
+	    
+	    return false;
+	}
+	
+	$sql_ary = array(
+	    'occupancy_detail_guestname'=> (string) $this->guest_data['guestname'],
+	    'occupancy_detail_room'	=> (string) $this->guest_data['room'],
+	    'occupancy_detail_nonpaying'=> (int) $this->guest_data['non_paying_room'],
+	    'occupancy_daily_date'	=> (string) $this->guest_data['date'],
+	    'occupancy_daily_time'	=> (int) $this->guest_data['night_audit_time'],
+	);
+	
+	$sql = 'INSERT INTO ' . OCCUPANCY_DETAIL_TABLE . ' ' . $db->sql_build_array('INSERT', $sql_ary);
+	
+	//echo $sql; exit;
+	$db->sql_query($sql);
+	
+	$code = 0;
+	
+	return true;
+    }
+    
+    function month_occupancy(&$code='')
+    {
+	global $db;
+	
+	$this->guest_data['total_room'] = request_var('TotalRoom', '');
+	$this->guest_data['non_paying_room'] = request_var('NonPayingRoom', '');
+	$this->guest_data['date'] = $this->maketime(request_var('Date', ''));
+	$this->guest_data['night_audit_time'] = $this->maketime(request_var('Time', ''));
+    
+	if(empty($this->guest_data['date']) || empty($this->guest_data['total_room']))
+	{
+	    $code = 220;
+	    
+	    return false;
+	}
+	
+	$sql_ary = array(
+	    'occupancy_daily_date'	=> (string) $this->guest_data['date'],
+	    'occupancy_daily_totalroom'	=> (int) $this->guest_data['total_room'],
+	    'occupancy_daily_nonpaying'	=> (int) $this->guest_data['non_paying_room'],
+	    'occupancy_daily_time'	=> (int) $this->guest_data['night_audit_time'],
+	    'occupancy_daily_code'	=> (string) 'M',
+	);
+	
+	$sql = 'INSERT INTO ' . OCCUPANCY_TABLE . ' ' . $db->sql_build_array('INSERT', $sql_ary);
+	
+	//echo $sql; exit;
+	$db->sql_query($sql);
+	
+	$code = 0;
+	
+	return true;
+    }
+    
+    function get_hotel_info()
+    {
+	global $pms_config, $pms_request;
+
+	$url_request = $pms_config['url_request'] . '?Key=' . $pms_config['pms_userkey'] . 
+		  '&Code=' .  $pms_request['hotel_info'];
+
+	//echo file_get_contents($url_request); exit;
+	// dummy data
+	$url_request = $pms_config['url_request'] . $pms_request['hotel_info'] . '.xml';
+	//echo $url_request; exit;
+	// end dummy data
+
+	//$xml = simplexml_load_file( $url_request ) or die('gagal! ' . $url_request);
+	$xml = @simpleXML_load_file($url_request,"SimpleXMLElement",LIBXML_NOCDATA);
+	
+	if( !$xml )
+	{
+	    //exit('Failed to open >' . $url_request . '<');
+	    $xml = array();
+	    
+	    return false;
+	}
+	else
+	{
+	    $this->info_data['error_code'] = (int) $xml->Status->attributes()->{'ErrorCode'};
+	
+	    if( $this->info_data['error_code'] != 0 )
+	    {
+		die('Cannot grab Hotel Info');
+	    }
+	    
+	    $this->info_data['hotel_name'] = (string) $xml->Data->Record->HotelName;
+	    $this->info_data['system_date'] = (string) $xml->Data->Record->SystemDate;
+	    $this->info_data['current_shift'] = (string) $xml->Data->Record->CurrentShift;
+	    $this->info_data['fax'] = (string) $xml->Data->Record->FaxNumber;
+	    $this->info_data['phone'] = (string) $xml->Data->Record->Phone;
+	    $this->info_data['email'] = (string) $xml->Data->Record->Email;
+	    $this->info_data['address'] = (string) $xml->Data->Record->Address;
+	}
+
+	//echo 'name: ' . $this->info_data['hotel_name'] ; exit;
+	//print_r( $this->info_data ); exit;
+    
+	return $this->info_data;
+    }
+    
+    function get_pms_info()
+    {
+	global $pms_config;
+
+	return $pms_config;
+    }
+    
+    function get_profile()
+    {
+    
+    }
+    
+    function get_guest_bill($resv_id, $room_name)
+    {
+	global $pms_config, $pms_request;
+	
+	$resv_id_str = (string) $resv_id;
+	$a = strlen($resv_id_str);
+	
+	while ( $a < 8 ) {
+	    $resv_id_str = '0' . $resv_id_str;
+	    
+	    $a++;
+	}
+
+	// GET GUEST BILL FROM FOS
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $pms_config['url_request']."GetRoomBillingInfo?RoomNo=".$room_name);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_NOSIGNAL, 1);
+	curl_setopt($ch,CURLOPT_TIMEOUT,1);
+	$response = curl_exec($ch); 
+	
+	if(curl_errno($ch)) // jika koneksi ke PMS putus
+	{
+		return false;
+	}
+	else // jika koneksi ke PMS berhasil
+	{
+		$xml = new SimpleXmlElement($response);
+		
+	    $this->bill_data['bill_count'] = (int) count($xml->Entry);
+	    $this->bill_data['total_credit'] = 0;
+	    $this->bill_data['total_debit'] = 0;
+	    
+	    $i = 0;
+	    
+	    foreach($xml->Entry as $row)
+	    {
+		//echo '<font color="white">'.$row[8]->Amount.'<font>'; exit;
+		$date = str_replace("-","",trim($row->Date));
+		$datetime = $date.trim($row->Time);
+		$amount = (int) $row->Amount;
+		
+		$this->bill_data[$i]['rec_id'] = (int) trim($row->RowNo);
+		$this->bill_data[$i]['date'] = (int) $this->maketime($datetime);
+		//$this->bill_data[$i]['category'] = (string) $row->Category;
+		$this->bill_data[$i]['description'] = (string) trim($row->Description);
+		//$this->bill_data[$i]['remark'] = (string) $row->Remark;
+		//$this->bill_data[$i]['reference'] = (string) $row->Reference;
+		$this->bill_data[$i]['currency'] = (string) $row->Currency;
+		
+		if($amount < 0) {
+			$this->bill_data[$i]['credit'] = $amount;
+			 $this->bill_data['credit'] += $this->bill_data[$i]['credit'];
+		} else if($amount > 0) {
+			$this->bill_data[$i]['debit'] = $amount;
+			 $this->bill_data['debit'] += $this->bill_data[$i]['debit'];
+		}
+	//echo '<font color="#fff">debit:' .  $this->bill_data[$i]['debit'] . 'xx' . $this->bill_data['debit'] . '***' . 'credit:' .  $this->bill_data[$i]['credit'] .'xx' . $this->bill_data['credit'] .'<br>';	
+		//$this->bill_data[$i]['balance'] = (string) $row->Balance;
+		
+		$this->bill_data[$i]['item'] = (string) trim($row->Description);
+		/*
+		if($amount < 0) {
+			$this->bill_data['credit'] += (int) $amount;
+		} else if($amount > 0) {
+			$this->bill_data['debit'] += (int) $amount;
+		}*/
+//echo '<font color="white">'.$this->bill_data[$i]['debit'].' '.$this->bill_data[$i]['credit'].'<font>'; exit;
+		//$this->bill_data['balance'] += (float) $row->Debit;
+	    
+		$i++;
+	    }
+	    //echo '<font color="white">'.$this->bill_data['debit'].' '.$this->bill_data['credit'].'<font>'; exit;
+	    $this->bill_data['total_balance'] = (int) ($this->bill_data['debit'] + $this->bill_data['credit']);
+	    //$this->bill_data['total_balance'] = $this->bill_data['balance'];
+	}
+	
+	return true;
+    }
+    
+    function get_room_list()
+    {
+	global $pms_config, $pms_request;
+
+	$url_request = $pms_config['url_request'] . '?Key=' . $pms_config['pms_userkey'] . 
+		  '&Code=' .  $pms_request['room_list'];
+
+	//echo file_get_contents($url_request); exit;
+	// dummy data
+	$url_request = $pms_config['url_request'] . $pms_request['room_list'] . '.xml';
+	//echo $url_request; exit;
+	// end dummy data
+
+	//$xml = simplexml_load_file( $url_request ) or die('gagal! ' . $url_request);
+	$xml = @simpleXML_load_file($url_request,"SimpleXMLElement",LIBXML_NOCDATA);
+	
+	if( !$xml )
+	{
+	    //exit('Failed to open >' . $url_request . '<');
+	    $xml = array();
+	    
+	    return false;
+	}
+	else
+	{
+	    $this->room_data['room_count'] = (int) $xml->Data->attributes()->{'Count'};
+	    
+	    $i = 0;
+	    
+	    foreach($xml->Data->Record as $row)
+	    {
+	    //echo 'tes' . $row->ArrivalDate; exit;
+		$this->room_data[$i]['rec_id'] = (int) $row->attributes()->{'id'};
+		$this->room_data[$i]['room'] = (string) trim($row->Room);
+		//$this->room_data[$i]['room_status'] = (string) $row->RoomStatus;
+		$this->room_data[$i]['connect_room'] = (string) $row->ConnectRoom;
+		$this->room_data[$i]['resv_id'] = (int) $row->ReservationID;
+		$this->room_data[$i]['arrival_date'] = (int) $this->maketime($row->ArrivalDate);
+		$this->room_data[$i]['first_name'] = (string) $row->FirstName;
+		$this->room_data[$i]['last_name'] = (string) $row->LastName;
+		$this->room_data[$i]['full_name'] = (string) $row->FullName;
+		$this->room_data[$i]['salutation'] = (string) $row->Salutation;
+		$this->room_data[$i]['language'] = (string) $row->Language;
+		$this->room_data[$i]['group'] = (string) $row->Group;
+		$this->room_data[$i]['group_name'] = (string) $row->GroupName;
+		$this->room_data[$i]['allow_post'] = (string) $row->AllowPost;
+		$this->room_data[$i]['allow_viewbill'] = (string) $row->AllowViewBill;
+		$this->room_data[$i]['vip'] = (string) $row->VIP;
+		$this->room_data[$i]['honeymoon'] = (string) $row->HoneyMoon;
+		$this->room_data[$i]['room_share'] = (string) $row->RoomShare;
+		//$this->room_data[$i]['remark'] = (string) $row->Remark;
+
+		$i++;
+	    }
+
+	}
+	
+	return true;
+	
+    }
+    
+    
+    function get_menu_item($menu_code='')
+    {
+	global $pms_config, $pms_request;
+
+	// GET MENU ITEM FROM FOS
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $pms_config['url_request']."GetMenuList");
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_NOSIGNAL, 1);
+	curl_setopt($ch,CURLOPT_TIMEOUT,1);
+	$response = curl_exec($ch); 
+
+	if(curl_errno($ch)) // jika koneksi dgn PMS putus
+	{
+	    //exit('Failed to open >' . $pms_config['url_request']."GetMenuList" . '<');
+	    //$xml = array();
+		return false;
+	}
+	else // jika koneksi berhasil
+	{
+		$xml = new SimpleXmlElement($response);
+	    $this->menu_data['menu_count'] = (int) count($xml->Entry);
+	    
+	    $i = 0;
+	    foreach($xml->Entry as $row)
+	    {	
+			if($row->ItemName != "") {
+				if($menu_code != "") {
+					if(trim($row->ItemCode) == $menu_code) {
+						$this->menu_data[0]['menu_id'] = (string) trim($row->ItemCode);
+						$this->menu_data[0]['menu_name'] = (string) trim($row->ItemName);
+						$this->menu_data[0]['description'] = (string) trim($row->TaxInfo);
+						//$this->menu_data[$i]['signature'] = (string) $row->Signature;
+						$this->menu_data[0]['price'] = (int) trim($row->Price);
+						//$this->menu_data[$i]['unit'] = (string) $row->Unit;
+						$this->menu_data[0]['category_id'] = (string) trim($row->TypeId);
+						$this->menu_data[0]['category_name'] = (string) trim($row->TypeName);
+						$this->menu_data[0]['currency'] = (string) trim($row->Currency);
+						
+						$this->menu_data['menu_match'] = 1;
+					}
+				} else {
+					$this->menu_data[$i]['menu_id'] = (string) trim($row->ItemCode);
+					$this->menu_data[$i]['menu_name'] = (string) trim($row->ItemName);
+					$this->menu_data[$i]['description'] = (string) trim($row->TaxInfo);
+					//$this->menu_data[$i]['signature'] = (string) $row->Signature;
+					$this->menu_data[$i]['price'] = (int) trim($row->Price);
+					//$this->menu_data[$i]['unit'] = (string) $row->Unit;
+					$this->menu_data[$i]['category_id'] = (string) trim($row->TypeId);
+					$this->menu_data[$i]['category_name'] = (string) trim($row->TypeName);
+					$this->menu_data[$i]['currency'] = (string) trim($row->Currency);
+					
+					$this->menu_data['menu_match'] = 1;
+					$i++;
+				}								
+
+
+			} 
+
+	    } 
+		return true;
+	}
+    
+	
+    }
+
+    function get_menu_item2($menu_id)
+    {
+	global $pms_config, $pms_request;
+
+	// GET MENU ITEM FROM FOS
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $pms_config['url_request']."GetMenuList");
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_NOSIGNAL, 1);
+	curl_setopt($ch,CURLOPT_TIMEOUT,1);
+	$response = curl_exec($ch); 
+
+	if(curl_errno($ch)) // jika koneksi dgn PMS putus
+	{
+	    //exit('Failed to open >' . $pms_config['url_request']."GetMenuList" . '<');
+	    //$xml = array();
+		return false;
+	}
+	else // jika koneksi berhasil
+	{
+		$xml = new SimpleXmlElement($response);
+	    $this->menu_data['menu_count'] = (int) count($xml->Entry);
+	    
+	    $i = 0;
+	    $j = 0;
+	    foreach($xml->Entry as $row)
+	    {	
+			if(trim($row->ItemCode) == $menu_id) {
+				$this->menu_data[$i]['menu_id'] = (string) trim($row->ItemCode);
+				$this->menu_data[$i]['menu_name'] = (string) trim($row->ItemName);
+				$this->menu_data[$i]['description'] = (string) trim($row->TaxInfo);
+				//$this->menu_data[$i]['signature'] = (string) $row->Signature;
+				$this->menu_data[$i]['price'] = (int) trim($row->Price);
+				//$this->menu_data[$i]['unit'] = (string) $row->Unit;
+				$this->menu_data[$i]['category_id'] = (string) trim($row->TypeId);
+				$this->menu_data[$i]['category_name'] = (string) trim($row->TypeName);
+				$this->menu_data[$i]['currency'] = (string) trim($row->Currency);
+				
+				$this->menu_data['menu_match'] = 1;
+				$i++;
+				break;
+			} else {
+				$this->menu_data['menu_match'] = 0;
+				continue;
+			}
+			
+			$j++;
+	    } 
+		return true;
+	}
+    
+	
+    }
+    
+    function get_shop_item($shop_id)
+    {
+    
+    }
+    
+    function get_tour_item($tour_id)
+    {
+    
+    }
+    
+    function get_spa_item($spa_id)
+    {
+    
+    }
+    
+    function get_message_count($resv_id)
+    {
+    
+    }
+    
+    function get_message_all($resv_id)
+    {
+    
+    }
+    
+    function send_message($resv_id, $room, $message)
+    {
+	global $pms_config, $pms_request;
+
+	$url_request = $pms_config['url_request'] . '?Key=' . $pms_config['pms_userkey'] . 
+		  '&Code=' .  $pms_request['send_message'] .
+		  '&ReservationID=' .  $resv_id .
+		  '&Room=' .  $room . 
+		  '&Message=' .  $message;
+
+	//echo file_get_contents($url_request); exit;
+	// dummy data
+	$url_request = $pms_config['url_request'] . $pms_request['menu_item'] . '.xml';
+	//echo $url_request; exit;
+	// end dummy data
+
+	//$xml = simplexml_load_file( $url_request ) or die('gagal! ' . $url_request);
+	$xml = @simpleXML_load_file($url_request,"SimpleXMLElement",LIBXML_NOCDATA);
+	
+	$error_code = 1;
+	
+	if( !$xml )
+	{
+	    $code = 220;
+	    
+	    return false;
+	}
+	
+	return true;
+    }
+    
+    function message_sync($resv_id)
+    {
+    
+    }
+    
+    function pms_sync()
+    {
+	global $db;
+	
+	//Retrieve all In House data
+	$pms_room = $this->get_room_list();
+	
+	if ( !$pms_room )
+	{
+	    echo 'Gagal sync om...'; exit;
+	    return false;
+	}
+	//print_r($this->room_data); echo '<p>cort'; //exit;	//echo $this->room_data[0]['first_name'] . '<p>'; //exit////echo count($this->room_data) . '<p>'; //exit;
+	
+	// SET guest_sync_status OF EXISTING IN-HOUSE TO 1 FIRST
+	
+	$sql = 'UPDATE ' . GUESTS_TABLE . " SET guest_sync_status=1 WHERE guest_permanent=0";
+	$db->sql_query($sql);
+	//exit;
+	// INSERT NEW FRESH DATA FROM HMS
+	
+	for ($i=0; $i < $this->room_data['room_count']; $i++)
+	{
+	    
+	    $this->room_data[$i]['group'] = $this->room_data[$i]['group'] === 'Y' ? 1 : 0;
+	    $this->room_data[$i]['allow_post'] = $this->room_data[$i]['allow_post'] === 'Y' ? 1 : 0;
+	    $this->room_data[$i]['allow_viewbill'] = $this->room_data[$i]['allow_viewbill'] === 'Y' ? 1 : 0;
+	    $this->room_data[$i]['vip'] = $this->room_data[$i]['vip'] === 'Y' ? 1 : 0;
+	    $this->room_data[$i]['honeymoon'] = $this->room_data[$i]['honeymoon'] === 'Y' ? 1 : 0;
+	    $this->room_data[$i]['room_share'] = $this->room_data[$i]['room_share'] === 'Y' ? 1 : 0;
+	    
+	    $sql_ary = array(
+		'guest_reservation_id'	=> (int) $this->room_data[$i]['resv_id'],
+		'guest_arrival_date'	=> (int) $this->room_data[$i]['arrival_date'],
+		'guest_firstname'	=> (string) $this->room_data[$i]['first_name'],
+		'guest_lastname'	=> (string) $this->room_data[$i]['last_name'],
+		'guest_fullname'	=> (string) $this->room_data[$i]['full_name'],
+		'guest_salutation'	=> (string) $this->room_data[$i]['salutation'],
+		'guest_group'		=> (int) $this->room_data[$i]['group'],
+		'guest_groupname'	=> (string) $this->room_data[$i]['group_name'],
+		'guest_language'	=> (string) $this->room_data[$i]['language'],
+		'guest_allow_post'	=> (int) $this->room_data[$i]['allow_post'],
+		'guest_allow_viewbill'	=> (int) $this->room_data[$i]['allow_viewbill'],
+		'guest_vip'		=> (int) $this->room_data[$i]['vip'],
+		'guest_honeymoon'	=> (int) $this->room_data[$i]['honeymoon'],
+		'guest_room_share'	=> (int) $this->room_data[$i]['room_share'],
+		'room_name'		=> (string) $this->room_data[$i]['room'],
+		'guest_connect_room'	=> (string) $this->room_data[$i]['connect_room'],
+	    );
+	
+	    $sql = 'INSERT INTO ' . GUESTS_TABLE . ' ' . $db->sql_build_array('INSERT', $sql_ary);
+	    //echo $sql; exit;
+	    $db->sql_query($sql);
+	    //echo $sql; exit;
+	    //Set room key
+	    $this->generate_room_key($this->room_data[$i]['resv_id'], $this->room_data[$i]['room']);
+
+	}
+	
+	// WIPE OUT guest_sync_status OF EXISTING IN-HOUSE
+	$sql = 'DELETE FROM ' . GUESTS_TABLE . " 
+	    WHERE guest_sync_status=1";
+	$db->sql_query($sql);
+
+	return true;
+    }
+
+  	function roomservice_sync()
+    {
+	global $pms_config, $pms_request, $db;
+
+	// GET MENU ITEM FROM FOS
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $pms_config['url_request']."GetMenuList");
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_NOSIGNAL, 1);
+	curl_setopt($ch,CURLOPT_TIMEOUT,1);
+	$response = curl_exec($ch); 
+
+	if(curl_errno($ch)) // jika koneksi dgn PMS putus
+	{
+	    //exit('Failed to open >' . $pms_config['url_request']."GetMenuList" . '<');
+	    //$xml = array();
+		return false;
+	}
+	else // jika koneksi berhasil
+	{
+		$xml = new SimpleXmlElement($response);
+
+		foreach($xml->Entry as $row) {
+			$sql = "SELECT COUNT(*) AS total_entries FROM ".SERVICES_TABLE." WHERE service_code = '".trim($row->ItemCode)."'";
+			$db->sql_query($sql);
+			$total_data = $db->sql_fetchfield('total_entries');
+
+			$sql = "SELECT service_id FROM ".SERVICES_TABLE." WHERE service_code = '".trim($row->ItemCode)."'";
+			$db->sql_query($sql);
+			$service_id = $db->sql_fetchfield('service_id');
+
+			$sql = "SELECT s.service_group_id FROM ".SERVICE_GROUPS_TABLE." s 
+					JOIN ".SERVICE_GROUP_TRANSLATIONS_TABLE." t ON s.service_group_id = t.service_group_id
+					WHERE lower(t.translation_title) = '".strtolower(trim($row->TypeName))."'";
+			$result = $db->sql_query($sql);
+			while($row1 = $db->sql_fetchrow($result)) {
+				$group_id = $row1['service_group_id'];
+			}
+
+			//if(strtolower(trim($row->TypeName)) == "F") $group_id = 1;
+			//else if($row->TypeId == "B") $group_id = 2;
+
+			if($total_data == 0) {
+				$sql_ary = array(
+				'service_order'		=> 0,
+				'service_enabled'	=> 1,
+				'service_allow_ads'	=> 0,
+				'service_price'		=> (int) trim($row->Price),
+				'service_thumbnail'	=> '',
+				'service_group_id'	=> (int) $group_id,
+				'service_code'		=> (string) trim($row->ItemCode),
+				'service_updated'	=> (int) 1,
+				'service_currency'	=> (string) trim($row->Currency),
+			     );
+
+				$sql = 'INSERT INTO ' . SERVICES_TABLE . ' ' . $db->sql_build_array('INSERT', $sql_ary);
+				//echo $sql; exit;
+				$db->sql_query($sql);
+				$rid = $db->sql_nextid();
+
+				$sql_translation = array(
+			    'service_id'			=> (int) $rid,
+			    'translation_title'		=> (string) trim($row->ItemName),
+			    'translation_description'	=> '',
+			    'language_id'			=> 'en',
+				);
+
+				$sql = 'INSERT INTO ' . SERVICE_TRANSLATIONS_TABLE . ' ' . $db->sql_build_array('INSERT', $sql_translation);
+				$db->sql_query($sql);
+
+			} else {
+				$sql_ary = array(
+				'service_price'		=> (int) trim($row->Price),
+				'service_currency'	=> (string) trim($row->Currency),
+			     );
+
+				$sql = "UPDATE ".SERVICES_TABLE." SET ".$db->sql_build_array('UPDATE', $sql_ary) .
+	    		" WHERE service_code = '".trim($row->ItemCode)."'";
+				$db->sql_query($sql);
+
+
+				$sql_translation = array(
+			    'translation_title'		=> (string) trim($row->ItemName),
+				);
+
+				$sql = "UPDATE ".SERVICE_TRANSLATIONS_TABLE." SET ".$db->sql_build_array('UPDATE', $sql_translation) .
+	    		" WHERE service_id = '".$service_id."'";
+				$db->sql_query($sql);
+
+			}
+		}
+
+		
+	}
+	return true;
+    }
+    
+    function post_charge($values)
+    {
+	global $pms_config, $pms_request, $db;
+	
+	if( !is_array($values) )
+	{
+	    $code = 220;
+	    
+	    return false;
+	}
+	
+	if ( empty($values['service_id']) )
+	{
+	    return true;
+	}
+	
+	// Count Service Item
+	$sql = 'SELECT COUNT(guest_services_detail_id) AS total_entries 
+	    FROM ' . GUEST_SERVICES_DETAIL_TABLE . " WHERE guest_service_id=" . $values['service_id'];
+
+	$result = $db->sql_query($sql);
+	$service_count = (int) $db->sql_fetchfield('total_entries');
+	$db->sql_freeresult($result);
+	
+	if ( $service_count < 1 )
+	{
+	    return true;
+	}
+	
+	$sql = 'SELECT * FROM ' . GUEST_SERVICES_DETAIL_TABLE . ' WHERE guest_service_id=' . $values['service_id'];
+	$result = $db->sql_query($sql);
+	
+	$i = 1;
+	$reference = time();
+	while ($row = $db->sql_fetchrow($result))
+	{	  
+		$url = $pms_config['url_request']."SetRoomServiceOrderItem";
+		//$url = "http://192.168.0.14/testing/xmlpost/orderdata.php";
+		$url .= "?RoomNo=" . urlencode($values['room_name']);
+		$url .= "&ItemCode=" . urlencode($row['guest_service_code']);
+		$url .= "&ItemName=" . urlencode($row['guest_service_item']);
+		$url .= "&Qty=" . urlencode($row['guest_service_qty']);
+		$url .= "&ReferenceNo=" . urlencode($reference);
+		
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_NOSIGNAL, 1);
+		curl_setopt($ch,CURLOPT_TIMEOUT,1);
+		$response = curl_exec($ch); 
+		
+		
+		
+		if(curl_errno($ch))
+		{
+			print curl_error($ch);
+		}
+		else
+		{	
+			$xml = new SimpleXmlElement($response);
+			
+			curl_close($ch);
+		}
+	    
+	    $i++;	
+	}
+	
+	// Send Order Confirm to FOS
+	$url = $pms_config['url_request']."SetRoomServiceOrderConfirm";
+	//$url = "http://192.168.0.14/testing/xmlpost/orderdata.php";
+	$url .= "?RoomNo=" . urlencode($values['room_name']);
+	$url .= "&ReferenceNo=" . urlencode($reference);
+	
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_NOSIGNAL, 1);
+	curl_setopt($ch,CURLOPT_TIMEOUT,1);
+	$confirm_response = curl_exec($ch); 
+		
+	$xml = new SimpleXmlElement($confirm_response);
+		
+	if(curl_errno($ch))
+	{
+		print curl_error($ch);
+	}
+	else
+	{
+		curl_close($ch);
+	}
+	
+	return true;
+    }
+    
+    function room_status_update($values)
+    {
+    global $pms_config, $pms_request;
+
+	if( !is_array($values) )
+	{
+	    $code = 220;
+	    
+	    return false;
+	}
+	
+	$url = $pms_config['url_request']."SetRoomStatusHousekeeping"; 
+	$url .= "?RoomNo=" . urlencode($values['room_name']);
+	$url .= "&StatusCode=" . urlencode($values['new_status']);
+	//$url .= "&UserIdHousekeeper=" . urlencode($values['user_id']);
+    	//echo '<font color="#fff">'.$url.'</font>'; exit;
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_NOSIGNAL, 1);
+	curl_setopt($ch,CURLOPT_TIMEOUT,1);
+	$response = curl_exec($ch); 
+		
+	if(curl_errno($ch))
+	{
+		print curl_error($ch);
+	}
+	else
+	{
+		$xml = new SimpleXmlElement($response);
+		curl_close($ch);
+	}
+    
+	return true;
+    }
+    
+    function generate_status_combo()
+    {
+    global $pms_config;
+	
+	// GET ROOM STATUS HOUSEKEEPING FROM FOS
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $pms_config['url_request']."GetRoomStatusHousekeepingList");
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_NOSIGNAL, 1);
+	curl_setopt($ch,CURLOPT_TIMEOUT,1);
+	$response = curl_exec($ch); 
+	
+	$room_status = '<select name="code">';
+	
+	if(curl_errno($ch)) // jika koneksi ke PMS putus
+	{
+		for($i=0; $i < count($pms_config['room_status']); $i++)
+		{
+			$room_status .= '<option value="' . $pms_config['room_status'][$i] . '" >' . $pms_config['room_status'][$i] . '</option>';
+		}
+	}
+	else // jika koneksi ke PMS berhasil
+	{
+		$xml = new SimpleXmlElement($response); 
+	
+		foreach($xml->Entry as $row)
+		{
+			$room_status .= '<option value="' . $row->StatusCode . '" >' . $row->StatusName . '</option>';
+		}
+	}
+	
+	$room_status .= '</select>';
+		
+	return $room_status;
+    }
+    
+    function pms_echo($var='Navicom-FOS test...')
+    {
+	echo '<center> >'.$var.'< </center>';
+	return;
+    }
+    
+    function send_reply_message($code)
+    {
+	global $pms_error_code;
+	
+	header("Content-type: text/xml");
+	echo "<?xml version='1.0' encoding='UTF-8'?>";
+	echo "<PINS_APIResponse>\n\t\t";
+	echo "<Status ErrorCode=\"" . $code ."\">\n\t\t\t\t";
+	echo "<Message>" . $pms_error_code[$code] . "</Message>\n\t\t";
+	echo "</Status>\n";
+	echo "</PINS_APIResponse>";
+    }
+
+        
+    function maketime($datetime_int)
+    {
+	// yyyymmdd
+	$year = substr($datetime_int, 0, 4);
+	$month = substr($datetime_int, 4, 2);
+	$date = substr($datetime_int, 6, 2);
+	$hour = substr($datetime_int, 9, 2);
+	$minute = substr($datetime_int, 12, 2);
+    
+	$datetime_int = mktime($hour, $minute, 0 , $month, $date, $year);
+	
+	return $datetime_int;
+    }
+}
+
+?>

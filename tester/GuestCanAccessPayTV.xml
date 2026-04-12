@@ -1,0 +1,16 @@
+<PINS_APIRequest>
+	<Request>
+	<Client>
+		<UserID>TEST</UserID>
+		<Key>RTWMQHBE3TXUHYRDGHQVPAB</Key>
+	</Client>
+	<API>
+		<Name>GUESTCanAccessPayTV</Name>
+	</API>
+	</Request>
+	<DATA>
+		<PARAMS>
+			<Room>0105</Room>
+		</PARAMS>
+	</DATA>
+</PINS_APIRequest>

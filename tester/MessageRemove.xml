@@ -1,0 +1,17 @@
+<PINS_APIRequest>
+	<Request>
+	<Client>
+		<UserID>TEST</UserID>
+		<Key>RTWMQHBE3TXUHYRDGHQVPAB</Key>
+	</Client>
+	<API>
+		<Name>MessageRemove</Name>
+	</API>
+	</Request>
+	<DATA>
+		<PARAMS>
+			<ReservationID>7</ReservationID>
+			<MessageID></MessageID>
+		</PARAMS>
+	</DATA>
+</PINS_APIRequest>

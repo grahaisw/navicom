@@ -1,0 +1,63 @@
+<html>
+<head>
+  <title>PMS Tester</title>
+  <style type="text/css" media="screen">
+    body {
+	font-family: Verdana;
+	font-size: 12px;
+	font-weight: bold;
+    }
+    
+    a {
+      color: blue;
+      text-decoration: none;
+    }
+    
+    a:visited {
+      color: blue;
+      text-decoration: none;
+    }
+    
+    a:hover {
+      color: red;
+      text-decoration: underline;
+    }
+    
+  </style>
+
+</head>
+<body>
+    <h2>VHP EVENT TESTER</h2>
+
+    1. <a href="http://localhost/navicom/tester/vhpapi.php?method=send&cmd=CEKIN&d=2013-06-11&t=18:56:00&f=|0203|1987654237|1987654|237|No|Yes|Mr.|Santoso Ma'ruf|EN|admin@navicom.co.id|081802992959|CASH|No|Yes|&token=f2a6b5e2a4e1aed9e759b09f4ce5e564&format=xml">CHECK IN</a><br/><br/>
+    
+    2. <a href="http://localhost/navicom/tester/vhpapi.php?method=send&cmd=CEKOUT&d=2013-06-11&t=18:56:00&f=|0204|1234567894237|1234567894|237|No|Yes|Ms.|Juned Ma'ruf|ID|admin@navicom.co.id|081802992959|CASH|No|Yes|&token=f2a6b5e2a4e|aed9e759b09f4ce5e564&format=xml">CHECK OUT</a><br/><br/>
+
+    3. <a href="http://localhost/navicom/tester/vhpapi.php?method=send&cmd=MOVE&d=2013-06-11&t=18:56:00&f=|0204|1008|1234567894237|1234567894|237|No|Yes|Ms.|ReinitaMaharani|ID|admin@navicom.co.id|081802992959|CASH|No|Yes|&token=f2a6b5e2a4e|aed9e759b09f4ce5e564&format=xml">ROOM CHANGE</a><br/><br/>
+    
+    
+    4. <a href="http://localhost/navicom/tester/vhpapi.php?method=send&cmd=CHANGE&d=2013-06-11&t=18:56:00&f=|1008|1234567894237|1234567894|237|No|Yes|Ms.|Reinita Maharani|ID|admin@navicom.co.id|081802992959|CASH|No|Yes|&token=f2a6b5e2a4e1aed9e759b09f4ce5e564&format=xml">GUEST CHANGE</a><br/><br/>
+    
+    
+    5. <a href="#">TRANSACTION</a><br/><br/>
+    
+    
+    6. <a href="http://192.168.2.30/navicom/tester/pins.php?&Event=MSG&Room=1007&MessageCount=1">MESSAGE</a><br/><br/>
+    
+    7. <a href="http://localhost/navicom/tester/vhpapi.php?method=send&cmd=OCC&d=2013-06-11&t=18:56:00&f=100&token=f2a6b5e2a4e1aed9e759b09f4ce5e564&format=xml">DAILY OCCUPANCY</a><br/><br/>
+    
+    8. <a href="http://localhost/navicom/tester/vhpapi.php?method=send&cmd=OCCMONTH&d=2013-06-11&t=18:56:00&f=1535&token=f2a6b5e2a4e1aed9e759b09f4ce5e564&format=xml">MONTHLY OCCUPANCY</a><br/><br/>
+    
+    9. <a href="http://localhost/navicom/tester/vhpapi.php?method=send&cmd=OCCDETAIL&d=2014-05-26&t=01:56:00&f=|Agnes|6203|&token=f2a6b5e2a4e|aed9e759b09f4ce5e564&format=xml">DETAIL OCCUPANCY</a><br/><br/>
+    
+    10. <a href="http://localhost/navicom/tester/vhpapi.php?method=request&cmd=SYNCCEK&token=f2a6b5e2a4e1aed9e759b09f4ce5e564&format=xml">SYNC CEK</a><br/><br/>
+    
+    11. <a href="http://localhost/navicom/tester/vhpapi.php?method=request&cmd=INITSYNC&token=f2a6b5e2a4e1aed9e759b09f4ce5e564&format=xml">INIT SYNC</a><br/><br/>
+    
+    12. <a href="http://localhost/navicom/tester/vhpapi.php?method=request&cmd=SYNCDONE&token=f2a6b5e2a4e1aed9e759b09f4ce5e564&format=xml">SYNC DONE</a><br/><br/>
+    
+    14. <a href="http://localhost/navicom/tester/vhpapi.php?method=send&cmd=CEKINSYNC&d=2013-06-11&t=18:56:00&f=|0204|0987654237|0987654|237|No|Yes|Mr.|Mike Eruzione|ID|admin@navicom.co.id|081802992959|CASH|No|Yes|&token=f2a6b5e2a4e1aed9e759b09f4ce5e564&format=xml">CHECK IN SYNC</a><br/><br/>
+    
+
+</body>
+</html>

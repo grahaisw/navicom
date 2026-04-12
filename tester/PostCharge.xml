@@ -1,0 +1,21 @@
+<PINS_APIRequest>
+	<Request>
+	<Client>
+		<UserID>TEST</UserID>
+		<Key>RTWMQHBE3TXUHYRDGHQVPAB</Key>
+	</Client>
+	<API>
+		<Name>PostCharge</Name>
+	</API>
+	</Request>
+	<DATA>
+		<PARAMS>
+			<Room>0105</Room>
+			<Category>300</Category>
+			<Remark>3 psc</Remark>
+			<Reference>Bill #134</Reference>
+			<Amount>10</Amount>
+			<SourceID>0</SourceID>
+		</PARAMS>
+	</DATA>
+</PINS_APIRequest>

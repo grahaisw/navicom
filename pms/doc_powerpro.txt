@@ -1,0 +1,8 @@
+CONTOH XML RESPONSE DARI REQUEST LIST
+
+room change:
+
+variable MoveFrom tidak terkirim
+variable Room yg dikirim adalah kamar lama
+
+

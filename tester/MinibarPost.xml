@@ -1,0 +1,27 @@
+<PINS_APIRequest>
+	<Request>
+	<Client>
+		<UserID>Test</UserID>
+		<Key>RTWMQHBE3TXUHYRDGHQVPAB</Key>
+	</Client>
+	<API>
+		<Name>MinibarPost</Name>
+	</API>
+	</Request>
+	<DATA>
+		<PARAMS>
+			<Room>0101</Room>
+			<ReservationID></ReservationID>
+		<ITEMS>
+			<Item>
+				<Code>01</Code>
+				<Qty>1</Qty>
+			</Item>
+			<Item>
+				<Code>02</Code>
+				<Qty>1</Qty>
+			</Item>
+		</ITEMS>
+		</PARAMS>
+	</DATA>
+</PINS_APIRequest>

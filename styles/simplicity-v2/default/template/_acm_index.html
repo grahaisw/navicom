@@ -1,0 +1,513 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" xml:lang="en-gb" lang="en-gb"><head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Language" content="en-gb">
+<meta http-equiv="imagetoolbar" content="no">
+
+<title>ACP index</title>
+
+<link href="../theme/adm_navicom.css" rel="stylesheet" type="text/css" media="screen">
+
+<script type="text/javascript">
+// <![CDATA[
+var jump_page = 'Enter the page number you wish to go to:';
+var on_page = '';
+var per_page = '';
+var base_url = '';
+
+var menu_state = 'shown';
+
+
+/**
+* Jump to page
+*/
+function jumpto()
+{
+	var page = prompt(jump_page, on_page);
+
+	if (page !== null && !isNaN(page) && page == Math.floor(page) && page > 0)
+	{
+		if (base_url.indexOf('?') == -1)
+		{
+			document.location.href = base_url + '?start=' + ((page - 1) * per_page);
+		}
+		else
+		{
+			document.location.href = base_url.replace(/&amp;/g, '&') + '&start=' + ((page - 1) * per_page);
+		}
+	}
+}
+
+/**
+* Set display of page element
+* s[-1,0,1] = hide,toggle display,show
+*/
+function dE(n, s, type)
+{
+	if (!type)
+	{
+		type = 'block';
+	}
+
+	var e = document.getElementById(n);
+	if (!s)
+	{
+		s = (e.style.display == '') ? -1 : 1;
+	}
+	e.style.display = (s == 1) ? type : 'none';
+}
+
+/**
+* Mark/unmark checkboxes
+* id = ID of parent container, name = name prefix, state = state [true/false]
+*/
+function marklist(id, name, state)
+{
+	var parent = document.getElementById(id);
+	if (!parent)
+	{
+		eval('parent = document.' + id);
+	}
+
+	if (!parent)
+	{
+		return;
+	}
+
+	var rb = parent.getElementsByTagName('input');
+	
+	for (var r = 0; r < rb.length; r++)
+	{
+		if (rb[r].name.substr(0, name.length) == name)
+		{
+			rb[r].checked = state;
+		}
+	}
+}
+
+/**
+* Find a member
+*/
+function find_username(url)
+{
+	popup(url, 760, 570, '_usersearch');
+	return false;
+}
+
+/**
+* Window popup
+*/
+function popup(url, width, height, name)
+{
+	if (!name)
+	{
+		name = '_popup';
+	}
+
+	window.open(url.replace(/&amp;/g, '&'), name, 'height=' + height + ',resizable=yes,scrollbars=yes, width=' + width);
+	return false;
+}
+
+/**
+* Hiding/Showing the side menu
+*/
+function switch_menu()
+{
+	var menu = document.getElementById('menu');
+	var main = document.getElementById('main');
+	var toggle = document.getElementById('toggle');
+	var handle = document.getElementById('toggle-handle');
+
+	switch (menu_state)
+	{
+		// hide
+		case 'shown':
+			main.style.width = '93%';
+			menu_state = 'hidden';
+			menu.style.display = 'none';
+			toggle.style.width = '20px';
+			handle.style.backgroundImage = 'url(images/toggle.gif)';
+			handle.style.backgroundRepeat = 'no-repeat';
+
+			
+				handle.style.backgroundPosition = '100% 50%';
+				toggle.style.left = '0';
+			
+		break;
+
+		// show
+		case 'hidden':
+			main.style.width = '76%';
+			menu_state = 'shown';
+			menu.style.display = 'block';
+			toggle.style.width = '5%';
+			handle.style.backgroundImage = 'url(images/toggle.gif)';
+			handle.style.backgroundRepeat = 'no-repeat';
+
+			
+				handle.style.backgroundPosition = '0% 50%';
+				toggle.style.left = '15%';
+			
+		break;
+	}
+}
+
+// ]]>
+</script>
+</head>
+
+<body class="ltr">
+
+<div id="wrap">
+	<div id="page-header">
+		<h1>Administration Control Panel</h1>
+		<p><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5">Admin index</a> • <a href="http://localhost/%7Etonjaw/phpBB3/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5">Board index</a></p>
+		<p id="skip"><a href="#acp">Skip to content</a></p>
+	</div>
+	
+	<div id="page-body">
+		<div id="tabs">
+			<ul>
+			
+				<li id="activetab"><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=1"><span>General</span></a></li>
+			
+				<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=6"><span>Forums</span></a></li>
+			
+				<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=9"><span>Posting</span></a></li>
+			
+				<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=12"><span>Users and Groups</span></a></li>
+			
+				<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=16"><span>Permissions</span></a></li>
+			
+				<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=21"><span>Styles</span></a></li>
+			
+				<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=24"><span>Maintenance</span></a></li>
+			
+				<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=27"><span>System</span></a></li>
+			
+			</ul>
+		</div>
+
+		<div id="acp">
+		<div class="panel">
+			<span class="corners-top"><span></span></span>
+				<div id="content">
+					 
+					<div id="toggle">
+						<a id="toggle-handle" accesskey="m" title="Hide or display the side menu" onclick="switch_menu(); return false;" href="#"></a></div>
+					
+					<div id="menu">
+						<p>You are logged in as:<br><strong>tonjaw</strong> [&nbsp;<a href="http://localhost/%7Etonjaw/phpBB3/ucp.php?mode=logout&amp;sid=d08e22178d6fbd3c23873417c3bb76f5">Logout</a>&nbsp;][&nbsp;<a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?action=admlogout&amp;sid=d08e22178d6fbd3c23873417c3bb76f5">ACP&nbsp;Logout</a>&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+						<ul>
+						
+							<li class="header">Quick access</li>
+							
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=users&amp;mode=overview"><span>Manage users</span></a></li>
+								
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=groups&amp;mode=manage"><span>Manage groups</span></a></li>
+								
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=forums&amp;mode=manage"><span>Manage forums</span></a></li>
+								
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=logs&amp;mode=mod"><span>Moderator log</span></a></li>
+								
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=bots&amp;mode=bots"><span>Spiders/Robots</span></a></li>
+								
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=php_info&amp;mode=info"><span>PHP information</span></a></li>
+								
+							<li class="header">Board configuration</li>
+							
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=attachments&amp;mode=attach"><span>Attachment settings</span></a></li>
+								
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=board&amp;mode=settings"><span>Board settings</span></a></li>
+								
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=board&amp;mode=features"><span>Board features</span></a></li>
+								
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=board&amp;mode=avatar"><span>Avatar settings</span></a></li>
+								
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=board&amp;mode=message"><span>Private message settings</span></a></li>
+								
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=board&amp;mode=post"><span>Post settings</span></a></li>
+								
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=board&amp;mode=signature"><span>Signature settings</span></a></li>
+								
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=board&amp;mode=feed"><span>Feed settings</span></a></li>
+								
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=board&amp;mode=registration"><span>User registration settings</span></a></li>
+								
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=captcha&amp;mode=visual"><span>Spambot countermeasures</span></a></li>
+								
+							<li class="header">Client communication</li>
+							
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=board&amp;mode=auth"><span>Authentication</span></a></li>
+								
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=board&amp;mode=email"><span>E-mail settings</span></a></li>
+								
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=jabber&amp;mode=settings"><span>Jabber settings</span></a></li>
+								
+							<li class="header">Server configuration</li>
+							
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=board&amp;mode=cookie"><span>Cookie settings</span></a></li>
+								
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=board&amp;mode=server"><span>Server settings</span></a></li>
+								
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=board&amp;mode=security"><span>Security settings</span></a></li>
+								
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=board&amp;mode=load"><span>Load settings</span></a></li>
+								
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=search&amp;mode=settings"><span>Search settings</span></a></li>
+								
+								<li><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?sid=d08e22178d6fbd3c23873417c3bb76f5&amp;i=send_statistics&amp;mode=send_statistics"><span>Send statistical information</span></a></li>
+								
+						</ul>
+					</div>
+	
+					<div id="main">
+
+<a name="maincontent"></a>
+
+
+
+	<h1>Welcome to phpBB</h1>
+
+	<p>Thank you for choosing phpBB as your board solution. This screen 
+will give you a quick overview of all the various statistics of your 
+board. The links on the left hand side of this screen allow you to 
+control every aspect of your board experience. Each page will have 
+instructions on how to use the tools.</p>
+
+	
+
+	<table cellspacing="1">
+		<caption>Board statistics</caption>
+		<colgroup><col class="col1"><col class="col2"><col class="col1"><col class="col2">
+	</colgroup><thead>
+	<tr>
+		<th>Statistic</th>
+		<th>Value</th>
+		<th>Statistic</th>
+		<th>Value</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Number of posts: </td>
+		<td><strong>1</strong></td>
+		<td>Posts per day: </td>
+		<td><strong>0.04</strong></td>
+	</tr>
+	<tr>
+		<td>Number of topics: </td>
+		<td><strong>1</strong></td>
+		<td>Topics per day: </td>
+		<td><strong>0.04</strong></td>
+	</tr>
+	<tr>
+		<td>Number of users: </td>
+		<td><strong>1</strong></td>
+		<td>Users per day: </td>
+		<td><strong>0.04</strong></td>
+	</tr>
+	<tr>
+		<td>Number of attachments: </td>
+		<td><strong>0</strong></td>
+		<td>Attachments per day: </td>
+		<td><strong>0.00</strong></td>
+	</tr>
+
+
+	<tr>
+		<td>Board started: </td>
+		<td><strong>Sat Nov 16, 2013 4:27 am</strong></td>
+		<td>Avatar directory size: </td>
+		<td><strong>0 Bytes</strong></td>
+	</tr>
+	<tr>
+		<td>Database size: </td>
+		<td><strong>2.78 MiB</strong></td>
+		<td>Size of posted attachments: </td>
+		<td><strong>0 Bytes</strong></td>
+	</tr>
+	<tr>
+		<td>Database server: </td>
+		<td><strong>MySQL(i) 5.5.34-0ubuntu0.13.10.1</strong></td>
+		<td>GZip compression: </td>
+		<td><strong>Off</strong></td>
+	</tr>
+	<tr>
+		<td>Board version: </td>
+		<td>
+			<strong><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?i=update&amp;mode=version_check&amp;sid=d08e22178d6fbd3c23873417c3bb76f5" style="color: #228822;" title="More information »">3.0.12</a></strong> [&nbsp;<a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?versioncheck_force=1&amp;sid=d08e22178d6fbd3c23873417c3bb76f5">Re-Check version</a>&nbsp;]
+		</td>
+	
+		<td>Orphan attachments: </td>
+		<td><strong>0</strong></td>
+	
+	</tr>
+	</tbody>
+	</table>
+
+	
+		<fieldset>
+			<legend>Resynchronise or reset statistics</legend>
+
+			<form id="action_online_form" method="post" action="./index.php?i=main&amp;sid=d08e22178d6fbd3c23873417c3bb76f5&amp;mode=main">
+				<dl>
+					<dt><label for="action_online">Reset most users ever online</label><br><span>&nbsp;</span></dt>
+					<dd><input name="action" value="online" type="hidden"><input class="button2" id="action_online" name="action_online" value="Run now" type="submit"></dd>
+				</dl>
+			</form>
+
+			<form id="action_date_form" method="post" action="./index.php?i=main&amp;sid=d08e22178d6fbd3c23873417c3bb76f5&amp;mode=main">
+				<dl>
+					<dt><label for="action_date">Reset board’s start date</label><br><span>&nbsp;</span></dt>
+					<dd><input name="action" value="date" type="hidden"><input class="button2" id="action_date" name="action_date" value="Run now" type="submit"></dd>
+				</dl>
+			</form>
+
+			<form id="action_stats_form" method="post" action="./index.php?i=main&amp;sid=d08e22178d6fbd3c23873417c3bb76f5&amp;mode=main">
+				<dl>
+					<dt><label for="action_stats">Resynchronise statistics</label><br><span>Recalculates the total number of posts, topics, users and files.</span></dt>
+					<dd><input name="action" value="stats" type="hidden"><input class="button2" id="action_stats" name="action_stats" value="Run now" type="submit"></dd>
+				</dl>
+			</form>
+
+			<form id="action_user_form" method="post" action="./index.php?i=main&amp;sid=d08e22178d6fbd3c23873417c3bb76f5&amp;mode=main">
+				<dl>
+					<dt><label for="action_user">Resynchronise post counts</label><br><span>Only existing posts will be taken into consideration. Pruned posts will not be counted.</span></dt>
+					<dd><input name="action" value="user" type="hidden"><input class="button2" id="action_user" name="action_user" value="Run now" type="submit"></dd>
+				</dl>
+			</form>
+
+			<form id="action_db_track_form" method="post" action="./index.php?i=main&amp;sid=d08e22178d6fbd3c23873417c3bb76f5&amp;mode=main">
+				<dl>
+					<dt><label for="action_db_track">Resynchronise dotted topics</label><br><span>First unmarks all topics and then correctly marks topics that have seen any activity during the past six months.</span></dt>
+					<dd><input name="action" value="db_track" type="hidden"><input class="button2" id="action_db_track" name="action_db_track" value="Run now" type="submit"></dd>
+				</dl>
+			</form>
+
+			
+			<form id="action_purge_sessions_form" method="post" action="./index.php?i=main&amp;sid=d08e22178d6fbd3c23873417c3bb76f5&amp;mode=main">
+				<dl>
+					<dt><label for="action_purge_sessions">Purge all sessions</label><br><span>Purge all sessions. This will log out all users by truncating the session table.</span></dt>
+					<dd><input name="action" value="purge_sessions" type="hidden"><input class="button2" id="action_purge_sessions" name="action_purge_sessions" value="Run now" type="submit"></dd>
+				</dl>
+			</form>
+			<form id="action_purge_cache_form" method="post" action="./index.php?i=main&amp;sid=d08e22178d6fbd3c23873417c3bb76f5&amp;mode=main">
+				<dl>
+					<dt><label for="action_purge_cache">Purge the cache</label><br><span>Purge all cache related items, this includes any cached template files or queries.</span></dt>
+					<dd><input name="action" value="purge_cache" type="hidden"><input class="button2" id="action_purge_cache" name="action_purge_cache" value="Run now" type="submit"></dd>
+				</dl>
+			</form>
+			
+  		</fieldset>
+	
+		<h2>Logged administrator actions</h2>
+
+		<p>This gives an overview of the last five actions carried out by 
+board administrators. A full copy of the log can be viewed from the 
+appropriate menu item or following the link below.</p>
+
+		<div style="text-align: right;"><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?i=logs&amp;mode=admin&amp;sid=d08e22178d6fbd3c23873417c3bb76f5">» View administrator log</a></div>
+
+		<table cellspacing="1">
+		<thead>
+		<tr>
+			<th>Username</th>
+			<th>User IP</th>
+			<th>Time</th>
+			<th>Action</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr class="row1">
+
+				<td><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?i=users&amp;mode=overview&amp;sid=d08e22178d6fbd3c23873417c3bb76f5&amp;u=2" style="color: #AA0000;" class="username-coloured">tonjaw</a></td>
+				<td style="text-align: center;">127.0.0.1</td>
+				<td style="text-align: center;">Tue Dec 10, 2013 3:54 am</td>
+				<td><strong>Successful administration login</strong></td>
+			</tr>
+		<tr class="row2">
+
+				<td><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?i=users&amp;mode=overview&amp;sid=d08e22178d6fbd3c23873417c3bb76f5&amp;u=2" style="color: #AA0000;" class="username-coloured">tonjaw</a></td>
+				<td style="text-align: center;">127.0.0.1</td>
+				<td style="text-align: center;">Mon Dec 09, 2013 5:18 pm</td>
+				<td><strong>Successful administration login</strong></td>
+			</tr>
+		<tr class="row1">
+
+				<td><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?i=users&amp;mode=overview&amp;sid=d08e22178d6fbd3c23873417c3bb76f5&amp;u=2" style="color: #AA0000;" class="username-coloured">tonjaw</a></td>
+				<td style="text-align: center;">127.0.0.1</td>
+				<td style="text-align: center;">Mon Dec 09, 2013 10:15 am</td>
+				<td><strong>Successful administration login</strong></td>
+			</tr>
+		<tr class="row2">
+
+				<td><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?i=users&amp;mode=overview&amp;sid=d08e22178d6fbd3c23873417c3bb76f5&amp;u=2" style="color: #AA0000;" class="username-coloured">tonjaw</a></td>
+				<td style="text-align: center;">127.0.0.1</td>
+				<td style="text-align: center;">Fri Dec 06, 2013 9:42 am</td>
+				<td><strong>Successful administration login</strong></td>
+			</tr>
+		<tr class="row1">
+
+				<td><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?i=users&amp;mode=overview&amp;sid=d08e22178d6fbd3c23873417c3bb76f5&amp;u=2" style="color: #AA0000;" class="username-coloured">tonjaw</a></td>
+				<td style="text-align: center;">127.0.0.1</td>
+				<td style="text-align: center;">Thu Dec 05, 2013 3:14 am</td>
+				<td><strong>Successful administration login</strong></td>
+			</tr>
+		
+		</tbody>
+		</table>
+
+		<br>
+
+	
+		<h2>Inactive users</h2>
+
+		<p>This is a list of the last 10 registered users who have inactive 
+accounts. Accounts are inactive either because account activation was 
+enabled in user registration settings and these users’ accounts have not
+ yet been activated, or because these accounts have been deactivated. A 
+full list is available by following the link below from where you can 
+activate, delete or remind (by sending an e-mail) these users if you 
+wish.</p>
+
+		<div style="text-align: right;"><a href="http://localhost/%7Etonjaw/phpBB3/adm/index.php?i=inactive&amp;mode=list&amp;sid=d08e22178d6fbd3c23873417c3bb76f5">» View inactive users</a></div>
+
+		<table cellspacing="1">
+		<thead>
+		<tr>
+			<th>Username</th>
+			<th>Joined</th>
+			<th>Inactive date</th>
+			<th>Last visit</th>
+			<th>Reason</th>
+		</tr>
+		</thead>
+		<tbody>
+		
+			<tr>
+				<td colspan="5" style="text-align: center;">No inactive users</td>
+			</tr>
+		
+		</tbody>
+		</table>
+
+	</div>
+				</div>
+			<span class="corners-bottom"><span></span></span>
+			<div class="clear"></div>
+		</div>
+		</div>
+	</div>
+
+	<div id="page-footer">
+		
+			Powered by <a href="https://www.phpbb.com/">phpBB</a>® Forum Software © phpBB Group
+			
+	</div>
+</div>
+
+
+</body></html>

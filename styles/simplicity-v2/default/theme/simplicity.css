@@ -1,0 +1,57 @@
+/*  Navicom Simplicity Admin Style Sheet
+	------------------------------------------------------------------------
+	Original author:	Roberto Tonjaw
+	Copyright 2014 Navicom
+	------------------------------------------------------------------------
+*/
+
+/* General markup styles
+---------------------------------------- */
+
+body {
+  background: #edf0f3;
+  color: #000;
+  font-family: Verdana, Arial;
+  margin: 0px;
+}
+
+#login {
+  position: relative;
+  border: solid 1px #848697;
+  width: 300px;
+  height: 200px;
+  margin: auto;
+  padding: 40px;
+  background: #fff;
+  -webkit-box-shadow:rgba(119,119,119,.7) 0 4px 10px -1px;
+  box-shadow:rgba(119,119,119,.7) 0 4px 10px -1px;
+}
+
+#login-logo {
+  position: relative;
+  width: 360px;
+  height: 100px;
+  margin: 10px auto;
+  background: url(../theme/images/navicom.png) no-repeat top;
+}
+
+#page-footer {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: 0px;
+  margin: auto;
+  overflow: hidden;
+}
+
+
+
+form#loginform {
+  margin-left: 30px;
+  font-family: Verdana;
+  font-size: 14px;
+}
+
+input {
+  font-size: 14px;
+}

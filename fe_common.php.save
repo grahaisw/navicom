@@ -1,0 +1,186 @@
+<?php
+/**
+*
+* fe_common.php
+*
+* By Roberto Tonjaw. Feb 2014
+*/
+
+/**
+*/
+
+require($tonjaw_root_path . $config['language_path'] . $config['default_language'] . '.' . $phpEx);
+
+// SELECT STYLE
+//cek schedules
+$today = time();
+$sql = 'SELECT style_id FROM ' . STYLE_SCHEDULES_TABLE . " 
+    WHERE style_schedule_start < $today AND style_schedule_end > $today AND style_schedule_enabled=1";
+$result = $db->sql_query($sql);
+$style_id = $db->sql_fetchfield('style_id');
+$db->sql_freeresult($result);
+
+//echo 'style_id: ' . $sql. $style_id; exit;
+
+//get style
+if(!empty($style_id))
+{
+    $sql = 'SELECT style_name FROM ' . STYLES_TABLE . " WHERE style_id = $style_id AND style_admin = 0";
+}
+else
+{
+    $sql = 'SELECT style_name FROM ' . STYLES_TABLE . " WHERE style_active = 1 AND style_admin = 0";
+}
+
+$result = $db->sql_query($sql);
+$style_name = $db->sql_fetchfield('style_name');
+$db->sql_freeresult($result);
+
+if(empty($style_name)) 
+{ 
+    $style_name = $config['default_style'];
+    //die('No style is active!'); 
+}
+
+if(!file_exists($tonjaw_root_path . $config['style_path'] . $style_name))
+{
+    die($lang['Error_unavailable_style']); 
+}
+
+// Authenticate Room Key
+$room_key = request_var('key', '');
+
+
+if( !empty($room_key) )
+{
+    $sql = 'SELECT room_name FROM ' . ROOMS_TABLE . " 
+	    WHERE room_key='" . $room_key . "'";
+    //echo $sql; exit;
+    $result = $db->sql_query($sql);
+    $room_name = $db->sql_fetchfield('room_name');
+    $db->sql_freeresult($result);
+	//print_r($data);
+    if( !empty($room_name) )
+    {
+	$style_name = $config['mobile_style'];
+	$config['mobile'] = false;
+    }
+    
+   /* echo 'style: ' . $style_name; exit;
+    $config['theme_path'] = $config['style_path'] . $style_name . '/css';
+    $config['template_path'] = $config['style_path'] . $style_name ;
+    $config['imageset_path'] = $config['style_path'] . $style_name . '/imageset';
+    */
+}
+//$config['mobile'] = true;
+//$style_name = $config['mobile_style'];
+
+$config['template_path'] = $config['style_path'] . $style_name . '/template';
+$config['theme_path'] = $config['style_path'] . $style_name . '/theme';
+$config['imageset_path'] = $config['style_path'] . $style_name . '/imageset';
+
+
+
+/*
+echo 'style: ' . $style_name . '<br>';
+echo 'today: ' . $today . '<br>';
+echo 'today: ' . gmdate('m-d-Y - h:i:sa',$today) . '<br>';
+echo 'template: ' . $config['template_path'] . '<br>';
+echo 'theme: ' . $config['theme_path'] . '<br>';
+echo 'imageset: ' . $config['imageset_path'] . '<br>';
+*/
+$session->session_begin($file[0]);
+
+//Authenticate
+//$browser = trim(substr($session->browser, 0, 149));
+
+
+//echo 'crot: ' . $room_key . '<br>';
+$room_id = '';
+$lang_id = '';
+$node_id = '';
+$auth = authenticate_room($room_id, $room_key, $lang_id, $node_id);
+
+$sql = "SELECT room_name FROM ".ROOMS_TABLE." WHERE room_id = ".$room_id."";
+$result = $db->sql_query($sql);
+$room_name = $db->sql_fetchfield('room_name');
+$db->sql_freeresult($result);
+
+/** BEGIN FOS Integration **/
+
+// GET ROOM STATUS FROM FOS
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $pms_config['url_request']."GetRoomStatus?RoomNo=".$room_name);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+$response = curl_exec($ch); 
+echo '<div style="background-color:#fff">'. $pms_config['url_request']."GetRoomStatus?RoomNo=".$room_name.'</div>'; exit;echo '<div style="background-color:#fff">'. $pms_config['url_request']."GetRoomStatus?RoomNo=".$room_name.'</div>'; exit;echo '<div style="background-color:#fff">'. $pms_config['url_request']."GetRoomStatus?RoomNo=".$room_name.'</div>'; exit;
+if(curl_errno($ch)) // jika koneksi ke PMS putus
+{
+	$guests_name = get_guests_data();
+
+	if ( empty(trim($guests_name[0]['resv_id'])) && $config['lock_on_empty_room'] && !defined('BYPASS_LOCK'))
+	{
+		$lock = request_var('lock',0);
+		
+		if(empty($lock))
+		{
+		redirect('lock.'.$phpEx . '?lock=1');
+		}
+		
+	}
+}
+else // jika koneksi ke PMS berhasil
+{
+	$xml = new SimpleXmlElement($response);
+	$room_status = trim($xml->Entry->RoomStatusId); 	
+
+	curl_close($ch);
+	
+
+	$sql = "SELECT COUNT(*) AS total_data FROM ".GUESTS_TABLE." WHERE room_name = '".$room_name."'";
+	$result = $db->sql_query($sql);
+	$count = $db->sql_fetchfield('total_data');
+
+	$guests_name = get_guests_data();
+	
+	//require($tonjaw_root_path . $config['pms_path'] . 'common_pms.' . $phpEx);
+	//$pms->checkout($xml);
+	
+	if($room_status == 1 && $count == 0) { // blm ter-checkin di IPTV
+		require($tonjaw_root_path . $config['pms_path'] . 'common_pms.' . $phpEx);	
+		$pms->checkin($xml);
+		
+	} else if($room_status == 0 && $count == 1) { // blm ter-checkout di IPTV
+		require($tonjaw_root_path . $config['pms_path'] . 'common_pms.' . $phpEx);
+		$pms->checkout($xml);
+
+		if ( (empty($guests_name) || empty($guests_name[0]['resv_id'])) && $config['lock_on_empty_room'] && !defined('BYPASS_LOCK'))
+		{
+			$lock = request_var('lock',0);
+			
+			if(empty($lock))
+			{
+			redirect('lock.'.$phpEx . '?lock=1');
+			}
+			
+		}
+	}
+}
+
+/** END FOS Integration **/
+
+require($tonjaw_root_path . $config['language_path'] . $lang_id . '.' . $phpEx);
+
+//echo 'room key: ' . $room_key; exit;
+//require($tonjaw_root_path . $config['language_path'] . $lang_id . '.' . $phpEx);
+//require($tonjaw_root_path . $config['language_path'] . $lang_id . '.' . $phpEx);
+
+//echo prepare_message($lang['Error_invalid_room_key']);
+
+if($auth)
+{
+ //echo 'fe_common: jalan ndul...' . $lang_id . "<p>$node_id<p>"; 
+ //exit; 
+}
+
+?>

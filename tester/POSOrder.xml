@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<PINS_APIResponse>
+    <Status ErrorCode='0' TimeStamp='2014-06-04T16:14:46'>
+	<Message>OK</Message>
+    </Status>
+    <Data Count='1'>
+      <Record>
+	<TransNumber>2</TransNumber>
+      </Record>
+    </Data>
+</PINS_APIResponse>

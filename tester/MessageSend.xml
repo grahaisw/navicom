@@ -1,0 +1,21 @@
+<PINS_APIRequest>
+	<Request>
+	<Client>
+		<UserID>TEST</UserID>
+		<Key>RTWMQHBE3TXUHYRDGHQVPAB</Key>
+	</Client>
+	<API>
+		<Name>MessageSend</Name>
+	</API>
+	</Request>
+	<DATA>
+		<PARAMS>
+			<ReservationID>2</ReservationID>
+			<Room></Room>
+			<PhoneNumber>4507017</PhoneNumber>
+			<MessageFrom>Powe Pro Office</MessageFrom>
+			<Address>Kelapa Gading</Address>
+			<MessageText>Please Call Office !</MessageText>
+		</PARAMS>
+	</DATA>
+</PINS_APIRequest>

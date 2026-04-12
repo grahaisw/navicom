@@ -1,0 +1,43 @@
+<PINS_APIResponse>
+	<Status ErrorCode="0" TimeStamp="2013-10-01T00:46:09">
+		<Message>Ok</Message>
+	</Status>
+	<Data Count="1">
+		<Record>
+			<ReservationID>5</ReservationID>
+			<Room>0107</Room>
+			<RoomType>EXC</RoomType>
+			<RoomStatus>READY</RoomStatus>
+			<Pax>2</Pax>
+			<Child>0</Child>
+			<MasterFolio>Y</MasterFolio>
+			<FirstName>Abdul</FirstName>
+			<LastName>Ma'ruf</LastName>
+			<Salutation>Mr</Salutation>
+			<Language>ID</Language>
+			<ArrivalDate>2013-02-19T00:00:00</ArrivalDate>
+			<DepartureDate>2013-02-22T00:00:00</DepartureDate>
+			<ExtraBed>0</ExtraBed>
+			<MessageCount>0</MessageCount>
+			<AlowedPosting>Y</AlowedPosting>
+			<DNDHanger>Y</DNDHanger>
+			<SickGuest>N</SickGuest>
+			<DisableGuest>N</DisableGuest>
+			<DoubleLock>N</DoubleLock>
+			<RefuseCleaning>N</RefuseCleaning>
+			<PhoneBlock>BAR</PhoneBlock>
+			<SleepOut>N</SleepOut>
+			<Incognito>N</Incognito>
+			<PayTV>FULL</PayTV>
+			<GroupNumber>0</GroupNumber>
+			<VIP>N</VIP>
+			<PrivilageMember>N</PrivilageMember>
+			<Complain>N</Complain>
+			<HoneyMoon>N</HoneyMoon>
+			<Phone />
+			<Email />
+			<Address/>
+			<InternetAccess>FULL</InternetAccess>
+		</Record>
+	</Data>
+</PINS_APIResponse>

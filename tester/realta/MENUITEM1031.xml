@@ -1,0 +1,17 @@
+<HMS_APIResponse>
+    <Status ErrorCode="0" TimeStamp=" 1413910800 ">
+	<Message>OK</Message>
+    </Status>
+    <Data Count="1">
+	<Record>
+	    <MenuID>1031</MenuID>
+	    <MenuName>Halelujah Burger</MenuName>
+	    <Description>Religious Burger dari POS</Description>
+	    <Signature>N</Signature>
+	    <Price>110000</Price>
+	    <Unit>Portion</Unit>
+	    <CategoryID>4</CategoryID>
+	    <CategoryName>Burger and Sandwiches</CategoryName>
+	</Record>
+    </Data>
+</HMS_APIResponse>

@@ -1,0 +1,375 @@
+body {
+    font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    overflow: hidden;
+}
+
+video {
+    
+}
+
+/* ori size 
+ * 
+.divVideoContainer
+{
+    position: absolute;
+    width: 750px;
+    height: 450px;
+    left:40px;
+    top:20px;
+    z-index:31;
+
+}
+
+.mediaPlayIcon
+{
+    position: absolute;
+    width: 750px;
+    height: 450px;
+    background: url(../imageset/playvideo.png) no-repeat;
+}
+*/
+
+.divVideoContainer
+{
+    position: absolute;
+    width: 1280px;
+    height: 720px;
+    left:0px;
+    top:0px;
+    z-index:-100;
+    opacity: 0;
+
+}
+
+.mediaPlayIcon
+{
+    position: absolute;
+    width: 1280px;
+    height: 720px;
+    background: url(../imageset/playvideo.png) no-repeat;
+}
+
+.seekingIconssb
+{
+    position: absolute;
+    width: 115px;
+    height: 52px;
+    left: 10px;
+    top: 364px;
+    font-size: 28px;
+    text-align: right;
+    line-height: 53px;
+    background-repeat: no-repeat;
+}
+
+.seekingIconssf
+{
+    position: absolute;
+    width: 115px;
+    height: 52px;
+    left: 610px;
+    top: 364px;
+    font-size: 28px;
+    text-align: right;
+    line-height: 53px;
+    background-repeat: no-repeat;
+}
+
+.divLoading
+{
+    position: absolute;
+    width: 54px;
+    height: 54px;
+    left: 342px;
+    top: 200px;
+    z-index: 10;
+}
+
+.videoControl
+{
+    width: 1280px;
+    height: 720px;
+/*    border: solid 1px #fff; 
+    background: #000;*/
+}
+
+#divChannelList {
+	position:absolute;
+	left:40px;
+	top:518px;
+	width:1200px;
+	height:235px;
+	z-index:6;
+	/*text-align: center;
+	background-color: #CC6600;*/
+}
+#divChannelListHeader
+{
+    position: absolute;
+    width: 370px;
+    height: 40px;
+}
+#divChannelListItems
+{
+    position: absolute;
+    width: 1200px;
+    height: 140px;
+    top: 7px; 
+/*    border: 1px solid green;
+    text-align: center;
+    display: flex;
+    justify-content: center; */ 
+}
+
+#divFullScreenControl
+{
+    position: absolute;
+    width: 1152px;
+    height: 102px;
+    top: 0px;
+    background: url(../imageset/fullbg.png);
+    z-index:22;
+}
+
+.displayNone
+{
+    display: none;
+}
+
+
+#divCurrentChannelName
+{
+    position: absolute;
+    width: 600px;
+    height: 45px;
+    font-size: 38px;
+    font-family: pristina;
+    text-shadow: 2px 2px #2c2a2a;
+    color: yellow;
+    left: 0px;
+    line-height: 44px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: left;
+    z-index: 25;
+/*    background: green;
+    text-align: right; */
+}
+
+#divCurrentChannelDesc
+{
+    position: absolute;
+    width: 700px;
+    height: 330px;
+    font-size: 18px;
+    left: 10px;
+    line-height: 44px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    z-index: 25;
+/*    text-align: right;*/
+    top: 40px;
+}
+
+#divCurrentChannelNameContainer
+{
+    position: absolute;
+    width: 600px;
+    height: 60px;
+    top: 215px;
+    left: 615px;
+    z-index: 24;
+    opacity: 0.9;
+}
+
+#divInfoTxt
+{
+    position: absolute;
+    width: 300px;
+    height: 30px;
+    left: 850px;
+    font-size: 20px;
+    top: 70px;
+    color: #777070;
+}
+
+.spanChannlItem {
+    opacity: .6; 
+    width: 160px;
+/*    display: inline-block;
+    height: 120px;*/
+    float: left;
+    z-index: 98;
+    position: relative;
+}
+
+.channelFocus
+{
+    background: url(../imageset/160x160/stroke.png) top no-repeat; 
+    opacity: 1;
+    width: 160px;
+    height: 160px;
+    color: black;
+/*    Zoom In Effect     
+    -webkit-transform: scale(1.1,1.1);
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: 250ms;
+    -moz-transform: scale(1.1,1.1);
+    -moz-transition-timing-function: ease-out;
+    -moz-transition-duration: 250ms;
+    position: relative; */
+    z-index: 99; 
+}
+
+a:link {
+    text-decoration: none;
+    display: block;
+    width: 330px;
+    height: 228px;
+    float: left;
+    margin: 0 3px 3px 0;
+    opacity: 1;
+    color: #fff;
+    font-weight: bold;
+/*    -webkit-transform: scale(1,1);
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: 250ms;
+    -moz-transform: scale(1,1);
+    -moz-transition-timing-function: ease-out;
+    -moz-transition-duration: 250ms; */
+}
+
+a:visited {
+    color: #e5e746;
+    font-weight: bold;
+}
+
+#apDiv2 {
+	position:absolute;
+	left:40px;
+	top:40px;
+	width:180px;
+	height: 152px;
+	z-index:92;
+	opacity: .9;
+	/*border: 1px solid #7c5b04;*/
+	background: url(../imageset/logo-white.png) top no-repeat;
+}
+
+#apDiv3 {
+	position:absolute;
+	left:0px;
+	top: 0px; /* top:233px; */
+	width:1280px;
+	height:100px;
+	padding: 20px;
+	z-index:2;
+	opacity: 0.2;
+	border-bottom: solid 1px #7c5b04;
+	background-color: #000; 
+}
+
+#divDescription {
+	position:absolute;
+	left:610px;
+	top: 275px; /* top:233px; */
+	width:621px;
+	height:199px;
+	padding: 20px;
+	z-index:3;
+	opacity: 0.8;
+	font-size: 20px;
+	background-color: #362803; 
+}
+
+#divPicture {
+    position: absolute;
+    left: 0px;
+    top: 114px;
+    width: 600px;
+    height: 400px;
+    z-index: 4;
+}
+
+#divGradPicture {
+    position: absolute;
+    left: 601px;
+    width: 680px;
+    height: 124px;
+    top: 142px;
+    opacity: .7;
+}
+
+#divPrice {
+    position: absolute;
+    left: 620px;
+    top: 480px;
+    height: 40px;
+    width: 260px;
+/*    background: green; */
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 5;
+}
+#divOrder {
+    position: absolute;
+    left: 940px;
+    top: 485px;
+    height: 33px;
+    width: 320px;
+	color: #fff;
+    font-size: 16px;
+    text-align: right;
+    z-index: 5;
+}
+#divBlueCol{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 20px;
+    width: 30px;
+	background-color: #2389f3;
+    color: #2389f3;
+    font-size: 18px;
+    text-align: center;
+    z-index: 5;
+    border: solid 1px #e6f400;
+}
+#divBasket{
+    position: absolute;
+    left: 940px;
+    top: 435px;
+    height: 33px;
+    width: 320px;
+    /*background: #3d3d3a; */
+    background-image: url(../imageset/order.png);
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    z-index: 5;
+    border: solid 1px #e6f400;
+}
+#pageTitle {
+    position: absolute;
+    top: 30px;
+    left: 300px;
+    height: 80px;
+    width: 800px;
+    font-size: 44px;
+    font-weight: bold;
+    text-align: left;
+    font-family: Arial;
+    color: yellow; /*#7c5b04;*/
+/*    background: red; */
+    z-index: 4;
+}
+
+video#home { 
+    position: absolute; left: 0; top: 0;
+    width: 600px; height: auto; /* z-index: -100;*/
+    border: solid 1px #82087b;
+}

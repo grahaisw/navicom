@@ -1,0 +1,48 @@
+/* ============================================================================================== 
+This copyright notice must be kept untouched in the stylesheet at all times.
+The original version of this stylesheet and the associated (x)html 
+is available at http://www.script-tutorials.com/responsive-website-using-bootstrap/
+Copyright (c) Script Tutorials. All rights reserved.
+This stylesheet and the associated (x)html may be modified in any way to fit your requirements.
+================================================================================================= */
+
+/* customized carousel */
+.carousel {
+    height: 300px;
+    margin-bottom: 50px;
+}
+.carousel-caption {
+    z-index: 10;
+}
+.carousel .item {
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 300px;
+}
+
+a:link {
+    opacity: 0.5;
+}
+
+a:visited {
+    opacity: 0.5;
+}
+
+a:hover {
+    opacity: 1;
+}
+
+a:focus {
+    opacity: 1;
+}
+a.logo:link {
+    opacity: 1;
+}
+
+a.logo:visited {
+    opacity: 1;
+}
+
+div.image {
+  border: solid 1px #ccc;
+  padding: 5px;
+}

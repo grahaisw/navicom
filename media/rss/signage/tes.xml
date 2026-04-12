@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet type='text/xsl' href='http://detik.feedsportal.com/xsl/eng/rss.xsl'?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" version="2.0">
+<channel>
+    <title>news.detik</title>
+    <link>http://news.detik.com/</link>
+    <description>Detik.com sindikasi</description>
+    <language>en</language>
+    <pubDate>Wed, 17 Sep 2014 09:44:27 GMT</pubDate>
+    <lastBuildDate>Wed, 17 Sep 2014 09:44:27 GMT</lastBuildDate>
+    <ttl>30</ttl>
+    <image>
+        <title>news.detik</title>
+        <url>http://rss.detik.com/images/rsslogo_detikcom.gif</url>
+        <link>http://news.detik.com/</link>
+    </image>
+    <item>
+        <title>2 Cara Jokowi 'Meredam' Kekuatan Koalisi Merah Putih</title>
+    </item>
+    <item>
+        <title>Ini Dia Daftar Karya yang Dilindungi UU Hak Cipta</title>
+    </item>
+    <item>
+        <title>2 Polisi yang Kawal Uang Rp 2 M Milik Calo PNS di Musi Rawas Disidang Kode Etik</title>
+    </item>
+    <item>
+        <title>Ketum Golkar Dipilih Jadi Ketua Presidium Koalisi Merah Putih</title>
+    </item>
+    <item>
+        <title>Golkar Tentukan Calon Ketua DPR di Rapat Pleno Besok</title>
+    </item>
+</channel>
+</rss>

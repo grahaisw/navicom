@@ -1,0 +1,11 @@
+<PINS_APIRequest>
+	<Request>
+	<Client>
+		<UserID>TEST</UserID>
+		<Key>RTWMQHBE3TXUHYRDGHQVPAB</Key>
+	</Client>
+	<API>
+		<Name>MinibarItemList</Name>
+	</API>
+	</Request>
+</PINS_APIRequest>

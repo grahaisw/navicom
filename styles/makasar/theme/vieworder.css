@@ -1,0 +1,675 @@
+/*Common style sheet for webtv menu design*/
+
+{
+    padding: 0px;
+    margin: 0px;
+}
+body
+{
+    width: 1280px;
+    height: 720px;
+    color: #fff;
+    font-family: Arial;
+    overflow: hidden;
+}
+#mainDiv
+{
+    position: absolute;
+    width: 1280px;
+    height: 720px;
+}
+#divSafeContainer
+{
+    position: absolute;
+    width: 1230px;
+    height: 535px;
+    left: 20px;
+    top: 140px;
+    background: #000; /*#362803; */
+    opacity: .8;
+}
+#divChannelList
+{
+    position: absolute;
+    width: 940px;
+    height: 500px;
+    top: 20px; /* top: 40px;border: 1px solid blue;*/
+/*    background: red; */
+}
+#divChannelCount
+{
+    position: absolute;
+    width: 170px;
+    height: 40px;
+    left: 1040px;
+    text-align: right;
+    font-size: 20px;
+    line-height: 40px;
+}
+#divChannelListItems
+{
+    position: absolute;
+    width: 940px;
+    height: 450px;
+    top: 55px; /*top: 40px;   border: 1px solid green;*/
+/*    background: green; */
+}
+.divChannelItems
+{
+    position: relative;
+    width: 940px;
+    height: 50px;
+    left: 0px;
+    font-size: 22px;
+    line-height: 50px;
+}
+.channelFocus
+{
+    background: #ccc;
+    color: #000;
+    width: 1170px;
+    height: 50px;
+}
+.spanChannlItem
+{
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    left: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+/*    background: #363636; */
+}
+.spanChannlItem2
+{
+    position: absolute;
+    width: 450px;
+    height: 50px;
+    left: 180px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+/*    background: #363636; */
+}
+.spanChannlItem3
+{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 630px;
+    overflow: hidden;
+    text-align: right;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+/*    background: #999; */
+}
+.spanChannlItem4
+{
+    position: absolute;
+    width: 480px;
+    height: 50px;
+    left: 690px;
+    overflow: hidden;
+/*    text-align: right;*/
+    white-space: nowrap;
+    text-overflow: ellipsis;
+/*    background: #363636; */
+}
+.spanChannlHeader
+{
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    left: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+/*    background: #363636; */
+}
+.spanChannlHeader2
+{
+    position: absolute;
+    width: 490px;
+    height: 50px;
+    left: 220px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+/*    background: #363636; */
+}
+.spanChannlHeader3
+{
+    position: absolute;
+    width: 230px;
+    height: 50px;
+    left: 450px;
+    overflow: hidden;
+    text-align: right;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.spanChannlHeader4
+{
+    position: absolute;
+    width: 480px;
+    height: 50px;
+    left: 690px;
+    overflow: hidden;
+/*    text-align: right; */
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.spanChannlFooter2
+{
+    position: absolute;
+    width: 490px;
+    height: 50px;
+    left: 220px;
+    overflow: hidden;
+    text-align: right;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+/*    background: #363636; */
+}
+.spanChannlFooter3
+{
+    position: absolute;
+    width: 230px;
+    height: 50px;
+    left: 690px;
+    overflow: hidden;
+    text-align: right;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#DV_Scrolluparrow
+{
+    width: 100%;
+    height: 16px;
+    cursor: pointer;
+    background: url("../imageset/scrolltop.png") no-repeat;
+}
+#DV_Scrollprogress
+{
+    width: 8px;
+    height: 430px;
+    cursor: pointer;
+    background: url("../imageset/scrollbar.png") repeat-y;
+    margin-left: 6px;
+}
+#DV_Scrolldownarrow
+{
+    width: 100%;
+    background: url("../imageset/scrollbottom.png") no-repeat;
+    margin-top: 4px;
+    height: 16px;
+    cursor: pointer;
+}
+#DV_Scrollshaft
+{
+    width: 6px;
+    background: url("../imageset/scrollshaft.png") no-repeat;
+    height: 44px;
+    position: relative;
+    top: 0px;
+    left: 1px;
+}
+.divVideoContainer
+{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: -200px;
+    top: 45px;
+/*    background-color: black; */
+}
+#divControlContainer
+{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 534px;
+    left: -200px;
+    opacity: 0;
+}
+.videoControl
+{
+    width: 1px;
+    height: 1px;
+}
+#divFieldHeader {
+    position: absolute;
+    height: 50px;
+    left: 0px;
+    top: 0px;
+    width: 1170px;
+    font-size: 24px;
+    font-weight: bold;
+    border-bottom: solid 1px #ccc;
+/*    background: green; */
+}
+#divChannelListHeader
+{
+    position: absolute;
+    width: 370px;
+    height: 20px;
+}
+#divFieldFooter
+{
+    position: absolute;
+    height: 70px;
+    left: 0px;
+    top: 460px;
+    width: 940px;
+    padding-top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    border-top: solid 1px #ccc;
+}
+#pageTitle {
+    position: absolute;
+    top: 50px;
+    left: 300px;
+    height: 80px;
+    width: 800px;
+    font-size: 44px;
+    font-weight: bold;
+    text-align: left;
+    font-family: Arial;
+    color: yellow;
+/*    background: red; */
+    z-index: 4;
+}
+#apDiv2 {
+	position:absolute;
+	left:10px;
+	top:0px;
+	width: 180px;
+	height: 152px;
+	z-index:92;
+	opacity: .9;
+	/*border: 1px solid #7c5b04;*/
+	background: url(../imageset/logo-white.png) top no-repeat;
+}
+
+#apDiv3 {
+	position:absolute;
+	left:0px;
+	top: 0px; /* top:233px; */
+	width:1280px;
+	height:100px;
+	padding: 20px;
+	z-index:2;
+	opacity: 0.7;
+/*	border-bottom: solid 1px #ccc; */
+	background: #000; /*url(../imageset/upper-bar.png) top no-repeat; */
+}
+
+
+
+
+#divLogoContainer
+{
+    position: absolute;
+    width: 780px;
+    height: 40px;
+    left: 372px; /*border: 1px solid yellow;*/
+}
+
+
+
+
+
+
+#divChannelListScrollBar
+{
+    position: absolute;
+    width: 20px;
+    height: 530px;
+    top: 40px;
+    left: 350px; /*  border: 1px solid white;*/
+}
+#Dv_Title
+{
+    right: 9px;
+    position: absolute;
+    font-size: 33px;
+    top: -2px;
+    float: left; /*background: url("../images/logo.png") no-repeat;*/
+    width: 345px;
+    height: 42px;
+    text-align: right;
+}
+#divVideoControlContainer
+{
+    position: absolute;
+    width: 752px;
+    height: 572px;
+    top: 40px;
+    left: 400px;
+}
+.divVideoContainer_fullScreen
+{
+    position: absolute;
+    width: 1280px;
+    height: 720px;
+    left: -64px;
+    top: -64px;
+    background-color: black;
+    z-index:10;
+}
+.videoControl_fullScreen
+{
+    width: 1280px;
+    height: 720px;
+}
+/*
+#divStreamingHider
+{
+    position: absolute;
+    width: 547px;
+    height: 70px;
+    top: 536px;
+    left: 590px;
+    z-index: 10;
+    background-image: url('../images/disablebanner.png');
+}
+*/
+#divCurrentChannelNameContainer
+{
+    position: absolute;
+    width: 730px;
+    height: 40px;
+    top: 46px;
+    left: 408px;
+    background: url(../imageset/smalltrackbg.png);
+}
+#divCurrentChannelName
+{
+    position: absolute;
+    width: 700px;
+    height: 40px;
+    font-size: 24px;
+    left: 10px;
+    line-height: 44px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#divVideoTracker
+{
+    position: absolute;
+    width: 730px;
+    height: 40px;
+    top: 465px;
+    left: 408px;
+    background: url(../images/smalltrackbg.png);
+    z-index:0;
+}
+#divProgressTime
+{
+    position: absolute;
+    width: 110px;
+    height: 40px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 40px;
+}
+#divProgressBar
+{
+    position: absolute;
+    width: 504px;
+    height: 6px;
+    left: 112px;
+    top: 18px;
+}
+
+#divProgressDuration
+{
+    position: absolute;
+    width: 110px;
+    height: 40px;
+    left: 620px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.displayNone
+{
+    display: none;
+}
+.playIcon
+{
+    background: url(../images/play.png) no-repeat;
+}
+.pauseIcon
+{
+    background: url(../images/pause.png) no-repeat;
+}
+.mediaPlayIcon
+{
+    position: absolute;
+    width: 730px;
+    height: 460px;
+    /*left: 317px;
+    top: 173px;*/
+    background: url(../images/playvideo.png) no-repeat;
+}
+.seekingIconssb
+{
+    position: absolute;
+    width: 115px;
+    height: 52px;
+    left: 10px;
+    top: 364px;
+    font-size: 28px;
+    text-align: right;
+    line-height: 53px;
+    background-repeat: no-repeat;
+}
+.seekingIconssf
+{
+    position: absolute;
+    width: 115px;
+    height: 52px;
+    left: 610px;
+    top: 364px;
+    font-size: 28px;
+    text-align: right;
+    line-height: 53px;
+    background-repeat: no-repeat;
+}
+.mediaPlayIcon_fullScreen
+{
+    position: absolute;
+    width: 730px;
+    height: 460px;
+    left: 290px;
+    top: 100px;
+    background: url(../images/playvideo.png) no-repeat;
+}
+#divFullScreenControl
+{
+    position: absolute;
+    width: 1152px;
+    height: 102px;
+    top: 720px;
+    background: url(../images/fullbg.png);
+    z-index:12;
+}
+.ControlFullScreen
+{
+    position: absolute;
+    width: 1152px;
+    height: 102px;
+    top: 500px;
+    background: url(../images/fullbg.png);
+}
+
+#divVideoFullScreenIcons
+{
+    position: absolute;
+    width: 102px;
+    height: 102px;
+}
+.divVideoFullScreenIconsPlay
+{
+    background: url(../images/fullplay.png);
+}
+.divVideoFullScreenIconspause
+{
+    background: url(../images/fullpause.png);
+}
+.divVideoFullScreenIconsfb
+{
+    background: url(../images/fb.png);
+}
+.divVideoFullScreenIconsff
+{
+    background: url(../images/ff.png);
+}
+
+#divVideoTrackerFullScreen
+{
+    position: absolute;
+    width: 1045px;
+    height: 30px;
+    left: 105px;
+    top: 35px;
+}
+#divProgressTimeFullScreen
+{
+    position: absolute;
+    width: 110px;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 35px;
+}
+
+#divProgressBarFullScreen
+{
+    position: absolute;
+    width: 760px;
+    height: 6px;
+    left: 135px;
+    top: 14px;
+}
+
+#divProgressDurationFullScreen
+{
+    position: absolute;
+    width: 110px;
+    height: 30px;
+    left: 922px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 35px;
+}
+
+#divCurrentChannelNameFullScreen
+{
+    position: absolute;
+    width: 600px;
+    height: 30px;
+    left: 115px;
+    top: 4px;
+    font-size: 22px;
+    line-height: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#divInfoTxt
+{
+    position: absolute;
+    width: 300px;
+    height: 30px;
+    left: 850px;
+    font-size: 20px;
+    top: 70px;
+    color: #777070;
+}
+#divCurrentChannelDescFullScreen
+{
+    position: absolute;
+    width: 720px;
+    height: 30px;
+    left: 115px;
+    font-size: 20px;
+    top: 72px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#divFullTrickValue
+{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 52px;
+    top: 24px;
+    color: Black;
+    text-align: center;
+    line-height: 55px;
+    font-size: 24px;
+}
+
+.positionTop
+{
+    background-position: top;
+}
+.positionBottom
+{
+    background-position: bottom;
+}
+
+.divErrorMsg
+{
+    position: absolute;
+    width: 384px;
+    height: 56px;
+    left: 595px;
+    top: 225px;
+    color: black;
+    font-size: 22px;
+    text-align: center;
+    line-height: 56px;
+    background: url(../images/error.png) no-repeat;
+}
+.divErrorMsg_Full
+{
+    position: absolute;
+    width: 384px;
+    height: 56px;
+    left: 400px;
+    top: 200px;
+    color: black;
+    font-size: 22px;
+    text-align: center;
+    line-height: 56px;
+    background: url(../images/error.png) no-repeat;
+    z-index:12;
+}.divLoading
+{
+    position: absolute;
+    width: 54px;
+    height: 54px;
+    left: 342px;
+    top: 200px;
+    z-index: 10;
+}
+.divLoading_Full
+{
+    position: absolute;
+    width: 54px;
+    height: 54px;
+    left: 625px;
+    top: 301px;
+    z-index: 10;
+}

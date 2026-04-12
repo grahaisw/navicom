@@ -1,0 +1,16 @@
+VIEW_USER_PERMISSIONS
+user_id  user_name  user_fullname  user_group_name  permission_id  permission_module_id  permission_value
+
+SELECT u.user_id, u.user_name, u.user_fullname, g.user_group_name, p.permission_id, p.permission_module_id, p.permission_value FROM users u INNER JOIN user_groups g ON u.user_group_id = g.user_group_id LEFT OUTER JOIN permissions p ON u.user_id = p.permission_user_id WHERE u.user_enabled=1
+
+
+
+VIEW_MODULES
+module_detail_id  module_detail_name  module_detail_desc  module_detail_file  module_detail_cat_id module_detail_cat_name  module_name  module_detail_enabled
+
+SELECT m.module_id, d.module_detail_id, d.module_detail_name, d.module_detail_desc, d.module_detail_file, c.module_detail_cat_id, c.module_detail_cat_name, m.module_name, d.module_detail_enabled FROM modules_detail d, modules_detail_cat c, modules m WHERE d.module_id = m.module_id AND d.module_detail_cat_id = c.module_detail_cat_id ORDER BY c.module_detail_cat_name, d.module_detail_name
+
+
+
+VIEW_PRIVILEDGES
+SELECT * FROM view_modules m LEFT OUTER JOIN view_user_permissions p ON p.permission_module_id = m.module_detail_id

@@ -1,0 +1,27 @@
+div.tes { background: #fff; padding: 2px }
+
+.Zebra_Accordion dd { display: none }
+.Zebra_Accordion dt { cursor: pointer }
+
+dl.Zebra_Accordion { width: 80%; font-family: Arial, sans-serif; font-size: 14px }
+dl.Zebra_Accordion dt { background: #e3e2e4; color: #000; font-weight: bold; padding: 5px }
+dl.Zebra_Accordion dd { background: #EFEFEF; padding-left: 10px; margin: 1px 0; font-size: 16px }
+
+dl.Zebra_Accordion dt.Zebra_Accordion_Expanded { background: #CCC }
+
+span {
+    padding: 5px;
+    
+}
+
+.time {
+    display: block;
+    width: 40%; 
+}
+.from {
+    width: 60%; 
+    display: block;
+    font-size: 18px;
+    padding-left: 5px;
+    
+}

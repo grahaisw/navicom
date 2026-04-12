@@ -1,0 +1,85 @@
+<!-- INCLUDE admin_header.tpl -->
+<script type="text/javascript">
+$(function() {
+    $('#DeleteLink').click(function() {
+        return confirm('{L_CONFIRM_DELETE}');
+    });
+});
+
+</script>
+	
+		    <div id="main">
+			<a name="maincontent"></a>
+ 
+			<h1>{MODULE_TITLE}</h1>
+
+			<p>{MODULE_DESC}</p>
+
+			<form method="post" id="mcp" action="{U_ACTION}">
+			    <div class="inner">
+			    <!-- IF S_ADD_UPDATE -->
+			    <!-- <a href="{U_ADD}" rel="facebox">{L_ADD}</a> -->
+			    <!-- ENDIF -->
+			    <span class="corners-top2"><span>
+
+			<table cellspacing="1" class="table1" id="dtable">
+			<thead>
+			<tr>
+			  <th>{L_DATETIME}</th>
+			  <th>{L_ROOM}</th>
+			  <th>{L_NAME}</th>
+			  <th>{L_ITEM}</th>
+			  <th>{L_QTY}</th>
+			  <th>{L_NOTE}</th>
+			  <th>&nbsp;</th>
+			</tr>
+			</thead>
+			<tbody>
+			<!-- IF S_BUFFERS -->
+			  <!-- BEGIN buffer -->
+			  <!-- IF buffer.S_ROW_COUNT is even --><tr class="bg1"><!-- ELSE --><tr class="bg2"><!-- ENDIF -->
+			    <td>{buffer.DATETIME}</td>
+			    <td>{buffer.ROOM}</td>
+			    <td>{buffer.RESV_ID} - {buffer.NAME}</td>
+			    <td>{buffer.ITEM}</td>
+			    <td>{buffer.QTY}
+				<input type="hidden" name="buffer_id[]" value="{buffer.S_NID}"/>
+			    </td>
+			    <td>{buffer.NOTE}</td>
+			    <td style="width: 5%" align="center">
+				<!-- IF buffer.S_NOT_APPROVED -->
+				<a href="{buffer.U_APPROVED}" rel="facebox"><img src="{buffer.ICON_PATH}/icon_edit.gif" alt="{buffer.L_APPROVED}" title="{buffer.L_APPROVED}" /></a>
+				<!-- ELSE -->
+				{buffer.APPROVED}
+				<!-- ENDIF -->
+			    </td>
+			  </tr>
+			<!-- END buffer -->
+			<!-- ENDIF -->
+			</tbody>
+			</table>
+			<hr />
+
+			</div>
+</form>
+<br />
+<center><img src="{T_JS_PATH}loading.gif" id="loading" style="display:none;" /></center>
+		    </div>
+		 </div>
+
+		 <span class="corners-bottom"><span>
+		 
+		 <div class="clear">
+		 <!-- IF S_SOUND -->
+		  <audio autoplay>
+		      <source src="{T_MEDIA_AUDIO_PATH}a1.mp3" type="audio/mpeg">
+		      Your browser does not support the audio element.
+		  </audio> 
+		 <!-- ENDIF -->
+		 </div>
+	    </div>
+	</div>
+
+    </div>
+
+<!-- INCLUDE overall_footer.tpl -->

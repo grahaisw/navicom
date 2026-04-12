@@ -1,0 +1,17 @@
+<PINS_APIResponse>
+	<Status ErrorCode="0" TimeStamp="2013-09-30T23:33:56">
+		<Message>OK</Message>
+	</Status>
+	<Data Count="1">
+		<Record>
+		<HotelName>Grand 'Royal Panghegar</HotelName>
+		<SystemDate>2014-03-08T00:00:00</SystemDate>
+		<CurrentShift>2</CurrentShift>
+		<FaxNumber>022 4507071</FaxNumber>
+		<Phone>022 4507071</Phone>
+		<Email>info@panghegar.com</Email>
+		<Address>Bandung</Address>
+	</Record>
+	</Data>
+
+</PINS_APIResponse>

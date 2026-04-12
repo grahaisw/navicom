@@ -1,0 +1,58 @@
+div.viewbill {
+  height: 40px;
+  width: 80%;
+}
+
+div.title {
+  height: 40px;
+  width: 80%;
+  font-weight: bold;
+}
+
+div.total {
+  height: 40px;
+  width: 80%;
+  font-weight: bold;
+  text-align: right;
+}
+
+.divbg {
+    display: block;
+    background: #efefef;
+    padding: 5px;
+    white-space: nowrap;
+    text-align: left;
+}
+.divbgRight {
+    display: block;
+    background: #efefef;
+    padding: 5px;
+    white-space: nowrap;
+    text-align: right;
+}
+
+.date {
+    width: 30%; 
+}
+.title {
+    width: 60%; 
+}
+.price {
+    width: 10%;
+    text-align: right;
+}
+#divMessage
+{
+    position: relative;
+    /*width: 1170px;*/
+    height: 400px;
+    /*top: 220px;*/
+    overflow: hidden;
+    text-align: center;
+    /*white-space: nowrap;*/
+    text-overflow: ellipsis;
+    font-size: 18px;
+	color:#fff;
+	padding-top:10%;
+    background: #363636; 
+}

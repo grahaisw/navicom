@@ -1,0 +1,48 @@
+<html>
+<head>
+  <title>PMS Tester</title>
+  <style type="text/css" media="screen">
+    body {
+	font-family: Verdana;
+	font-size: 12px;
+	font-weight: bold;
+    }
+    
+    a {
+      color: blue;
+      text-decoration: none;
+    }
+    
+    a:visited {
+      color: blue;
+      text-decoration: none;
+    }
+    
+    a:hover {
+      color: red;
+      text-decoration: underline;
+    }
+    
+  </style>
+
+</head>
+<body>
+    <h2>POWER-PRO EVENT TESTER</h2>
+
+    1. <a href="http://localhost/navicom/pms/nis.php?Event=CHECKIN&Room=19010&ReservationID=19011&FirstName=Michael&LastName=Corleone&Salutation=Mr&Adult=1&InternetAccess=FULL&PhoneBlock=UNBAR&PayTV=FULL&Video=FULL&VIP=N&AllowedPost=Y">CHECK IN</a><br/><br/>
+    
+    2. <a href="http://192.168.0.2/navicom/pms/nis.php?&Event=CHECKOUT&Room=19010&ReservationID=19011">CHECK OUT</a><br/><br/>
+
+    3. <a href="http://192.168.0.2/navicom/pms/nis.php?&Event=ROOMCHANGE&Room=0201&ReservationID=19011&MoveFrom=19010">ROOM CHANGE</a><br/><br/>
+    
+    
+    4. <a href="http://192.168.0.2/navicom/pms/nis.php?&Event=GUESTCHANGE&Room=0201&ReservationID=19011&FirstName=Sendy&LastName=Abdullah&Salutation=Mr&Adult=1&InternetAccess=FULL&PhoneBlock=UNBAR&PayTV=FULL&Video=FULL&VIP=N&AllowedPost=Y">GUEST CHANGE</a><br/><br/>
+    
+    
+    5. <a href="#">TRANSACTION</a><br/><br/>
+    
+    
+    6. <a href="http://192.168.2.30/navicom/pms/pins.php?&Event=MSG&Room=1007&MessageCount=1">MESSAGE</a><br/><br/>
+
+</body>
+</html>

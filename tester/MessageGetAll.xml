@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<PINS_APIResponse>
+    <Status ErrorCode='0' TimeStamp='2014-06-04T16:14:58'>
+      <Message>OK</Message>
+    </Status>
+    <Data Count='10'>
+      <Record id="1">
+	<ReservationID>1</ReservationID>
+	<MessageID>3</MessageID>
+	<MessageFrom>Office</MessageFrom>
+	<Note>Please Call Office</Note>
+	<Status>O</Status>
+	<MessageDate>2013-09-30T17:10:01</MessageDate>
+	<Address />
+	<Phone />
+      </Record>
+      <Record id="2">
+	<ReservationID>1</ReservationID>
+	<MessageID>4</MessageID>
+	<MessageFrom>John Smith</MessageFrom>
+	<Note>lhadalah...</Note>
+	<Status>O</Status>
+	<MessageDate>2013-10-01T13:26:39</MessageDate>
+	<Address>Office</Address>
+	<Phone />
+      </Record>
+      
+      <Record id="3">
+	<ReservationID>1</ReservationID>
+	<MessageID>5</MessageID>
+	<MessageFrom>Zhang Wuji</MessageFrom>
+	<Note>Have you mastered Qiankun Da Nuoyi?</Note>
+	<Status>O</Status>
+	<MessageDate>2013-09-30T17:10:01</MessageDate>
+	<Address />
+	<Phone />
+      </Record>
+      <Record id="4">
+	<ReservationID>1</ReservationID>
+	<MessageID>6</MessageID>
+	<MessageFrom>Resi Durna</MessageFrom>
+	<Note>Udah makan belum?</Note>
+	<Status>O</Status>
+	<MessageDate>2013-10-01T13:26:39</MessageDate>
+	<Address>Office</Address>
+	<Phone />
+      </Record>
+      
+      <Record id="5">
+	<ReservationID>1</ReservationID>
+	<MessageID>7</MessageID>
+	<MessageFrom>Sri Rahayu</MessageFrom>
+	<Note>Have you mastered Qiankun Da Nuoyi?</Note>
+	<Status>O</Status>
+	<MessageDate>2013-09-30T17:10:01</MessageDate>
+	<Address />
+	<Phone />
+      </Record>
+      <Record id="6">
+	<ReservationID>1</ReservationID>
+	<MessageID>8</MessageID>
+	<MessageFrom>Bambang Ekalaya</MessageFrom>
+	<Note>Udah makan belum?</Note>
+	<Status>O</Status>
+	<MessageDate>2013-10-01T13:26:39</MessageDate>
+	<Address>Office</Address>
+	<Phone />
+      </Record>
+      
+      <Record id="7">
+	<ReservationID>1</ReservationID>
+	<MessageID>9</MessageID>
+	<MessageFrom>Dino Marino</MessageFrom>
+	<Note>Benvenuto</Note>
+	<Status>O</Status>
+	<MessageDate>2013-09-30T17:10:01</MessageDate>
+	<Address />
+	<Phone />
+      </Record>
+      <Record id="8">
+	<ReservationID>1</ReservationID>
+	<MessageID>10</MessageID>
+	<MessageFrom>Jeng Limbuk</MessageFrom>
+	<Note>Monggo dahar dumateng restoran...</Note>
+	<Status>O</Status>
+	<MessageDate>2013-10-01T13:26:39</MessageDate>
+	<Address>Office</Address>
+	<Phone />
+      </Record>
+      
+      <Record id="9">
+	<ReservationID>1</ReservationID>
+	<MessageID>11</MessageID>
+	<MessageFrom>Front Desk</MessageFrom>
+	<Note>Please contact Receptionist ASAP</Note>
+	<Status>O</Status>
+	<MessageDate>2013-09-30T17:10:01</MessageDate>
+	<Address />
+	<Phone />
+      </Record>
+      <Record id="10">
+	<ReservationID>1</ReservationID>
+	<MessageID>12</MessageID>
+	<MessageFrom>Mike Eruzione</MessageFrom>
+	<Note>Udah makan belum?</Note>
+	<Status>O</Status>
+	<MessageDate>2013-10-01T13:26:39</MessageDate>
+	<Address>Office</Address>
+	<Phone />
+      </Record>
+      
+    </Data>
+</PINS_APIResponse>

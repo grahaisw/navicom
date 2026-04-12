@@ -1,0 +1,166 @@
+body {
+    font: 100%/1.4 navicom-normal, jp, cn, kr;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    overflow: hidden;
+}
+
+
+a {
+    text-decoration: none;
+    display: block;
+    width: 330px;
+    height: 228px;
+    float: left;
+    margin: 0 3px 3px 0;
+    opacity: 1;
+/*    -webkit-transform: scale(1,1);
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: 250ms;
+    -moz-transform: scale(1,1);
+    -moz-transition-timing-function: ease-out;
+    -moz-transition-duration: 250ms; */
+}
+
+#apDiv2 {
+	position:absolute;
+	left:792px;
+	top:10px;
+	width:466px;
+	height:370px;
+	z-index:100;
+	opacity: 0.9;
+/*	background: url(../imageset/logo-legian1.png) top center no-repeat; */
+	background-size: auto 150px;
+}
+#apDiv3 {
+	position:absolute;
+	right:30px;
+	top: 170px; /* top:233px; */
+	width:555px;
+	height:345px;
+	padding: 10px 10px 10px 10px;
+	z-index:2;
+	opacity: 0.7; 
+	color: #fff;
+	/*background-color: #999;*/
+	font-family: navicom-normal, jp, cn, kr;
+	font-size: 20px;
+}
+#apDiv4 {
+	position:absolute;
+	left:30px;
+	top: 115px; /* top:233px; */
+	width:755px;
+	height:345px;
+	padding: 10px 10px 10px 10px;
+	z-index:20;
+	color: #333;
+	font-family: navicom-normal, jp, cn, kr;
+	font-size: 16px;
+	line-height: 20px;
+	text-align: justify
+}
+
+#divHomeClip {
+	position:absolute;
+	left:32px;
+	top:170px;
+	width: 612px;
+	height: 345px;
+	padding: 10px;
+/*	width:600px;
+	height:370px;	*/
+	z-index:1;
+	background: #999;
+}
+
+video#HomeClip {
+    width: 612px;
+}
+
+#posterLayer1{
+    position: absolute;
+    top: 620px;
+    right: 30px;
+    width: 575px;
+    height: 50px;
+    text-align: right;
+    color: #dead46;
+    font-size: 24px;
+    z-index: 10;
+    font-family: navicom-normal, jp, cn, kr;
+/*    background: #000; */
+}
+
+video#home { 
+    position: absolute; left: 0; top: 0;
+    width: 600px; height: auto; /* z-index: -100;*/
+    border: solid 1px #82087b;
+}
+
+#greetings {
+	position:absolute;
+	top:30px;
+	right:30px;
+	text-align:right;
+	color:#fff;
+	width:800px;
+	height:100px;
+	font-size:24px;
+	line-height:30px;
+}
+
+#hotspot {
+    position: absolute;
+    top:430px;
+    left: 910px;
+    color: #fff;
+    width: 170px;
+    height: 120px;
+    /*padding: 5px 20px;*/
+    opacity: 0.7;
+}
+
+#divWidget {
+	position: absolute;
+    top:165px;
+    right: 30px;
+    /*background-color: #fff;*/
+    width: 250px;
+    height: 80px;
+    opacity: 0.7;
+}
+
+#divWeather {
+	width: 200px;
+    height: 80px;
+	/*background-color: green;*/
+	/*float:left;*/
+}
+
+#divDate {
+	width: 120px;
+    height: 20px;
+	/*background-color: red;*/
+	/*float:right;*/
+	color:#fff;
+	text-align:right;
+	font-size:20px;
+	margin:-20px 0;
+}
+
+#divClock {
+	width: 120px;
+    height: 60px;
+	/*background-color: blue;*/
+	float:right;
+	color:#fff;
+	font-size:34px;
+	text-align:center;
+}
+
+#icon {
+	background: url('../../../media/images/weathers/256x256/weather.gif') 80px 75px;
+

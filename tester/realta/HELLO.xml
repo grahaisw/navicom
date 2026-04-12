@@ -1,0 +1,17 @@
+<PINS_APIResponse>
+	<Status ErrorCode="0" TimeStamp="2013-09-30T23:33:56">
+		<Message>OK</Message>
+	</Status>
+	<Data Count="1">
+		<Record>
+		<HotelName>Mercure Legian - Bali</HotelName>
+		<SystemDate>2014-11-03T00:00:00</SystemDate>
+		<CurrentShift>2</CurrentShift>
+		<FaxNumber>0361 4507071</FaxNumber>
+		<Phone>0361 4507071</Phone>
+		<Email>info@mercurelegian.com</Email>
+		<Address>Denpasar</Address>
+	</Record>
+	</Data>
+
+</PINS_APIResponse>

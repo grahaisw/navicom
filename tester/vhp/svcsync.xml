@@ -1,0 +1,34 @@
+<callback>
+<body>
+    <status>200</status>
+    <message>The request has succeeded</message>
+</body>
+<content>
+    <outlet id="101">
+	<data count="2">
+	    <record>
+		<code>100</code>
+		<name>Orange Squash</name>
+		<description>Special mixed by Watermark Chef</description>
+		<price>42000</price>
+	    </record>
+	    <record>
+		<code>102</code>
+		<name>Nasi Goreng Kambing</name>
+		<description>Watermark Sigs</description>
+		<price>86000</price>
+	    </record>
+	</data>
+    </outlet>
+    <outlet id="3A01">
+	<data count="1">
+	    <record>
+		<code>S001</code>
+		<name>Barong T-Shirt</name>
+		<description>Made by Joger</description>
+		<price>94000</price>
+	    </record>
+	</data>
+    </outlet>
+</content>
+</callback>

@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet type='text/xsl' href='http://detik.feedsportal.com/xsl/eng/rss.xsl'?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" version="2.0">
+<channel>
+    <title>FIDS</title>
+    <link></link>
+    <description>FIDS Schedule</description>
+    <language>en</language>
+    <pubDate>Wed, 17 Sep 2014 09:44:27 GMT</pubDate>
+    <lastBuildDate>Wed, 17 Sep 2014 09:44:27 GMT</lastBuildDate>
+    <ttl>30</ttl>
+    <item>
+        <airline>Garuda Indonesia</airline>
+        <flightnum>GA 778</flightnum>
+        <destination>Kuala Lumpur</destination>
+        <time>11:00</time>
+        <gate>5</gate>
+        <remarks>Final Call</remarks>
+    </item>
+    <item>
+        <airline>Garuda Indonesia</airline>
+        <flightnum>GA 213</flightnum>
+        <destination>Surabaya</destination>
+        <time>11:30</time>
+        <gate>2</gate>
+        <remarks>Boarding</remarks>
+    </item>
+    <item>
+        <airline>Air Asia</airline>
+        <flightnum>QZ 9952</flightnum>
+        <destination>Denpasar</destination>
+        <time>11:45</time>
+        <gate>1</gate>
+        <remarks>Boarding</remarks>
+    </item>
+    <item>
+        <airline>Lion Air</airline>
+        <flightnum>JT 255</flightnum>
+        <destination>Balikpapan</destination>
+        <time>12:00</time>
+        <gate>8</gate>
+        <remarks>Gate Open</remarks>
+    </item>
+    <item>
+        <airline>Garuda Indonesia</airline>
+        <flightnum>GA 778</flightnum>
+        <destination>Kuala Lumpur</destination>
+        <time>11:00</time>
+        <gate>5</gate>
+        <remarks>Final Call</remarks>
+    </item>
+    <item>
+        <airline>Garuda Indonesia</airline>
+        <flightnum>GA 213</flightnum>
+        <destination>Surabaya</destination>
+        <time>11:30</time>
+        <gate>2</gate>
+        <remarks>Boarding</remarks>
+    </item>
+    <item>
+        <airline>Air Asia</airline>
+        <flightnum>QZ 9952</flightnum>
+        <destination>Denpasar</destination>
+        <time>11:45</time>
+        <gate>1</gate>
+        <remarks>Boarding</remarks>
+    </item>
+    <item>
+        <airline>Lion Air</airline>
+        <flightnum>JT 255</flightnum>
+        <destination>Balikpapan</destination>
+        <time>12:00</time>
+        <gate>8</gate>
+        <remarks>Gate Open</remarks>
+    </item>
+    <item>
+        <airline>Garuda Indonesia</airline>
+        <flightnum>GA 778</flightnum>
+        <destination>Kuala Lumpur</destination>
+        <time>11:00</time>
+        <gate>5</gate>
+        <remarks>Final Call</remarks>
+    </item>
+    <item>
+        <airline>Garuda Indonesia</airline>
+        <flightnum>GA 213</flightnum>
+        <destination>Surabaya</destination>
+        <time>11:30</time>
+        <gate>2</gate>
+        <remarks>Boarding</remarks>
+    </item>
+    <item>
+        <airline>Air Asia</airline>
+        <flightnum>QZ 9952</flightnum>
+        <destination>Denpasar</destination>
+        <time>11:45</time>
+        <gate>1</gate>
+        <remarks>Boarding</remarks>
+    </item>
+    <item>
+        <airline>Lion Air</airline>
+        <flightnum>JT 255</flightnum>
+        <destination>Balikpapan</destination>
+        <time>12:00</time>
+        <gate>8</gate>
+        <remarks>Gate Open</remarks>
+    </item>
+</channel>
+</rss>

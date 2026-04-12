@@ -1,0 +1,467 @@
+body {
+    font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #000;
+    overflow: hidden;
+}
+
+video {
+    
+}
+
+/* ori size 
+ * 
+.divVideoContainer
+{
+    position: absolute;
+    width: 750px;
+    height: 450px;
+    left:40px;
+    top:20px;
+    z-index:31;
+
+}
+
+.mediaPlayIcon
+{
+    position: absolute;
+    width: 750px;
+    height: 450px;
+    background: url(../imageset/playvideo.png) no-repeat;
+}
+*/
+
+.divVideoContainer
+{
+    position: absolute;
+    width: 1280px;
+    height: 720px;
+    left:0px;
+    top:0px;
+    z-index:-100;
+    opacity: 0;
+
+}
+
+.mediaPlayIcon
+{
+    position: absolute;
+    width: 1280px;
+    height: 720px;
+    background: url(../imageset/playvideo.png) no-repeat;
+}
+
+.seekingIconssb
+{
+    position: absolute;
+    width: 115px;
+    height: 52px;
+    left: 10px;
+    top: 364px;
+    font-size: 28px;
+    text-align: right;
+    line-height: 53px;
+    background-repeat: no-repeat;
+}
+
+.seekingIconssf
+{
+    position: absolute;
+    width: 115px;
+    height: 52px;
+    left: 610px;
+    top: 364px;
+    font-size: 28px;
+    text-align: right;
+    line-height: 53px;
+    background-repeat: no-repeat;
+}
+
+.divLoading
+{
+    position: absolute;
+    width: 54px;
+    height: 54px;
+    left: 342px;
+    top: 200px;
+    z-index: 10;
+}
+
+.videoControl
+{
+    width: 1280px;
+    height: 720px;
+/*    border: solid 1px #fff; 
+    background: #000;*/
+}
+
+#divChannelList {
+	position:absolute;
+	left:0px;
+	top:548px;
+	width:1200px;
+	height:235px;
+	z-index:6;
+	text-align: center;
+	/*background-color: #CC6600;*/
+}
+.divChannelTitle {
+    position: absolute;
+    left: 0px;
+    padding-top: 10px;
+    top: -50px;
+    width: 136px;
+    height: 50px;
+    color: #fff;
+    text-shadow: 2px 2px #2c2a2a;
+    /*background: #000 url(../imageset/tooltip.png) top no-repeat;*/
+    text-align: center;
+    font-size: 18px;
+    /*font-weight: bold;*/
+    opacity: 0;
+}
+
+#divChannelListHeader
+{
+    position: absolute;
+    width: 370px;
+    height: 40px;
+}
+#divChannelListItems
+{
+    /*position: absolute;*/
+    width: 1280px;
+    height: 140px;
+    top: 0px; 
+/*        border: 1px solid green; */
+    text-align: center;
+    /*display: flex;
+    justify-content: center; */
+	/*left: 99px;*/
+}
+
+#divFullScreenControl
+{
+    position: absolute;
+    width: 1152px;
+    height: 102px;
+    top: 0px;
+    background: url(../imageset/fullbg.png);
+    z-index:22;
+}
+
+.displayNone
+{
+    display: none;
+}
+
+
+#divCurrentChannelName
+{
+    position: absolute;
+    width: 1280px;
+    height: 40px;
+    font-size: 20px;
+    text-shadow: 2px 2px #2c2a2a;
+    left: 10px;
+    line-height: 44px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: left;
+    z-index: 25;
+    color: #fff;
+/*    background: green;
+    text-align: right; */
+}
+
+#divCurrentChannelDesc
+{
+    position: absolute;
+    width: 700px;
+    height: 330px;
+    font-size: 18px;
+    left: 10px;
+    line-height: 44px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    z-index: 25;
+/*    text-align: right;*/
+    top: 40px;
+}
+
+#divCurrentChannelNameContainer
+{
+    position: absolute;
+    width: 1280px;
+    height: 50px;
+    top: 480px;
+    left: 0px;
+/*    background: #000;*/
+    z-index: 24;
+    opacity: 0.9;
+}
+
+#divInfoTxt
+{
+    position: absolute;
+    width: 300px;
+    height: 30px;
+    left: 850px;
+    font-size: 20px;
+    top: 70px;
+    color: #777070;
+}
+
+.spanChannlItem {
+    opacity: .6; 
+    width: 136px;
+    display: inline-block;
+    /*height: 120px;*/
+    /*float: left;*/
+    z-index: 98;
+    position: relative;
+}
+
+.channelFocus
+{
+    background: url(../imageset/stroke.png) top no-repeat; 
+    opacity: 1;
+    width: 136px;
+    height: 136px;
+    color: black;
+/*    Zoom In Effect     
+    -webkit-transform: scale(1.1,1.1);
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: 250ms;
+    -moz-transform: scale(1.1,1.1);
+    -moz-transition-timing-function: ease-out;
+    -moz-transition-duration: 250ms;
+    position: relative; */
+    z-index: 99; 
+}
+
+.channelFocus #Title {
+  opacity: 1;
+}
+
+a {
+    text-decoration: none;
+    display: block;
+    width: 330px;
+    height: 228px;
+    float: left;
+    margin: 0 3px 3px 0;
+    opacity: 1;
+/*    -webkit-transform: scale(1,1);
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: 250ms;
+    -moz-transform: scale(1,1);
+    -moz-transition-timing-function: ease-out;
+    -moz-transition-duration: 250ms; */
+}
+
+#apDiv3 {
+	position:absolute;
+	left:20px;
+	top: 120px; /* top:233px; */
+	width:535px;
+	height:300px;
+	padding: 10px;
+	z-index:2;
+	opacity: 0.7;
+	color: #fff;
+	font-size: 16px;
+	background-color: #000; 
+}
+/*
+#posterLayer{
+    position:absolute;
+    left:0px;
+    top: 0px;
+    width:1280px;
+    height:85px;
+    z-index:2;
+    opacity: 0.7;
+    border-bottom: solid 1px #d39a00;
+    background-color: #fff;
+    color: #000;
+}
+*/
+#welcomeText {
+    position: absolute;
+    top: 60px;
+    left: 170px;
+    /*height: 40px;*/
+    /*width: 850px;*/
+    font-size: 24px;
+    font-weight: bold;
+    /*font-family: Arial;*/
+    color: #fff;
+    /*background: red; */
+    z-index: 4;
+	text-align: right;
+    padding: 5px 10px;
+    background: #FF6A1B;border-radius: 5px;
+
+}
+#guestName {
+    position: absolute;
+    top: 65px;
+    right: 30px;
+    width: 550px;
+    height: 40px;
+    font-size: 24px;
+    font-weight: bold;
+    /*font-family: Arial;*/
+    color: #fff;
+/*    background: green; */
+    z-index: 5;
+	text-align: right;
+}
+#divLogo {
+    position: absolute;
+    top: 30px;
+    left: 48px;
+    width: 100px;
+    height: 100px;
+
+    z-index: 10;
+    
+/*    border-radius:5px;
+   -webkit-box-shadow:inset 1px 1px 1px 1px #D1CFBE;
+box-shadow:inset 1px 1px 1px 1px #D1CFBE; */
+}
+#divLogo img{
+    width:95%;
+    overflow:hidden;
+    padding:5px;
+}
+video#home { 
+    position: absolute; left: 0; top: 0;
+    width: 600px; height: auto; /* z-index: -100;*/
+    border: solid 1px #82087b;
+}
+#divGuideContainer {
+    position: absolute;
+    top: 302px;
+    left: 920px;
+    width: 350px;
+    height: 180px;
+    background: #000;
+    opacity: .8;
+    padding-top: 10px;
+}
+.divEmpatLima {
+    position: absolute;
+    width: 555px;
+    left: 930px;
+    top: 25px;
+    height: 30px;
+    padding-left: 0px;
+    padding-top: 10px;
+    z-index: 20;
+    opacity: 0.6;
+    color: #fff;
+    font-size: 14px;
+/*    background-color: #000; */
+}
+#apDiv4 {
+	position:absolute;
+	left:870px;
+	top: 150px; /* top:233px; */
+	width:300px;
+	height:300px;
+	padding: 20px;
+	z-index:5;
+/*	border-bottom: solid 1px #ccc; 
+	background: #ccc; */
+}
+button {
+    margin-left: 25px;
+}
+button.btnRed {
+    width: 20px;
+    height: 10px;
+    background: red;
+}
+button.btnGreen {
+    width: 20px;
+    height: 10px;
+    background: green;
+}
+button.btnYellow {
+    width: 20px;
+    height: 10px;
+    background: yellow;
+}
+button.btnCyan {
+    width: 30px;
+    height: 10px;
+    background: cyan;
+}
+#posterLayer{
+	position:absolute;
+	left:0px;
+	top: 10px; /* top:233px; */
+	width:1280px;
+	height:145px;
+    /*    padding: 20px; */
+	z-index:2; 
+	opacity: 0.3;
+	border-bottom: solid 1px #d39a00;
+	background-color: #fff; 
+	color: #000;
+    }
+
+#hotspot {
+    position: absolute;
+    top:190px;
+    left: 1030px;
+    color: #fff;
+    width: 170px;
+    height: 120px;
+    padding: 5px 20px;
+    opacity: 0.7;
+}
+
+#divWidget {
+	position: absolute;
+    top:15px;
+    right: 30px;
+    /*background-color: #fff;*/
+    width: 250px;
+    height: 80px;
+    opacity: 0.7;
+}
+
+#divWeather {
+	width: 120px;
+    height: 80px;
+	/*background-color: green;*/
+	float:left;
+}
+
+#divDate {
+	width: 120px;
+    height: 20px;
+	/*background-color: red;*/
+	float:right;
+	color:#fff;
+	text-align:center;
+}
+
+#divClock {
+	width: 120px;
+    height: 60px;
+	/*background-color: blue;*/
+	float:right;
+	color:#fff;
+	font-size:34px;
+	text-align:center;
+}
+
+#icon {
+	background: url('../../../media/images/weathers/256x256/weather.gif') 80px 75px;
+}

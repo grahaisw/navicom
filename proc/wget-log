@@ -1,0 +1,40 @@
+--2018-01-10 12:12:18--  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Retrying.
+
+--2018-01-10 12:27:19--  (try: 2)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Retrying.
+
+--2018-01-10 12:42:21--  (try: 3)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Retrying.
+
+--2018-01-10 12:57:24--  (try: 4)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Retrying.
+
+--2018-01-10 13:12:28--  (try: 5)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... Read error (Connection timed out) in headers.
+Retrying.
+
+--2018-01-10 13:27:33--  (try: 6)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... No data received.
+Retrying.
+
+--2018-01-10 13:38:43--  (try: 7)  http://192.168.200.215/sub/?id=status
+Connecting to 192.168.200.215:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 52 [application/json]
+Saving to: ‘index.html?id=status’
+
+     0K                                                       100% 5.79M=0s
+
+2018-01-10 13:39:03 (5.79 MB/s) - ‘index.html?id=status’ saved [52/52]
+

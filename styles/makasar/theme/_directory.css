@@ -1,0 +1,49 @@
+body {
+    color: #fff;
+    font-family: Myriad Pro, Arial, Verdana;
+    text-align: center;
+    margin:0px;
+}
+
+#crossfading{position:absolute; color: #fff; font-size:20px; text-align:left;}
+#crossfading div{position:absolute; top:0px; left:0px; width:1280px; height:720px; display:none;}
+/* #crossfading img {border: solid 1px #b71396;} */
+#crossfading span {
+    padding:5px
+}
+
+#crossfading img.title_shadow {
+    position:absolute; 
+    top:0px; 
+    left:0px; 
+    width:548px; 
+    height:263px; 
+    border: solid 1px red; 
+}
+#crossfading span.content {
+    position:absolute; 
+    top:150px; 
+    left:50px;
+    width:350px; 
+    height:440px;
+    text-align: right;
+}
+#crossfading span.media {
+    position:absolute; 
+    top:100px; 
+    right:50px; 
+    width:600px; 
+    height:260px; 
+    border: solid 1px #87690c; 
+}
+
+#crossfading h2 {text-align:left; left:20px;}
+
+#crossfading span.title {
+    position:absolute; 
+    top:10px; 
+    left:50px; 
+    width:700px; 
+    height:440px; 
+/*    border: solid 1px #b71396; */
+}
