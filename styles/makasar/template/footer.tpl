@@ -474,16 +474,141 @@
 
 <script type="text/javascript" language="javascript" src="{T_JS_PATH}emergency.js"></script>
 <script type="text/javascript">
-	window.setInterval("checkEmergency()", 5000);
-	//window.setInterval("stopEmergency()", 1000);
-	window.setInterval("checkRunningtext()", 60000);
-	window.setInterval("checkFlightStatus()", 2000);
-	
-	
-	var myFIDS;
-	var list = new Array();
-	var notif_duration;
-	var flag = 0;
+	// // alert("X");
+	// console.log("X");
+	// console.log("Graha Test...");
+	// window.setInterval("checkEmergency()", 5000);
+	// //window.setInterval("stopEmergency()", 1000);
+	// window.setInterval("checkRunningtext()", 60000);
+	// window.setInterval("checkFlightStatus()", 2000);
+	//
+	// var myFIDS;
+	// var list = new Array();
+	// var notif_duration;
+	// var flag = 0;
+	//
+	// // --- WebSocket FIDS Integration ---
+	// var fidsSocket = null;
+	// var fidsSocketReconnectDelay = 5000;
+	//
+	// function formatTime(isoString) {
+	// 	if (!isoString) return '';
+	// 	try {
+	// 		var d = new Date(isoString);
+	// 		var h = ('0' + d.getHours()).slice(-2);
+	// 		var m = ('0' + d.getMinutes()).slice(-2);
+	// 		return h + ':' + m;
+	// 	} catch (e) {
+	// 		return isoString;
+	// 	}
+	// }
+	//
+	// function sendLogToSTB(msg) {
+	// 	$.ajax({
+	// 		url: 'ajax.php?mod=stb_log',
+	// 		type: 'POST',
+	// 		data: { msg: msg },
+	// 		success: function() {
+	// 			console.log("Remote log sent");
+	// 		}
+	// 	});
+	// }
+	//
+	// window.onerror = function(message, source, lineno, colno, error) {
+	// 	var errorDetail = "JS_ERROR: " + message + " | Source: " + source + " | Line: " + lineno + " | Column: " + colno + " | Error: " + error;
+	// 	sendLogToSTB(errorDetail);
+	// };
+	//
+	// function connectFidsWebSocket() {
+	// 	if (fidsSocket && (fidsSocket.readyState === WebSocket.CONNECTING || fidsSocket.readyState === WebSocket.OPEN)) {
+	// 		return;
+	// 	}
+	//
+	// 	const fidsSocketUrl = 'ws://192.168.1.149:8888';
+	// 	fidsSocket = new WebSocket(fidsSocketUrl);
+	//
+	// 	fidsSocket.onopen = function() {
+	// 		console.log('[FIDS WS] Connected to ws://192.168.1.149:8888');
+	// 		sendLogToSTB("WS_CONNECTED: Terhubung ke " + fidsSocketUrl);
+	// 	};
+	//
+	// 	fidsSocket.onmessage = function(event) {
+	// 		try {
+	// 			var data = JSON.parse(event.data);
+	//
+	// 			// Normalize flight number (strip non-alphanumeric, matching normalizeFlightNumber)
+	// 			var flightNo = (data.callsign || '').replace(/[^A-Za-z0-9]/g, '');
+	// 			console.log('Flight No : '+ 'flight-' + flightNo);
+	// 			var row = document.getElementById('flight-' + flightNo);
+	//
+	// 			if (!row) {
+	// 				console.log('[FIDS WS] No row found for flight: ' + flightNo);
+	// 				sendLogToSTB('[FIDS WS] No row found for flight: ' + flightNo);
+	// 				return;
+	// 			} else {
+	// 				console.log('ID : '+data.id);
+	// 				console.log('Callsign : '+data.callsign);
+	// 				console.log('Airline : '+data.airline);
+	// 				console.log('Airport : '+data.airport3);
+	// 				console.log('Status : '+data.ad);
+	//
+	// 				sendLogToSTB('ID : '+data.id);
+	// 				sendLogToSTB('Callsign : '+data.callsign);
+	// 				sendLogToSTB('Airline : '+data.airline);
+	// 				sendLogToSTB('Airport : '+data.airport3);
+	// 				sendLogToSTB('Status : '+data.ad);
+	// 			}
+	//
+	// 			var airlineElem   = row.querySelector('.flight-airline');
+	// 			var statusElem    = row.querySelector('.flight-status');
+	// 			var timeElem      = row.querySelector('.flight-time');
+	// 			var destElem      = row.querySelector('.flight-destination');
+	//
+	// 			if (airlineElem && data.airline) {
+	// 				airlineElem.innerText = data.airline;
+	// 			}
+	// 			if (destElem && data.airport3) {
+	// 				destElem.innerText = data.airport3;
+	// 			}
+	// 			if (timeElem) {
+	// 				var displayTime = data.est ? data.est : formatTime(data.time);
+	// 				if (displayTime) timeElem.innerText = displayTime;
+	// 			}
+	// 			if (statusElem && data.ad) {
+	// 				statusElem.innerText = data.ad;
+	// 				statusElem.style.color = '#d59349';
+	// 			}
+	//
+	// 		} catch (e) {
+	// 			console.error('[FIDS WS] Failed to parse message:', e, event.data);
+	// 			sendLogToSTB('[FIDS WS] Failed to parse message:', e, event.data);
+	// 		}
+	// 	};
+	//
+	// 	fidsSocket.onerror = function(e) {
+	// 		console.error('[FIDS WS] WebSocket error:', e);
+	// 		sendLogToSTB("WS_ERROR: Gagal terhubung ke " + fidsSocketUrl + ". Cek Firewall/IP.");
+	// 		sendLogToSTB("WS_ERROR: " + e);
+	// 	};
+	//
+	// 	fidsSocket.onclose = function() {
+	// 		console.warn('[FIDS WS] Connection closed. Reconnecting in ' + (fidsSocketReconnectDelay / 1000) + 's...');
+	// 		sendLogToSTB("WS_CLOSED: Koneksi terputus.");
+	// 		setTimeout(connectFidsWebSocket, fidsSocketReconnectDelay);
+	// 	};
+	// }
+	//
+	// // Start WebSocket connection when the page loads
+	// document.addEventListener('DOMContentLoaded', function() {
+	// 	console.log("Document ready...");
+	// 	sendLogToSTB("Document ready...");
+	// 	if (document.querySelector('.flight-row')) {
+	// 		console.log("Start connecting...");
+	// 		sendLogToSTB("Start connecting...");
+	// 		connectFidsWebSocket();
+	// 	}
+	// });
+	// --- End WebSocket FIDS Integration ---
 	
 	//var dur = $("#notif_duration").val();
 	//var duration = parseInt(dur) * 1000;

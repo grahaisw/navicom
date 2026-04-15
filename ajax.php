@@ -768,7 +768,40 @@ if($mod == "scheduled_promo") {
     print_r($sql);
     echo $sql;
 	
-} 
+} else if($mod == "stb_log") {
+//	$message = isset($_POST['msg']) ? $_POST['msg'] : 'No message';
+//	$ip = (isset($_SERVER['REMOTE_ADDR'])) ? $_SERVER['REMOTE_ADDR'] : 'Unknown IP';
+//	$timestamp = date("Y-m-d H:i:s");
+//
+//	// Format pesan: [Waktu] [IP STB] Pesan
+//	$log_entry = "[$timestamp] [$ip] $message" . PHP_EOL;
+//
+//	// Simpan ke file stb_debug.log di folder yang sama dengan ajax.php
+//	// Pastikan folder web Anda memiliki izin (permission) untuk menulis file
+//	file_put_contents('stb_debug.log', $log_entry, FILE_APPEND);
+//
+//	echo "Log Saved";
+
+//	// Ambil dari POST, jika kosong coba ambil dari raw input
+//	$message = isset($_POST['msg']) ? $_POST['msg'] : file_get_contents('php://input');
+//
+//	// Jika masih kosong, mungkin data terkirim via GET
+//	if(empty($message)) { $message = $_GET['msg']; }
+//
+//	$ip = (isset($_SERVER['REMOTE_ADDR'])) ? $_SERVER['REMOTE_ADDR'] : 'Unknown IP';
+//	$log_entry = "[" . date("Y-m-d H:i:s") . "] [$ip] $message" . PHP_EOL;
+//	file_put_contents('stb_debug.log', $log_entry, FILE_APPEND);
+//	echo "Log Saved";
+
+	// Cek GET dulu, lalu POST
+	$message = isset($_GET['msg']) ? $_GET['msg'] : (isset($_POST['msg']) ? $_POST['msg'] : 'EMPTY_MSG');
+
+	$ip = (isset($_SERVER['REMOTE_ADDR'])) ? $_SERVER['REMOTE_ADDR'] : 'Unknown IP';
+	$agent = $_SERVER['HTTP_USER_AGENT'];
+	$log_entry = "[" . date("Y-m-d H:i:s") . "] [$ip] [$agent] $message" . PHP_EOL;
+	file_put_contents('stb_debug.log', $log_entry, FILE_APPEND);
+	echo "OK";
+}
 function checkOnline($domain) {
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $domain);

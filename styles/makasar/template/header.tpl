@@ -251,28 +251,40 @@
 <script src="{T_THEME_PATH}/home_config_document.js" type="text/javascript"></script>
 
 <script type="text/javascript">
+	if (typeof media === 'undefined') { var media = {}; }
+	if (typeof media._object === 'undefined') {
+		media._object = {
+			Fn_Play_Pause: function() { console.log('Mock Play/Pause'); },
+			Fn_Up_KeyDownHandler: function() {},
+			Fn_Down_KeyDownHandler: function() {}
+		};
+	}
+
+	// Proteksi variabel timeDisplay yang hilang di index.php
+	if (typeof timeDisplay === 'undefined') { var timeDisplay = function() {}; }
+
     window.onload = function () {
-	//hcap.channel.stopCurrentChannel();
-	//media._object.Fn_Play_Pause();
-	media._object.Fn_Right_KeyDownHandler();
-	//media._object.Fn_Right_KeyDownHandler();
-	media._object.Fn_Left_KeyDownHandler();
-	timeDisplay.dtetimer();
+		//hcap.channel.stopCurrentChannel();
+		//media._object.Fn_Play_Pause();
+		media._object.Fn_Right_KeyDownHandler();
+		//media._object.Fn_Right_KeyDownHandler();
+		media._object.Fn_Left_KeyDownHandler();
+		// timeDisplay.dtetimer();
 
-	divChannelListObj = doc.getElementById("channelList");
-	divChannelListObj.appendChild(initCreate());
+		divChannelListObj = doc.getElementById("channelList");
+		divChannelListObj.appendChild(initCreate());
 
-	currentChannelDisplayObj = doc.getElementById("currentChannelDisplay");
-	currentChannelDisplayObj.innerHTML = (channelIndex + 1) + "/" + maxChannel;
+		currentChannelDisplayObj = doc.getElementById("currentChannelDisplay");
+		currentChannelDisplayObj.innerHTML = (channelIndex + 1) + "/" + maxChannel;
 
-	channelNameObj = doc.getElementsByName("channelName");
-	infoPlayChanobj = doc.getElementById("nowPlayingChannel");
-	divChandescobj = doc.getElementById("channelDesc");
-	footerObj = doc.getElementById("footer");
-	//playButObj = doc.getElementById("playBut");
-	video = doc.getElementById("media");
-	video.pause();
-	doc.addEventListener("keydown", navigation, true);
+		channelNameObj = doc.getElementsByName("channelName");
+		infoPlayChanobj = doc.getElementById("nowPlayingChannel");
+		divChandescobj = doc.getElementById("channelDesc");
+		footerObj = doc.getElementById("footer");
+		//playButObj = doc.getElementById("playBut");
+		video = doc.getElementById("media");
+		video.pause();
+		doc.addEventListener("keydown", navigation, true);
 
     }
 </script>
@@ -317,10 +329,10 @@
 <script type="text/javascript">
     window.onload = function () {
 
-	media._object.Fn_Play_Pause();
+	// media._object.Fn_Play_Pause();
 	media._object.Fn_Right_KeyDownHandler();
 	media._object.Fn_Left_KeyDownHandler();
-	timeDisplay.dtetimer();
+	// timeDisplay.dtetimer();
 
 	divChannelListObj = doc.getElementById("channelList");
 	divChannelListObj.appendChild(initCreate());
@@ -1991,24 +2003,24 @@ document.onkeydown = KeyPress;
 <script src="{T_THEME_PATH}/flight_config_document.js" type="text/javascript"></script>
 <script type="text/javascript">
     window.onload = function () {
-	media._object.Fn_Play_Pause();
-	media._object.Fn_Right_KeyDownHandler();
-	media._object.Fn_Left_KeyDownHandler();
-	timeDisplay.dtetimer();
-
-	divChannelListObj = doc.getElementById("channelList");
-	divChannelListObj.appendChild(initCreate());
-
-	currentChannelDisplayObj = doc.getElementById("currentChannelDisplay");
-	currentChannelDisplayObj.innerHTML = (channelIndex + 1) + "/" + maxChannel;
-
-	channelNameObj = doc.getElementsByName("channelName");
-	infoPlayChanobj = doc.getElementById("nowPlayingChannel");
-	divChandescobj = doc.getElementById("channelDesc");
-	footerObj = doc.getElementById("footer");
-	//playButObj = doc.getElementById("playBut");
-	video = doc.getElementById("media");
-	doc.addEventListener("keydown", navigation, true);
+	// media._object.Fn_Play_Pause();
+	// media._object.Fn_Right_KeyDownHandler();
+	// media._object.Fn_Left_KeyDownHandler();
+	// timeDisplay.dtetimer();
+	//
+	// divChannelListObj = doc.getElementById("channelList");
+	// divChannelListObj.appendChild(initCreate());
+	//
+	// currentChannelDisplayObj = doc.getElementById("currentChannelDisplay");
+	// currentChannelDisplayObj.innerHTML = (channelIndex + 1) + "/" + maxChannel;
+	//
+	// channelNameObj = doc.getElementsByName("channelName");
+	// infoPlayChanobj = doc.getElementById("nowPlayingChannel");
+	// divChandescobj = doc.getElementById("channelDesc");
+	// footerObj = doc.getElementById("footer");
+	// //playButObj = doc.getElementById("playBut");
+	// video = doc.getElementById("media");
+	// doc.addEventListener("keydown", navigation, true);
     }
 </script>
 

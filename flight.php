@@ -70,7 +70,7 @@ if ( !empty($aid) || $airports_count == 1 ) {
     $db->sql_freeresult($result);
     
     //echo $airport_code . '--'. $airport_name; exit;
-    $sql ='SELECT * FROM ' . AIRPORT_FIDS_TABLE . ' WHERE fids_type=' . $type . 'AND airport_id=' . $aid;;
+    $sql ='SELECT * FROM ' . AIRPORT_FIDS_TABLE . ' WHERE fids_type=' . $type . ' AND airport_id=' . $aid;;
     //echo $sql; exit;
     $result = $db->sql_query($sql);
     

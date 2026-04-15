@@ -45,15 +45,24 @@ mediaPlayer.prototype.scrolltop = parseFloat(390 / (channelListArray.length - 1)
 
 /* Channel List Initial creation */
 mediaPlayer.prototype.initCreate = function () {
-    media.channelObjlen = (media._object.channelListLength > 8) ? 8 : media._object.channelListLength;
+    // console.log("flight.js");
+    // console.log("channelListObject : "+$(media.channelListObj).html());
+
+    var elements = document.querySelectorAll('.flight-row');
+    var i = 0;
     var _div = "";
-    for (var i = 0; i < media.channelObjlen; i++) {
+    for (var j = 0; j < elements.length; j++) {
+        var el = elements[j];
+        console.log("Current Class:", el.className);
+        media.channelObjlen = (media._object.channelListLength > 8) ? 8 : media._object.channelListLength;
+        console.log("i : "+i);
         if (i == 0) {
-            _div += "<div id='divChannelListItem_" + i + "' cItem='" + i + "' onmouseover='media.JS_MouseOverFunction(this," + i + ")' class='divChannelItems channelFocus' ><span class='spanChannlItem'>" + channelListArray[i][0] + "</span><span class='spanChannlItem2'>" + channelListArray[i][1] + "</span><span class='spanChannlItem3'>" + channelListArray[i][2] + "</span><span class='spanChannlItem4'>" + channelListArray[i][4] + "</span><span class='spanChannlItem5'>" + channelListArray[i][5] + channelListArray[i][6] + "</span><span class='spanChannlItem6'>" + channelListArray[i][7] + "</span></div>";
+            _div += "<div class='"+ el.className + " channelFocus' id='divChannelListItem_" + i + "' cItem='" + i + "' onmouseover='media.JS_MouseOverFunction(this," + i + ")'><span class='spanChannlItem flight-airline'>" + channelListArray[i][0] + "</span><span class='spanChannlItem2'>" + channelListArray[i][1] + "</span><span class='spanChannlItem3 flight-destination'>" + channelListArray[i][2] + "</span><span class='spanChannlItem4 flight-time'>" + channelListArray[i][4] + "</span><span class='spanChannlItem5'>" + channelListArray[i][5] + channelListArray[i][6] + "</span><span class='spanChannlItem6 flight-status'>" + channelListArray[i][7] + "</span></div>";
         } else {
-            _div += "<div id='divChannelListItem_" + i + "' cItem='" + i + "' onmouseover='media.JS_MouseOverFunction(this," + i + ")' class='divChannelItems' ><span class='spanChannlItem'>" + channelListArray[i][0] + "</span><span class='spanChannlItem2'>" + channelListArray[i][1] + "</span><span class='spanChannlItem3'>" + channelListArray[i][2] + "</span><span class='spanChannlItem4'>" + channelListArray[i][4] + "</span><span class='spanChannlItem5'>" + channelListArray[i][5] + channelListArray[i][6] + "</span><span class='spanChannlItem6'>" + channelListArray[i][7] + "</span></div>";
+            _div += "<div class='"+ el.className +"' id='divChannelListItem_" + i + "' cItem='" + i + "' onmouseover='media.JS_MouseOverFunction(this," + i + ")'><span class='spanChannlItem flight-airline'>" + channelListArray[i][0] + "</span><span class='spanChannlItem2'>" + channelListArray[i][1] + "</span><span class='spanChannlItem3 flight-destination'>" + channelListArray[i][2] + "</span><span class='spanChannlItem4 flight-time'>" + channelListArray[i][4] + "</span><span class='spanChannlItem5'>" + channelListArray[i][5] + channelListArray[i][6] + "</span><span class='spanChannlItem6 flight-status'>" + channelListArray[i][7] + "</span></div>";
         };
-    };
+        i++;
+    }
     $(media.channelListObj).html(_div);
     for (var i = 0; i < media.channelObjlen; i++) {
         media.channelListObject[i] = $("#divChannelListItem_" + i);
@@ -78,7 +87,7 @@ mediaPlayer.prototype.Fn_Up_KeyDownHandler = function () {
         top += "px";
         $("#DV_Scrollshaft").css("top", top);
     };
-    if (channelListArray[media.channelIndex][3] == 0) {
+    if (channelListArray[media.channelIndex][3] === 0) {
         media._loadEvents = true;
     } else {
         media._loadEvents = false;

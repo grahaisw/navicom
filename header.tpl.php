@@ -150,8 +150,7 @@
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
 
-<?php if ($this->_rootref['S_HOME']) {  ?>
-
+<?php if ($this->_rootref['S_HOME']) {  ?>
 <meta http-equiv="refresh" content="5; url=tv_channel.php?" />
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/home.css" rel="stylesheet" type="text/css" />
 <script>
@@ -169,20 +168,17 @@
   });
 </script>
 
-<?php } if ($this->_rootref['S_HOME_GROUP']) {  ?>
-
+<?php } if ($this->_rootref['S_HOME_GROUP']) {  ?>
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/hcap.js" type="text/javascript"></script>
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/log.js" type="text/javascript"></script>
 <script type="text/javascript">
     var channelListArray = [
-        <?php $_menu_count = (isset($this->_tpldata['menu'])) ? sizeof($this->_tpldata['menu']) : 0;if ($_menu_count) {for ($_menu_i = 0; $_menu_i < $_menu_count; ++$_menu_i){$_menu_val = &$this->_tpldata['menu'][$_menu_i]; ?>
-
+        <?php $_menu_count = (isset($this->_tpldata['menu'])) ? sizeof($this->_tpldata['menu']) : 0;if ($_menu_count) {for ($_menu_i = 0; $_menu_i < $_menu_count; ++$_menu_i){$_menu_val = &$this->_tpldata['menu'][$_menu_i]; ?>
 /*      ["<?php echo $_menu_val['S_MENU_TITLE']; ?>", "<?php echo $_menu_val['S_MENU_DESCRIPTION1']; ?>","<?php echo $_menu_val['S_MENU_DESCRIPTION2']; ?>", 0,
         "<?php echo (isset($this->_rootref['T_IMAGESET_PATH'])) ? $this->_rootref['T_IMAGESET_PATH'] : ''; ?>/160x160/<?php echo $_menu_val['S_MENU_THUMBNAIL']; ?>", "<?php echo $_menu_val['S_MENU_URL']; ?>", "<?php echo $_menu_val['S_ID']; ?>"],*/
         ["<?php echo $_menu_val['S_MENU_TITLE']; ?>", "<?php echo $_menu_val['S_MENU_DESCRIPTION1']; ?>","<?php echo $_menu_val['S_MENU_DESCRIPTION2']; ?>", 0,
         "<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/menus/160x160/<?php echo $_menu_val['S_MENU_THUMBNAIL']; ?>", "<?php echo $_menu_val['S_MENU_URL']; ?>", "<?php echo $_menu_val['S_ID']; ?>"],
-        <?php }} ?>
-
+        <?php }} ?>
 
     ];
 </script>
@@ -235,18 +231,15 @@
   body{ background: #fff url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/bground/bground.jpg) no-repeat center top; }
   #divWidget{display: none;}
 </style>
-<?php } if ($this->_rootref['S_HOME']) {  ?>
-
+<?php } if ($this->_rootref['S_HOME']) {  ?>
 <script type="text/javascript">
     var channelListArray = [  
-	<?php $_menu_count = (isset($this->_tpldata['menu'])) ? sizeof($this->_tpldata['menu']) : 0;if ($_menu_count) {for ($_menu_i = 0; $_menu_i < $_menu_count; ++$_menu_i){$_menu_val = &$this->_tpldata['menu'][$_menu_i]; ?>
-
+	<?php $_menu_count = (isset($this->_tpldata['menu'])) ? sizeof($this->_tpldata['menu']) : 0;if ($_menu_count) {for ($_menu_i = 0; $_menu_i < $_menu_count; ++$_menu_i){$_menu_val = &$this->_tpldata['menu'][$_menu_i]; ?>
 /*	["<?php echo $_menu_val['S_MENU_TITLE']; ?>", "<?php echo $_menu_val['S_MENU_DESCRIPTION1']; ?>","<?php echo $_menu_val['S_MENU_DESCRIPTION2']; ?>", 0, 
 	"<?php echo (isset($this->_rootref['T_IMAGESET_PATH'])) ? $this->_rootref['T_IMAGESET_PATH'] : ''; ?>/160x160/<?php echo $_menu_val['S_MENU_THUMBNAIL']; ?>", "<?php echo $_menu_val['S_MENU_URL']; ?>", "<?php echo $_menu_val['S_ID']; ?>"],*/
 	["<?php echo $_menu_val['S_MENU_TITLE']; ?>", "<?php echo $_menu_val['S_MENU_DESCRIPTION1']; ?>","<?php echo $_menu_val['S_MENU_DESCRIPTION2']; ?>", 0, 
 	"<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/menus/160x160/<?php echo $_menu_val['S_MENU_THUMBNAIL']; ?>", "<?php echo $_menu_val['S_MENU_URL']; ?>", "<?php echo $_menu_val['S_ID']; ?>"],
-	<?php }} ?>
-
+	<?php }} ?>
 
     ];
 </script>
@@ -255,28 +248,40 @@
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/home_config_document.js" type="text/javascript"></script>
 
 <script type="text/javascript">
+	if (typeof media === 'undefined') { var media = {}; }
+	if (typeof media._object === 'undefined') {
+		media._object = {
+			Fn_Play_Pause: function() { console.log('Mock Play/Pause'); },
+			Fn_Up_KeyDownHandler: function() {},
+			Fn_Down_KeyDownHandler: function() {}
+		};
+	}
+
+	// Proteksi variabel timeDisplay yang hilang di index.php
+	if (typeof timeDisplay === 'undefined') { var timeDisplay = function() {}; }
+
     window.onload = function () {
-	//hcap.channel.stopCurrentChannel();
-	//media._object.Fn_Play_Pause();
-	media._object.Fn_Right_KeyDownHandler();
-	//media._object.Fn_Right_KeyDownHandler();
-	media._object.Fn_Left_KeyDownHandler();
-	timeDisplay.dtetimer();
+		//hcap.channel.stopCurrentChannel();
+		//media._object.Fn_Play_Pause();
+		media._object.Fn_Right_KeyDownHandler();
+		//media._object.Fn_Right_KeyDownHandler();
+		media._object.Fn_Left_KeyDownHandler();
+		// timeDisplay.dtetimer();
 
-	divChannelListObj = doc.getElementById("channelList");
-	divChannelListObj.appendChild(initCreate());
+		divChannelListObj = doc.getElementById("channelList");
+		divChannelListObj.appendChild(initCreate());
 
-	currentChannelDisplayObj = doc.getElementById("currentChannelDisplay");
-	currentChannelDisplayObj.innerHTML = (channelIndex + 1) + "/" + maxChannel;
+		currentChannelDisplayObj = doc.getElementById("currentChannelDisplay");
+		currentChannelDisplayObj.innerHTML = (channelIndex + 1) + "/" + maxChannel;
 
-	channelNameObj = doc.getElementsByName("channelName");
-	infoPlayChanobj = doc.getElementById("nowPlayingChannel");
-	divChandescobj = doc.getElementById("channelDesc");
-	footerObj = doc.getElementById("footer");
-	//playButObj = doc.getElementById("playBut");
-	video = doc.getElementById("media");
-	video.pause();
-	doc.addEventListener("keydown", navigation, true);
+		channelNameObj = doc.getElementsByName("channelName");
+		infoPlayChanobj = doc.getElementById("nowPlayingChannel");
+		divChandescobj = doc.getElementById("channelDesc");
+		footerObj = doc.getElementById("footer");
+		//playButObj = doc.getElementById("playBut");
+		video = doc.getElementById("media");
+		video.pause();
+		doc.addEventListener("keydown", navigation, true);
 
     }
 </script>
@@ -297,8 +302,7 @@
   #divWidget{display: none;}
 </style>
 
-<?php } if ($this->_rootref['S_TV_CHANNEL_GROUP']) {  ?>
-
+<?php } if ($this->_rootref['S_TV_CHANNEL_GROUP']) {  ?>
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/tv_channel_groups.css" rel="stylesheet" type="text/css" />
 <!-- <script src="<?php echo (isset($this->_rootref['T_JS_PATH'])) ? $this->_rootref['T_JS_PATH'] : ''; ?>jquery.js" type="text/javascript"></script>
 <script src="../theme/_channeldb.js" type="text/javascript"></script> -->
@@ -306,13 +310,10 @@
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/log.js" type="text/javascript"></script>
 <script type="text/javascript">
     var channelListArray = [  
-	<?php echo (isset($this->_rootref['S_GROUPMOVIE'])) ? $this->_rootref['S_GROUPMOVIE'] : ''; ?>
-
-	<?php $_group_count = (isset($this->_tpldata['group'])) ? sizeof($this->_tpldata['group']) : 0;if ($_group_count) {for ($_group_i = 0; $_group_i < $_group_count; ++$_group_i){$_group_val = &$this->_tpldata['group'][$_group_i]; ?>
-
+	<?php echo (isset($this->_rootref['S_GROUPMOVIE'])) ? $this->_rootref['S_GROUPMOVIE'] : ''; ?>
+	<?php $_group_count = (isset($this->_tpldata['group'])) ? sizeof($this->_tpldata['group']) : 0;if ($_group_count) {for ($_group_i = 0; $_group_i < $_group_count; ++$_group_i){$_group_val = &$this->_tpldata['group'][$_group_i]; ?>
 	["<?php echo $_group_val['S_CAT_TITLE']; ?>", "<?php echo $_group_val['S_URL']; ?>","<?php echo (isset($this->_rootref['T_MEDIA_IMAGE_TV_PATH'])) ? $this->_rootref['T_MEDIA_IMAGE_TV_PATH'] : ''; ?>group/<?php echo $_group_val['S_THUMBNAIL']; ?>.png", 0, "<?php echo $_group_val['S_CAT_URL']; ?>"],
-	<?php }} ?>
-
+	<?php }} ?>
 	["Wonderful Indonesia", "225.1.1.37","./media/images/tv/group/wi.png", 0, "./wi.php"],
     ];
 </script>
@@ -323,10 +324,10 @@
 <script type="text/javascript">
     window.onload = function () {
 
-	media._object.Fn_Play_Pause();
+	// media._object.Fn_Play_Pause();
 	media._object.Fn_Right_KeyDownHandler();
 	media._object.Fn_Left_KeyDownHandler();
-	timeDisplay.dtetimer();
+	// timeDisplay.dtetimer();
 
 	divChannelListObj = doc.getElementById("channelList");
 	divChannelListObj.appendChild(initCreate());
@@ -365,17 +366,14 @@
   body{ background:#000 url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/bground/bground-channel.jpg) no-repeat center top; } 
   #divWidget{display:none}
 </style>
-<?php } if ($this->_rootref['S_TV_CHANNEL']) {  ?>
-
+<?php } if ($this->_rootref['S_TV_CHANNEL']) {  ?>
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/tv_channels.css" rel="stylesheet" type="text/css" />
 <!--<script src="../theme/_channeldb.js" type="text/javascript"></script> -->
 <script type="text/javascript">
     var channelListArray = [  
-	<?php $_channel_count = (isset($this->_tpldata['channel'])) ? sizeof($this->_tpldata['channel']) : 0;if ($_channel_count) {for ($_channel_i = 0; $_channel_i < $_channel_count; ++$_channel_i){$_channel_val = &$this->_tpldata['channel'][$_channel_i]; ?>
-
+	<?php $_channel_count = (isset($this->_tpldata['channel'])) ? sizeof($this->_tpldata['channel']) : 0;if ($_channel_count) {for ($_channel_i = 0; $_channel_i < $_channel_count; ++$_channel_i){$_channel_val = &$this->_tpldata['channel'][$_channel_i]; ?>
 	["<?php echo $_channel_val['S_TITLE']; ?>", "<?php echo $_channel_val['S_URL']; ?>","<?php echo (isset($this->_rootref['T_MEDIA_IMAGE_TV_PATH'])) ? $this->_rootref['T_MEDIA_IMAGE_TV_PATH'] : ''; ?>160x160/<?php echo $_channel_val['S_THUMBNAIL']; ?>", 0, "<?php echo $_channel_val['S_ORDER']; ?>", "<?php echo $_channel_val['S_INDEX']; ?>", "<?php echo $_channel_val['S_ID']; ?>"],
-	<?php }} ?>
-
+	<?php }} ?>
     ];
 </script>
 <!--
@@ -424,8 +422,7 @@
   #divWidget{display:none}
 </style>
 
-<?php } if ($this->_rootref['S_TV_CHANNEL_FULLSCREENLG']) {  ?>
-
+<?php } if ($this->_rootref['S_TV_CHANNEL_FULLSCREENLG']) {  ?>
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/tv_channels_fullscreenlg.css" rel="stylesheet" type="text/css" />
 <!-- <script src="<?php echo (isset($this->_rootref['T_JS_PATH'])) ? $this->_rootref['T_JS_PATH'] : ''; ?>jquery.js" type="text/javascript"></script>
 <script src="../theme/_channeldb.js" type="text/javascript"></script> -->
@@ -433,11 +430,9 @@
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/log.js" type="text/javascript"></script>
 <script type="text/javascript">
     var channelListArray = [
-        <?php $_channel_count = (isset($this->_tpldata['channel'])) ? sizeof($this->_tpldata['channel']) : 0;if ($_channel_count) {for ($_channel_i = 0; $_channel_i < $_channel_count; ++$_channel_i){$_channel_val = &$this->_tpldata['channel'][$_channel_i]; ?>
-
+        <?php $_channel_count = (isset($this->_tpldata['channel'])) ? sizeof($this->_tpldata['channel']) : 0;if ($_channel_count) {for ($_channel_i = 0; $_channel_i < $_channel_count; ++$_channel_i){$_channel_val = &$this->_tpldata['channel'][$_channel_i]; ?>
         ["<?php echo $_channel_val['S_TITLE']; ?>", "<?php echo $_channel_val['S_URL']; ?>","<?php echo (isset($this->_rootref['T_MEDIA_IMAGE_TV_PATH'])) ? $this->_rootref['T_MEDIA_IMAGE_TV_PATH'] : ''; ?>160x160/<?php echo $_channel_val['S_THUMBNAIL']; ?>", 0, "<?php echo $_channel_val['S_ORDER']; ?>", "<?php echo $_channel_val['S_INDEX']; ?>"],
-        <?php }} ?>
-
+        <?php }} ?>
     ];
 
 function test_page(url) {
@@ -484,8 +479,7 @@ function channelChangedEventListener(eChCh) {
   body{ background:#000; }
 </style>
 
-<?php } if ($this->_rootref['S_TV_CHANNEL_FULL']) {  ?>
-
+<?php } if ($this->_rootref['S_TV_CHANNEL_FULL']) {  ?>
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/tv_channels.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     window.onload = function () {
@@ -496,11 +490,9 @@ function channelChangedEventListener(eChCh) {
 </script>
 <script type="text/javascript">
     var channelListArray = [  
-	<?php $_channel_count = (isset($this->_tpldata['channel'])) ? sizeof($this->_tpldata['channel']) : 0;if ($_channel_count) {for ($_channel_i = 0; $_channel_i < $_channel_count; ++$_channel_i){$_channel_val = &$this->_tpldata['channel'][$_channel_i]; ?>
-
+	<?php $_channel_count = (isset($this->_tpldata['channel'])) ? sizeof($this->_tpldata['channel']) : 0;if ($_channel_count) {for ($_channel_i = 0; $_channel_i < $_channel_count; ++$_channel_i){$_channel_val = &$this->_tpldata['channel'][$_channel_i]; ?>
 	["<?php echo $_channel_val['S_TITLE']; ?>", "<?php echo $_channel_val['S_URL']; ?>","<?php echo (isset($this->_rootref['T_MEDIA_IMAGE_TV_PATH'])) ? $this->_rootref['T_MEDIA_IMAGE_TV_PATH'] : ''; ?>/b-n-w/<?php echo $_channel_val['S_THUMBNAIL']; ?>", 0, "<?php echo $_channel_val['S_ORDER']; ?>", "<?php echo $_channel_val['S_ID']; ?>"],
-	<?php }} ?>
-
+	<?php }} ?>
     ];
 </script>
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/tv_channels_full.js" type="text/javascript"></script> 
@@ -521,8 +513,7 @@ body {
 	display: none;
 }
 </style>
-<?php } if ($this->_rootref['S_MOVIES']) {  ?>
-
+<?php } if ($this->_rootref['S_MOVIES']) {  ?>
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/movie_trailer.css" rel="stylesheet" type="text/css" />
 <!--<script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/hcap.js" type="text/javascript"></script>
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/log.js" type="text/javascript"></script>
@@ -538,8 +529,7 @@ hcap.channel.stopCurrentChannel({
 </script>-->
 <script type="text/javascript">
     var channelListArray = [  
-	<?php $_movie_count = (isset($this->_tpldata['movie'])) ? sizeof($this->_tpldata['movie']) : 0;if ($_movie_count) {for ($_movie_i = 0; $_movie_i < $_movie_count; ++$_movie_i){$_movie_val = &$this->_tpldata['movie'][$_movie_i]; ?>
-
+	<?php $_movie_count = (isset($this->_tpldata['movie'])) ? sizeof($this->_tpldata['movie']) : 0;if ($_movie_count) {for ($_movie_i = 0; $_movie_i < $_movie_count; ++$_movie_i){$_movie_val = &$this->_tpldata['movie'][$_movie_i]; ?>
 	["<?php echo $_movie_val['S_TITLE']; ?>", //0
 	"<?php echo $_movie_val['S_TRAILER']; ?>", //1
 	"<?php echo $_movie_val['S_DESCRIPTION']; ?>", //2 
@@ -560,8 +550,7 @@ hcap.channel.stopCurrentChannel({
 	"<?php echo $_movie_val['S_CODE']; ?>", //16
 	"<?php echo $_movie_val['S_QTY']; ?>", //17
 	"<?php echo $_movie_val['L_CURRENCY']; ?>"], //18
-	<?php }} ?>
-
+	<?php }} ?>
     ];
 </script>
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/movie_trailer.js" type="text/javascript"></script>
@@ -612,8 +601,7 @@ hcap.channel.stopCurrentChannel({
   body{ background: #fff url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/bground/bground.jpg) no-repeat center top; } 
   #divWidget{display:none}
 </style>
-<?php } if ($this->_rootref['S_VOD_FULL']) {  ?>
-
+<?php } if ($this->_rootref['S_VOD_FULL']) {  ?>
 <style type="text/css">
 video#bgvid {
     position: fixed; right: 0; bottom: 0;
@@ -638,15 +626,13 @@ body {
       }
   });
 </script>
-<?php } if ($this->_rootref['S_MUSIC']) {  ?>
-
+<?php } if ($this->_rootref['S_MUSIC']) {  ?>
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/movie_trailer.css" rel="stylesheet" type="text/css" />
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/hcap.js" type="text/javascript"></script>
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/log.js" type="text/javascript"></script>
 <script type="text/javascript">
     var channelListArray = [  
-	<?php $_music_count = (isset($this->_tpldata['music'])) ? sizeof($this->_tpldata['music']) : 0;if ($_music_count) {for ($_music_i = 0; $_music_i < $_music_count; ++$_music_i){$_music_val = &$this->_tpldata['music'][$_music_i]; ?>
-
+	<?php $_music_count = (isset($this->_tpldata['music'])) ? sizeof($this->_tpldata['music']) : 0;if ($_music_count) {for ($_music_i = 0; $_music_i < $_music_count; ++$_music_i){$_music_val = &$this->_tpldata['music'][$_music_i]; ?>
 	["<?php echo $_music_val['S_TITLE']; ?>", //0
 	"<?php echo $_music_val['S_TRAILER']; ?>", //1
 	"<?php echo $_music_val['S_DESCRIPTION']; ?>", //2 
@@ -667,8 +653,7 @@ body {
 	"<?php echo $_music_val['S_CODE']; ?>", //16
 	"<?php echo $_music_val['S_QTY']; ?>", //17
 	"<?php echo $_music_val['L_CURRENCY']; ?>"], //18
-	<?php }} ?>
-
+	<?php }} ?>
     ];
 </script>
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/movie_trailer.js" type="text/javascript"></script>
@@ -716,8 +701,7 @@ body {
   body{ background: #fff url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/bground/bground.jpg) no-repeat center top; } 
   #divWidget{display:none}
 </style>
-<?php } if ($this->_rootref['S_DIRECTORY']) {  ?>
-
+<?php } if ($this->_rootref['S_DIRECTORY']) {  ?>
 <!-- <script src="<?php echo (isset($this->_rootref['T_JS_PATH'])) ? $this->_rootref['T_JS_PATH'] : ''; ?>jquery.js" type="text/javascript"></script> 
 <link rel="stylesheet" href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/directory.css">-->
 <style type="text/css" media="screen">
@@ -750,8 +734,7 @@ body {
 <!--<script type="text/javascript" src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/jssor.slider-weather.js"></script>-->
 <script type="text/javascript" src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/jssor.slider.js"></script>
 -->
-<?php } if ($this->_rootref['S_DIRECTORY_PROMO']) {  ?>
-
+<?php } if ($this->_rootref['S_DIRECTORY_PROMO']) {  ?>
 <!-- <script src="<?php echo (isset($this->_rootref['T_JS_PATH'])) ? $this->_rootref['T_JS_PATH'] : ''; ?>jquery.js" type="text/javascript"></script> 
 <link rel="stylesheet" href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/directory.css">-->
 <style type="text/css" media="screen">
@@ -784,8 +767,7 @@ body {
 <!--<script type="text/javascript" src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/jssor.slider-weather.js"></script>-->
 <script type="text/javascript" src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/jssor.slider.js"></script>
 -->
-<?php } if ($this->_rootref['S_WEATHER']) {  ?>
-
+<?php } if ($this->_rootref['S_WEATHER']) {  ?>
 <!--<link rel="stylesheet" href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/weather.css">
  <script src="<?php echo (isset($this->_rootref['T_JS_PATH'])) ? $this->_rootref['T_JS_PATH'] : ''; ?>jquery.js" type="text/javascript"></script> -->
 <style type="text/css" media="screen">
@@ -812,8 +794,7 @@ body {
 	background: url(<?php echo (isset($this->_rootref['T_IMAGESET_PATH'])) ? $this->_rootref['T_IMAGESET_PATH'] : ''; ?>/logo-white.png) top no-repeat;
 }
 </style>
-<?php } if ($this->_rootref['S_REMOTE']) {  ?>
-
+<?php } if ($this->_rootref['S_REMOTE']) {  ?>
 <style type="text/css">
     body {
 	background: #000 url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>remote/<?php echo (isset($this->_rootref['S_LANG'])) ? $this->_rootref['S_LANG'] : ''; ?>/bground-remote.jpg) no-repeat top; 
@@ -886,8 +867,7 @@ body {
       }
   });
 </script>
-<?php } if ($this->_rootref['S_VALAS']) {  ?>
-
+<?php } if ($this->_rootref['S_VALAS']) {  ?>
 <style type="text/css">
     body{ background: #fff url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/bground/bground.jpg) no-repeat center top; } 
   #divWidget{display:none}
@@ -955,8 +935,7 @@ body {
       }
   });
 </script>
-<?php } if ($this->_rootref['S_INFO']) {  ?>
-
+<?php } if ($this->_rootref['S_INFO']) {  ?>
 <style type="text/css">
     body{ background: #fff url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/bground/bground.jpg) no-repeat center top; } 
   #divWidget{display:none}
@@ -1024,8 +1003,7 @@ body {
       }
   });
 </script>
-<?php } if ($this->_rootref['S_LOCK']) {  ?>
-
+<?php } if ($this->_rootref['S_LOCK']) {  ?>
 <meta http-equiv="refresh" content="5;url=index.php">
 <script type="text/javascript">
     var channelListArray = [  
@@ -1157,17 +1135,14 @@ body {
 document.onkeydown = KeyPress;
     </script>
 </script>
-<?php } if ($this->_rootref['S_LANGUAGE']) {  ?>
-
+<?php } if ($this->_rootref['S_LANGUAGE']) {  ?>
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/language.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     var channelListArray = [  
-	<?php $_language_count = (isset($this->_tpldata['language'])) ? sizeof($this->_tpldata['language']) : 0;if ($_language_count) {for ($_language_i = 0; $_language_i < $_language_count; ++$_language_i){$_language_val = &$this->_tpldata['language'][$_language_i]; ?>
-
+	<?php $_language_count = (isset($this->_tpldata['language'])) ? sizeof($this->_tpldata['language']) : 0;if ($_language_count) {for ($_language_i = 0; $_language_i < $_language_count; ++$_language_i){$_language_val = &$this->_tpldata['language'][$_language_i]; ?>
 	["<?php echo $_language_val['S_TITLE']; ?>", "<?php echo $_language_val['S_DESCRIPTION1']; ?>","<?php echo $_language_val['S_DESCRIPTION2']; ?>", 0, 
 	"<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/flags/160x160/<?php echo $_language_val['S_FLAG']; ?>", "<?php echo $_language_val['S_URL']; ?>", "<?php echo $_language_val['S_ID']; ?>"],
-	<?php }} ?>
-
+	<?php }} ?>
 
     ];
 </script>
@@ -1217,18 +1192,15 @@ document.onkeydown = KeyPress;
   } 
 </style>
 
-<?php } if ($this->_rootref['S_ROOMSERVICE_CATEGORY']) {  ?>
-
+<?php } if ($this->_rootref['S_ROOMSERVICE_CATEGORY']) {  ?>
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/roomservice_category.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     var channelListArray = [  
-	<?php $_category_count = (isset($this->_tpldata['category'])) ? sizeof($this->_tpldata['category']) : 0;if ($_category_count) {for ($_category_i = 0; $_category_i < $_category_count; ++$_category_i){$_category_val = &$this->_tpldata['category'][$_category_i]; ?>
-
+	<?php $_category_count = (isset($this->_tpldata['category'])) ? sizeof($this->_tpldata['category']) : 0;if ($_category_count) {for ($_category_i = 0; $_category_i < $_category_count; ++$_category_i){$_category_val = &$this->_tpldata['category'][$_category_i]; ?>
 	["<?php echo $_category_val['S_CAT_TITLE']; ?>", "<?php echo $_category_val['S_CAT_URL']; ?>","<?php echo $_category_val['S_DESCRIPTION']; ?>", 0, 
 	"<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/fnb/160x160/<?php echo $_category_val['S_THUMBNAIL']; ?>.png", "<?php echo (isset($this->_rootref['T_MEDIA_IMAGE_FNB_PATH'])) ? $this->_rootref['T_MEDIA_IMAGE_FNB_PATH'] : ''; ?>600x400/<?php echo $_category_val['S_THUMBNAIL']; ?>.jpg", "<?php echo (isset($this->_rootref['T_MEDIA_IMAGE_FNB_PATH'])) ? $this->_rootref['T_MEDIA_IMAGE_FNB_PATH'] : ''; ?>680x124/<?php echo $_category_val['S_THUMBNAIL']; ?>.jpg",
 	"<?php echo (isset($this->_rootref['T_MEDIA_CLIP_PATH'])) ? $this->_rootref['T_MEDIA_CLIP_PATH'] : ''; ?>roomservice/<?php echo $_category_val['S_CLIP']; ?>"], 
-	<?php }} ?>
-
+	<?php }} ?>
 
     ];
 </script>
@@ -1278,14 +1250,12 @@ document.onkeydown = KeyPress;
 #divWidget{display:none}
 </style>
 
-<?php } if ($this->_rootref['S_ROOMSERVICE']) {  ?>
-
+<?php } if ($this->_rootref['S_ROOMSERVICE']) {  ?>
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/jquery.fancybox.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/roomservice.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     var channelListArray = [  
-	<?php $_roomservice_count = (isset($this->_tpldata['roomservice'])) ? sizeof($this->_tpldata['roomservice']) : 0;if ($_roomservice_count) {for ($_roomservice_i = 0; $_roomservice_i < $_roomservice_count; ++$_roomservice_i){$_roomservice_val = &$this->_tpldata['roomservice'][$_roomservice_i]; ?>
-
+	<?php $_roomservice_count = (isset($this->_tpldata['roomservice'])) ? sizeof($this->_tpldata['roomservice']) : 0;if ($_roomservice_count) {for ($_roomservice_i = 0; $_roomservice_i < $_roomservice_count; ++$_roomservice_i){$_roomservice_val = &$this->_tpldata['roomservice'][$_roomservice_i]; ?>
 	["<?php echo $_roomservice_val['S_TITLE']; ?>", 
 	"<?php echo $_roomservice_val['S_URL']; ?>",
 	"<?php echo $_roomservice_val['S_DESCRIPTION']; ?>", 
@@ -1302,8 +1272,7 @@ document.onkeydown = KeyPress;
 	"<?php echo $_roomservice_val['S_GID']; ?>",
 	"<?php echo $_roomservice_val['S_MODE']; ?>",
 	"<?php echo $_roomservice_val['S_TAXINFO']; ?>"],
-	<?php }} ?>
-
+	<?php }} ?>
 
     ];
 </script>
@@ -1357,18 +1326,15 @@ document.onkeydown = KeyPress;
 }
 #divWidget{display:none}
 </style>
-<?php } if ($this->_rootref['S_SHOP_CATEGORY']) {  ?>
-
+<?php } if ($this->_rootref['S_SHOP_CATEGORY']) {  ?>
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/shop_category.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     var channelListArray = [  
-	<?php $_category_count = (isset($this->_tpldata['category'])) ? sizeof($this->_tpldata['category']) : 0;if ($_category_count) {for ($_category_i = 0; $_category_i < $_category_count; ++$_category_i){$_category_val = &$this->_tpldata['category'][$_category_i]; ?>
-
+	<?php $_category_count = (isset($this->_tpldata['category'])) ? sizeof($this->_tpldata['category']) : 0;if ($_category_count) {for ($_category_i = 0; $_category_i < $_category_count; ++$_category_i){$_category_val = &$this->_tpldata['category'][$_category_i]; ?>
 	["<?php echo $_category_val['S_CAT_TITLE']; ?>", "<?php echo $_category_val['S_CAT_URL']; ?>","<?php echo $_category_val['S_DESCRIPTION']; ?>", 0, 
 	"<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/shop/160x160/<?php echo $_category_val['S_THUMBNAIL']; ?>.png", "<?php echo (isset($this->_rootref['T_MEDIA_IMAGE_SHOP_PATH'])) ? $this->_rootref['T_MEDIA_IMAGE_SHOP_PATH'] : ''; ?>600x400/<?php echo $_category_val['S_THUMBNAIL']; ?>.jpg", "<?php echo (isset($this->_rootref['T_MEDIA_IMAGE_SHOP_PATH'])) ? $this->_rootref['T_MEDIA_IMAGE_SHOP_PATH'] : ''; ?>680x124/<?php echo $_category_val['S_THUMBNAIL']; ?>.jpg",
 	"<?php echo (isset($this->_rootref['T_MEDIA_CLIP_PATH'])) ? $this->_rootref['T_MEDIA_CLIP_PATH'] : ''; ?>shop/<?php echo $_category_val['S_CLIP']; ?>"], 
-	<?php }} ?>
-
+	<?php }} ?>
 
     ];
 </script>
@@ -1403,14 +1369,12 @@ document.onkeydown = KeyPress;
   body{ background: #000 url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/bground/bground.jpg) no-repeat center top; } 
 </style>
 
-<?php } if ($this->_rootref['S_SHOP']) {  ?>
-
+<?php } if ($this->_rootref['S_SHOP']) {  ?>
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/jquery.fancybox.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/shop.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     var channelListArray = [  
-	<?php $_shop_count = (isset($this->_tpldata['shop'])) ? sizeof($this->_tpldata['shop']) : 0;if ($_shop_count) {for ($_shop_i = 0; $_shop_i < $_shop_count; ++$_shop_i){$_shop_val = &$this->_tpldata['shop'][$_shop_i]; ?>
-
+	<?php $_shop_count = (isset($this->_tpldata['shop'])) ? sizeof($this->_tpldata['shop']) : 0;if ($_shop_count) {for ($_shop_i = 0; $_shop_i < $_shop_count; ++$_shop_i){$_shop_val = &$this->_tpldata['shop'][$_shop_i]; ?>
 	["<?php echo $_shop_val['S_TITLE']; ?>", 
 	"<?php echo $_shop_val['S_URL']; ?>",
 	"<?php echo $_shop_val['S_DESCRIPTION']; ?>", 
@@ -1426,8 +1390,7 @@ document.onkeydown = KeyPress;
 	"<?php echo $_shop_val['S_SERVICE_ID']; ?>",
 	"<?php echo $_shop_val['S_GID']; ?>",
 	"<?php echo $_shop_val['S_MODE']; ?>"],
-	<?php }} ?>
-
+	<?php }} ?>
 
     ];
 </script>
@@ -1466,18 +1429,15 @@ document.onkeydown = KeyPress;
 <style type="text/css">
   body{ background: #000 url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/bground/bground.jpg) no-repeat center top; } 
 </style>
-<?php } if ($this->_rootref['S_SPA_CATEGORY']) {  ?>
-
+<?php } if ($this->_rootref['S_SPA_CATEGORY']) {  ?>
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/spa_category.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     var channelListArray = [  
-	<?php $_category_count = (isset($this->_tpldata['category'])) ? sizeof($this->_tpldata['category']) : 0;if ($_category_count) {for ($_category_i = 0; $_category_i < $_category_count; ++$_category_i){$_category_val = &$this->_tpldata['category'][$_category_i]; ?>
-
+	<?php $_category_count = (isset($this->_tpldata['category'])) ? sizeof($this->_tpldata['category']) : 0;if ($_category_count) {for ($_category_i = 0; $_category_i < $_category_count; ++$_category_i){$_category_val = &$this->_tpldata['category'][$_category_i]; ?>
 	["<?php echo $_category_val['S_CAT_TITLE']; ?>", "<?php echo $_category_val['S_CAT_URL']; ?>","<?php echo $_category_val['S_DESCRIPTION']; ?>", 0, 
 	"<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/spa/160x160/<?php echo $_category_val['S_THUMBNAIL']; ?>.png", "<?php echo (isset($this->_rootref['T_MEDIA_IMAGE_SPA_PATH'])) ? $this->_rootref['T_MEDIA_IMAGE_SPA_PATH'] : ''; ?>600x400/<?php echo $_category_val['S_THUMBNAIL']; ?>.jpg", "<?php echo (isset($this->_rootref['T_MEDIA_IMAGE_SPA_PATH'])) ? $this->_rootref['T_MEDIA_IMAGE_SPA_PATH'] : ''; ?>680x124/<?php echo $_category_val['S_THUMBNAIL']; ?>.jpg",
 	"<?php echo (isset($this->_rootref['T_MEDIA_CLIP_PATH'])) ? $this->_rootref['T_MEDIA_CLIP_PATH'] : ''; ?>spa/<?php echo $_category_val['S_SPA_CLIP']; ?>"], 
-	<?php }} ?>
-
+	<?php }} ?>
 
     ];
 </script>
@@ -1512,14 +1472,12 @@ document.onkeydown = KeyPress;
   body{ background: #000 url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/bground/bground.jpg) no-repeat center top; } 
 </style>
 
-<?php } if ($this->_rootref['S_SPA']) {  ?>
-
+<?php } if ($this->_rootref['S_SPA']) {  ?>
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/jquery.fancybox.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/spa.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     var channelListArray = [  
-	<?php $_spa_count = (isset($this->_tpldata['spa'])) ? sizeof($this->_tpldata['spa']) : 0;if ($_spa_count) {for ($_spa_i = 0; $_spa_i < $_spa_count; ++$_spa_i){$_spa_val = &$this->_tpldata['spa'][$_spa_i]; ?>
-
+	<?php $_spa_count = (isset($this->_tpldata['spa'])) ? sizeof($this->_tpldata['spa']) : 0;if ($_spa_count) {for ($_spa_i = 0; $_spa_i < $_spa_count; ++$_spa_i){$_spa_val = &$this->_tpldata['spa'][$_spa_i]; ?>
 	["<?php echo $_spa_val['S_TITLE']; ?>", 
 	"<?php echo $_spa_val['S_URL']; ?>",
 	"<?php echo $_spa_val['S_DESCRIPTION']; ?>", 
@@ -1536,8 +1494,7 @@ document.onkeydown = KeyPress;
 	"<?php echo $_spa_val['S_GID']; ?>",
 	"<?php echo $_spa_val['S_MODE']; ?>",
 	"<?php echo (isset($this->_rootref['T_MEDIA_CLIP_PATH'])) ? $this->_rootref['T_MEDIA_CLIP_PATH'] : ''; ?>spa/<?php echo $_spa_val['S_SPA_CLIP']; ?>"],
-	<?php }} ?>
-
+	<?php }} ?>
 
     ];
 </script>
@@ -1576,18 +1533,15 @@ document.onkeydown = KeyPress;
 <style type="text/css">
   body{ background: #000 url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/bground/bground.jpg) no-repeat center top; } 
 </style>
-<?php } if ($this->_rootref['S_TOUR_CATEGORY']) {  ?>
-
+<?php } if ($this->_rootref['S_TOUR_CATEGORY']) {  ?>
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/tour_category.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     var channelListArray = [  
-	<?php $_category_count = (isset($this->_tpldata['category'])) ? sizeof($this->_tpldata['category']) : 0;if ($_category_count) {for ($_category_i = 0; $_category_i < $_category_count; ++$_category_i){$_category_val = &$this->_tpldata['category'][$_category_i]; ?>
-
+	<?php $_category_count = (isset($this->_tpldata['category'])) ? sizeof($this->_tpldata['category']) : 0;if ($_category_count) {for ($_category_i = 0; $_category_i < $_category_count; ++$_category_i){$_category_val = &$this->_tpldata['category'][$_category_i]; ?>
 	["<?php echo $_category_val['S_CAT_TITLE']; ?>", "<?php echo $_category_val['S_CAT_URL']; ?>","<?php echo $_category_val['S_DESCRIPTION']; ?>", 0, 
 	"<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/tour/160x160/<?php echo $_category_val['S_THUMBNAIL']; ?>.png", "<?php echo (isset($this->_rootref['T_MEDIA_IMAGE_TOUR_PATH'])) ? $this->_rootref['T_MEDIA_IMAGE_TOUR_PATH'] : ''; ?>600x400/<?php echo $_category_val['S_THUMBNAIL']; ?>.jpg", "<?php echo (isset($this->_rootref['T_MEDIA_IMAGE_TOUR_PATH'])) ? $this->_rootref['T_MEDIA_IMAGE_TOUR_PATH'] : ''; ?>680x124/<?php echo $_category_val['S_THUMBNAIL']; ?>.jpg",
 	"<?php echo (isset($this->_rootref['T_MEDIA_CLIP_PATH'])) ? $this->_rootref['T_MEDIA_CLIP_PATH'] : ''; ?>tour/<?php echo $_category_val['S_TOUR_CLIP']; ?>"], 
-	<?php }} ?>
-
+	<?php }} ?>
 
     ];
 </script>
@@ -1622,14 +1576,12 @@ document.onkeydown = KeyPress;
   body{ background: #000 url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/bground/bground.jpg) no-repeat center top; } 
 </style>
 
-<?php } if ($this->_rootref['S_TOUR']) {  ?>
-
+<?php } if ($this->_rootref['S_TOUR']) {  ?>
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/jquery.fancybox.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/tour.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     var channelListArray = [  
-	<?php $_tour_count = (isset($this->_tpldata['tour'])) ? sizeof($this->_tpldata['tour']) : 0;if ($_tour_count) {for ($_tour_i = 0; $_tour_i < $_tour_count; ++$_tour_i){$_tour_val = &$this->_tpldata['tour'][$_tour_i]; ?>
-
+	<?php $_tour_count = (isset($this->_tpldata['tour'])) ? sizeof($this->_tpldata['tour']) : 0;if ($_tour_count) {for ($_tour_i = 0; $_tour_i < $_tour_count; ++$_tour_i){$_tour_val = &$this->_tpldata['tour'][$_tour_i]; ?>
 	["<?php echo $_tour_val['S_TITLE']; ?>", 
 	"<?php echo $_tour_val['S_URL']; ?>",
 	"<?php echo $_tour_val['S_DESCRIPTION']; ?>", 
@@ -1646,8 +1598,7 @@ document.onkeydown = KeyPress;
 	"<?php echo $_tour_val['S_GID']; ?>",
 	"<?php echo $_tour_val['S_MODE']; ?>",
 	"<?php echo (isset($this->_rootref['T_MEDIA_CLIP_PATH'])) ? $this->_rootref['T_MEDIA_CLIP_PATH'] : ''; ?>tour/<?php echo $_tour_val['S_TOUR_CLIP']; ?>"],
-	<?php }} ?>
-
+	<?php }} ?>
 
     ];
 </script>
@@ -1686,8 +1637,7 @@ document.onkeydown = KeyPress;
 <style type="text/css">
   body{ background: #000 url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/bground/bground.jpg) no-repeat center top; } 
 </style>
-<?php } if ($this->_rootref['S_BASKET']) {  ?>
-
+<?php } if ($this->_rootref['S_BASKET']) {  ?>
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/jquery.fancybox.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/basket.css" rel="stylesheet" type="text/css" />
 
@@ -1727,17 +1677,14 @@ document.onkeydown = KeyPress;
   body{ background: #000 url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/bground/bground.jpg) no-repeat center top; } 
 </style>
 
-<?php } if ($this->_rootref['S_VIEWBILL']) {  ?>
-
+<?php } if ($this->_rootref['S_VIEWBILL']) {  ?>
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/viewbill.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     var channelListArray = [  
-	<?php $_viewbill_count = (isset($this->_tpldata['viewbill'])) ? sizeof($this->_tpldata['viewbill']) : 0;if ($_viewbill_count) {for ($_viewbill_i = 0; $_viewbill_i < $_viewbill_count; ++$_viewbill_i){$_viewbill_val = &$this->_tpldata['viewbill'][$_viewbill_i]; ?>
-
+	<?php $_viewbill_count = (isset($this->_tpldata['viewbill'])) ? sizeof($this->_tpldata['viewbill']) : 0;if ($_viewbill_count) {for ($_viewbill_i = 0; $_viewbill_i < $_viewbill_count; ++$_viewbill_i){$_viewbill_val = &$this->_tpldata['viewbill'][$_viewbill_i]; ?>
 	["<?php echo $_viewbill_val['S_DATE']; ?>", "<?php echo $_viewbill_val['S_TITLE']; ?>","<?php echo $_viewbill_val['S_PRICE']; ?>", 0, 
 	"<?php echo $_viewbill_val['S_NO']; ?>"],  
-	<?php }} ?>
-
+	<?php }} ?>
 
     ];
 </script>
@@ -1789,17 +1736,14 @@ document.onkeydown = KeyPress;
   #divWidget{display:none}
 </style>
 
-<?php } if ($this->_rootref['S_VIEWORDER']) {  ?>
-
+<?php } if ($this->_rootref['S_VIEWORDER']) {  ?>
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/vieworder.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     var channelListArray = [  
-	<?php $_vieworder_count = (isset($this->_tpldata['vieworder'])) ? sizeof($this->_tpldata['vieworder']) : 0;if ($_vieworder_count) {for ($_vieworder_i = 0; $_vieworder_i < $_vieworder_count; ++$_vieworder_i){$_vieworder_val = &$this->_tpldata['vieworder'][$_vieworder_i]; ?>
-
+	<?php $_vieworder_count = (isset($this->_tpldata['vieworder'])) ? sizeof($this->_tpldata['vieworder']) : 0;if ($_vieworder_count) {for ($_vieworder_i = 0; $_vieworder_i < $_vieworder_count; ++$_vieworder_i){$_vieworder_val = &$this->_tpldata['vieworder'][$_vieworder_i]; ?>
 	["<?php echo $_vieworder_val['S_DATE']; ?>", "<?php echo $_vieworder_val['S_ITEM']; ?>","<?php echo $_vieworder_val['S_QTY']; ?>", 0, 
 	"<?php echo $_vieworder_val['S_NO']; ?>", "<?php echo $_vieworder_val['S_NOTE']; ?>"],  
-	<?php }} ?>
-
+	<?php }} ?>
 
     ];
 </script>
@@ -1833,17 +1777,14 @@ document.onkeydown = KeyPress;
   body{ background: #000 url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/bground/bground.jpg) no-repeat center top; } 
 </style>
 
-<?php } if ($this->_rootref['S_INBOX']) {  ?>
-
+<?php } if ($this->_rootref['S_INBOX']) {  ?>
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/inbox.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     var channelListArray = [  
-	<?php $_inbox_count = (isset($this->_tpldata['inbox'])) ? sizeof($this->_tpldata['inbox']) : 0;if ($_inbox_count) {for ($_inbox_i = 0; $_inbox_i < $_inbox_count; ++$_inbox_i){$_inbox_val = &$this->_tpldata['inbox'][$_inbox_i]; ?>
-
+	<?php $_inbox_count = (isset($this->_tpldata['inbox'])) ? sizeof($this->_tpldata['inbox']) : 0;if ($_inbox_count) {for ($_inbox_i = 0; $_inbox_i < $_inbox_count; ++$_inbox_i){$_inbox_val = &$this->_tpldata['inbox'][$_inbox_i]; ?>
 	["<?php echo $_inbox_val['S_DATE']; ?>", "<?php echo $_inbox_val['S_FROM']; ?>","<?php echo $_inbox_val['S_CONTENT']; ?>", 0, 
 	"<?php echo $_inbox_val['S_NO']; ?>", "<?php echo $_inbox_val['S_TIME']; ?>"],
-	<?php }} ?>
-
+	<?php }} ?>
     ];
 </script>
 
@@ -1889,8 +1830,7 @@ document.onkeydown = KeyPress;
   body{ background: #000 url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/bground/bground.jpg) no-repeat center top; } 
 </style>
 
-<?php } if ($this->_rootref['S_CONNECTIVITY']) {  ?>
-
+<?php } if ($this->_rootref['S_CONNECTIVITY']) {  ?>
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/connectivity.css" rel="stylesheet" type="text/css" />
 <!--<script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/connectivity_config_document.js" type="text/javascript"></script>-->
 <style type="text/css">
@@ -1928,8 +1868,7 @@ document.onkeydown = KeyPress;
       }
   });
 </script>
-<?php } if ($this->_rootref['S_ROOM_UPDATE']) {  ?>
-
+<?php } if ($this->_rootref['S_ROOM_UPDATE']) {  ?>
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/room_update.css" rel="stylesheet" type="text/css" />
 <!--<script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/connectivity_config_document.js" type="text/javascript"></script>-->
 <style type="text/css">
@@ -1972,14 +1911,12 @@ document.onkeydown = KeyPress;
       }
   });
 </script>
-<?php } if ($this->_rootref['S_FLIGHT']) {  ?>
-
+<?php } if ($this->_rootref['S_FLIGHT']) {  ?>
 <meta http-equiv="refresh" content="120">
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/flight.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     var channelListArray = [  
-	<?php $_flight_count = (isset($this->_tpldata['flight'])) ? sizeof($this->_tpldata['flight']) : 0;if ($_flight_count) {for ($_flight_i = 0; $_flight_i < $_flight_count; ++$_flight_i){$_flight_val = &$this->_tpldata['flight'][$_flight_i]; ?>
-
+	<?php $_flight_count = (isset($this->_tpldata['flight'])) ? sizeof($this->_tpldata['flight']) : 0;if ($_flight_count) {for ($_flight_i = 0; $_flight_i < $_flight_count; ++$_flight_i){$_flight_val = &$this->_tpldata['flight'][$_flight_i]; ?>
 	["<?php echo $_flight_val['S_AIRLINE']; ?>", 
 	"<?php echo $_flight_val['S_FLIGHT']; ?>",
 	"<?php echo $_flight_val['S_ORIGIN_DESTINATION']; ?>", 
@@ -1989,8 +1926,7 @@ document.onkeydown = KeyPress;
 	"<?php echo $_flight_val['S_GATE']; ?>", 
 	"<?php echo $_flight_val['S_REMARK']; ?>", 
 	"<?php echo $_flight_val['S_TOGGLE_TYPE']; ?>"],
-	<?php }} ?>
-
+	<?php }} ?>
 
     ];
 </script>
@@ -1999,24 +1935,24 @@ document.onkeydown = KeyPress;
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/flight_config_document.js" type="text/javascript"></script>
 <script type="text/javascript">
     window.onload = function () {
-	media._object.Fn_Play_Pause();
-	media._object.Fn_Right_KeyDownHandler();
-	media._object.Fn_Left_KeyDownHandler();
-	timeDisplay.dtetimer();
-
-	divChannelListObj = doc.getElementById("channelList");
-	divChannelListObj.appendChild(initCreate());
-
-	currentChannelDisplayObj = doc.getElementById("currentChannelDisplay");
-	currentChannelDisplayObj.innerHTML = (channelIndex + 1) + "/" + maxChannel;
-
-	channelNameObj = doc.getElementsByName("channelName");
-	infoPlayChanobj = doc.getElementById("nowPlayingChannel");
-	divChandescobj = doc.getElementById("channelDesc");
-	footerObj = doc.getElementById("footer");
-	//playButObj = doc.getElementById("playBut");
-	video = doc.getElementById("media");
-	doc.addEventListener("keydown", navigation, true);
+	// media._object.Fn_Play_Pause();
+	// media._object.Fn_Right_KeyDownHandler();
+	// media._object.Fn_Left_KeyDownHandler();
+	// timeDisplay.dtetimer();
+	//
+	// divChannelListObj = doc.getElementById("channelList");
+	// divChannelListObj.appendChild(initCreate());
+	//
+	// currentChannelDisplayObj = doc.getElementById("currentChannelDisplay");
+	// currentChannelDisplayObj.innerHTML = (channelIndex + 1) + "/" + maxChannel;
+	//
+	// channelNameObj = doc.getElementsByName("channelName");
+	// infoPlayChanobj = doc.getElementById("nowPlayingChannel");
+	// divChandescobj = doc.getElementById("channelDesc");
+	// footerObj = doc.getElementById("footer");
+	// //playButObj = doc.getElementById("playBut");
+	// video = doc.getElementById("media");
+	// doc.addEventListener("keydown", navigation, true);
     }
 </script>
 
@@ -2029,8 +1965,7 @@ document.onkeydown = KeyPress;
 	#divWidget{display: none;}
 </style>
 
-<?php } if ($this->_rootref['S_WELCOME']) {  ?>
-
+<?php } if ($this->_rootref['S_WELCOME']) {  ?>
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/welcome.css" rel="stylesheet" type="text/css" />
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/hcap.js" type="text/javascript"></script>
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/log.js" type="text/javascript"></script>
@@ -2098,8 +2033,7 @@ function channelChangedEventListener(eChCh) {
   body{ background: #000 url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/bground/bground-welcome.jpg) no-repeat center top; } 
   #divWidget{display:none}
 </style>
-<?php } if ($this->_rootref['S_WI']) {  ?>
-
+<?php } if ($this->_rootref['S_WI']) {  ?>
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/wi.css" rel="stylesheet" type="text/css" />
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/hcap.js" type="text/javascript"></script>
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/log.js" type="text/javascript"></script>
@@ -2162,8 +2096,7 @@ function channelChangedEventListener(eChCh) {
   /*body{ background: #000 url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/bground/bground-welcome1.jpg) no-repeat center top; }*/
   #divWidget{display:none}
 </style>
-<?php } if ($this->_rootref['S_GM']) {  ?>
-
+<?php } if ($this->_rootref['S_GM']) {  ?>
 <link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/wi.css" rel="stylesheet" type="text/css" />
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/hcap.js" type="text/javascript"></script>
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/log.js" type="text/javascript"></script>
@@ -2226,8 +2159,7 @@ function channelChangedEventListener(eChCh) {
   /*body{ background: #000 url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/bground/bground-welcome1.jpg) no-repeat center top; }*/
   #divWidget{display:none}
 </style>
-<?php } if ($this->_rootref['S_WHATSON']) {  ?>
-
+<?php } if ($this->_rootref['S_WHATSON']) {  ?>
 <!--<link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/whatson.css" rel="stylesheet" type="text/css" />-->
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/hcap.js" type="text/javascript"></script>
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/log.js" type="text/javascript"></script>
@@ -2291,8 +2223,7 @@ function channelChangedEventListener(eChCh) {
   /*body{ background: #000 url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/bground/bground-welcome1.jpg) no-repeat center top; }*/
   #divWidget{display:none}
 </style>
-<?php } if ($this->_rootref['S_VIDEO']) {  ?>
-
+<?php } if ($this->_rootref['S_VIDEO']) {  ?>
 <!--<link href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/whatson.css" rel="stylesheet" type="text/css" />-->
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/hcap.js" type="text/javascript"></script>
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/log.js" type="text/javascript"></script>
@@ -2356,8 +2287,7 @@ function channelChangedEventListener(eChCh) {
   /*body{ background: #000 url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/bground/bground-welcome1.jpg) no-repeat center top; }*/
   #divWidget{display:none}
 </style>
-<?php } if ($this->_rootref['S_SENDMESSAGE']) {  ?>
-
+<?php } if ($this->_rootref['S_SENDMESSAGE']) {  ?>
 <link rel="stylesheet" type="text/css" href="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/sendmessage.css" />
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/sendmessage.js" type="text/javascript" language="javascript"></script>
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/senlei19-sendmessage.js" type="text/javascript"></script>
@@ -2371,8 +2301,7 @@ body {
 }
 #divWidget{display: none;}
 </style>
-<?php } if ($this->_rootref['S_FULLSCREEN_GROUP']) {  ?>
-
+<?php } if ($this->_rootref['S_FULLSCREEN_GROUP']) {  ?>
 <style type="text/css" media="screen">
 body {
     /*background: #fff url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/bground/bground-dir.jpg) no-repeat;*/
@@ -2454,8 +2383,7 @@ body {
       }
   });
 </script>
-<?php } if ($this->_rootref['S_ROOMSUITES']) {  ?>
-
+<?php } if ($this->_rootref['S_ROOMSUITES']) {  ?>
 <style type="text/css" media="screen">
 body {
     background: #fff url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/bground/bground-dir.jpg) no-repeat;
@@ -2539,8 +2467,7 @@ body {
       }		
   });
 </script>
-<?php } if ($this->_rootref['S_INHOUSE']) {  ?>
-
+<?php } if ($this->_rootref['S_INHOUSE']) {  ?>
 <style type="text/css" media="screen">
 body {
     background: #fff url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/bground/bground.jpg) no-repeat;
@@ -2620,8 +2547,7 @@ body {
 </script>
 
 
-<?php } if ($this->_rootref['S_DIGITALSIGNAGE']) {  ?>
-
+<?php } if ($this->_rootref['S_DIGITALSIGNAGE']) {  ?>
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/hcap.js" type="text/javascript"></script>
 <script src="<?php echo (isset($this->_rootref['T_THEME_PATH'])) ? $this->_rootref['T_THEME_PATH'] : ''; ?>/log.js" type="text/javascript"></script>
 <script>
@@ -2645,8 +2571,7 @@ function channelChangedEventListener(eChCh) {
 
 </script>
 
-<?php } if ($this->_rootref['S_IMAGE_GROUP']) {  ?>
-
+<?php } if ($this->_rootref['S_IMAGE_GROUP']) {  ?>
 <style type="text/css" media="screen">
 body {
     background: #fff url(<?php echo (isset($this->_rootref['T_MEDIA_IMAGES_PATH'])) ? $this->_rootref['T_MEDIA_IMAGES_PATH'] : ''; ?>/bground/bground-group.jpg) no-repeat;
@@ -2680,8 +2605,7 @@ body {
       }		
   });
 </script>
-<?php } ?>
-
+<?php } ?>
 
 <!--<style>
 	@font-face {
